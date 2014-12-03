@@ -1,111 +1,222 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'phantomjs', '-g' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
-4 verbose readDependencies using package.json deps
-5 verbose install where, deps [ '/Users/kyleknott/practice/node/express-node',
-5 verbose install   [ 'express',
-5 verbose install     'body-parser',
-5 verbose install     'cookie-parser',
-5 verbose install     'morgan',
-5 verbose install     'serve-favicon',
-5 verbose install     'debug',
-5 verbose install     'mongoose',
-5 verbose install     'jade' ] ]
-6 info preinstall express-node@0.0.0
-7 verbose readDependencies using package.json deps
-8 verbose already installed skipping morgan@~1.3.0 /Users/kyleknott/practice/node/express-node
-9 verbose already installed skipping serve-favicon@~2.1.3 /Users/kyleknott/practice/node/express-node
-10 verbose already installed skipping debug@~2.0.0 /Users/kyleknott/practice/node/express-node
-11 verbose cache add [ 'mongoose@3.8.1', null ]
-12 verbose cache add name=undefined spec="mongoose@3.8.1" args=["mongoose@3.8.1",null]
-13 verbose parsed url { protocol: null,
-13 verbose parsed url   slashes: null,
-13 verbose parsed url   auth: null,
-13 verbose parsed url   host: null,
-13 verbose parsed url   port: null,
-13 verbose parsed url   hostname: null,
-13 verbose parsed url   hash: null,
-13 verbose parsed url   search: null,
-13 verbose parsed url   query: null,
-13 verbose parsed url   pathname: 'mongoose@3.8.1',
-13 verbose parsed url   path: 'mongoose@3.8.1',
-13 verbose parsed url   href: 'mongoose@3.8.1' }
-14 verbose already installed skipping jade@~1.6.0 /Users/kyleknott/practice/node/express-node
-15 verbose cache add name="mongoose" spec="3.8.1" args=["mongoose","3.8.1"]
-16 verbose parsed url { protocol: null,
-16 verbose parsed url   slashes: null,
-16 verbose parsed url   auth: null,
-16 verbose parsed url   host: null,
-16 verbose parsed url   port: null,
-16 verbose parsed url   hostname: null,
-16 verbose parsed url   hash: null,
-16 verbose parsed url   search: null,
-16 verbose parsed url   query: null,
-16 verbose parsed url   pathname: '3.8.1',
-16 verbose parsed url   path: '3.8.1',
-16 verbose parsed url   href: '3.8.1' }
-17 verbose addNamed [ 'mongoose', '3.8.1' ]
-18 verbose addNamed [ '3.8.1', '3.8.1' ]
-19 verbose already installed skipping express@~4.9.0 /Users/kyleknott/practice/node/express-node
-20 silly lockFile 4fbee304-mongoose-3-8-1 mongoose@3.8.1
-21 verbose lock mongoose@3.8.1 /Users/kyleknott/.npm/4fbee304-mongoose-3-8-1.lock
-22 verbose already installed skipping body-parser@~1.8.1 /Users/kyleknott/practice/node/express-node
-23 verbose already installed skipping cookie-parser@~1.3.3 /Users/kyleknott/practice/node/express-node
-24 verbose request where is /mongoose
-25 verbose request registry https://registry.npmjs.org/
-26 verbose request id d22563605c89fe48
-27 verbose url raw /mongoose
-28 verbose url resolving [ 'https://registry.npmjs.org/', './mongoose' ]
-29 verbose url resolved https://registry.npmjs.org/mongoose
-30 verbose request where is https://registry.npmjs.org/mongoose
-31 info trying registry request attempt 1 at 12:24:41
-32 verbose etag "C9ZQQTQHVYEC1BXNY4IQXIL5T"
-33 http GET https://registry.npmjs.org/mongoose
-34 http 200 https://registry.npmjs.org/mongoose
-35 silly registry.get cb [ 200,
-35 silly registry.get   { date: 'Mon, 24 Nov 2014 20:24:43 GMT',
-35 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-35 silly registry.get     etag: '"4Y4OA0POU6G3TKEQ8MQ8JCCJ8"',
-35 silly registry.get     'content-type': 'application/json',
-35 silly registry.get     'cache-control': 'max-age=60',
-35 silly registry.get     'content-length': '278840',
-35 silly registry.get     'accept-ranges': 'bytes',
-35 silly registry.get     via: '1.1 varnish',
-35 silly registry.get     age: '38',
-35 silly registry.get     'x-served-by': 'cache-lax1429-LAX',
-35 silly registry.get     'x-cache': 'HIT',
-35 silly registry.get     'x-cache-hits': '2',
-35 silly registry.get     'x-timer': 'S1416860683.554194,VS0,VE0',
-35 silly registry.get     vary: 'Accept',
-35 silly registry.get     'keep-alive': 'timeout=10, max=50',
-35 silly registry.get     connection: 'Keep-Alive' } ]
-36 silly lockFile c4ae67ae--org-mongoose-mongoose-3-8-1-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-37 verbose lock https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz /Users/kyleknott/.npm/c4ae67ae--org-mongoose-mongoose-3-8-1-tgz.lock
-38 verbose addRemoteTarball [ 'https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz',
-38 verbose addRemoteTarball   '1efe17d259ae2905330a3b2d91ba4085a090f6b8' ]
-39 info retry fetch attempt 1 at 12:24:41
-40 verbose fetch to= /var/folders/w8/vchrv8456y72m31dhjtgtvdc0000gn/T/npm-97242-aMtoXVkK/registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-41 http GET https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-42 http 200 https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-43 silly lockFile c4ae67ae--org-mongoose-mongoose-3-8-1-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-44 silly lockFile c4ae67ae--org-mongoose-mongoose-3-8-1-tgz https://registry.npmjs.org/mongoose/-/mongoose-3.8.1.tgz
-45 silly lockFile 4fbee304-mongoose-3-8-1 mongoose@3.8.1
-46 silly lockFile 4fbee304-mongoose-3-8-1 mongoose@3.8.1
-47 error Error: EACCES, mkdir '/Users/kyleknott/.npm/mongoose/3.8.1'
-47 error  { [Error: EACCES, mkdir '/Users/kyleknott/.npm/mongoose/3.8.1']
-47 error   errno: 3,
-47 error   code: 'EACCES',
-47 error   path: '/Users/kyleknott/.npm/mongoose/3.8.1',
-47 error   parent: 'express-node' }
-48 error Please try running this command again as root/Administrator.
-49 error System Darwin 13.4.0
-50 error command "node" "/usr/local/bin/npm" "install"
-51 error cwd /Users/kyleknott/practice/node/express-node
-52 error node -v v0.10.33
-53 error npm -v 1.4.28
-54 error path /Users/kyleknott/.npm/mongoose/3.8.1
-55 error code EACCES
-56 error errno 3
-57 error stack Error: EACCES, mkdir '/Users/kyleknott/.npm/mongoose/3.8.1'
-58 verbose exit [ 3, true ]
+4 verbose cache add [ 'phantomjs', null ]
+5 verbose cache add name=undefined spec="phantomjs" args=["phantomjs",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'phantomjs',
+6 verbose parsed url   path: 'phantomjs',
+6 verbose parsed url   href: 'phantomjs' }
+7 silly lockFile 30d7cd7d-phantomjs phantomjs
+8 verbose lock phantomjs /Users/kyleknott/.npm/30d7cd7d-phantomjs.lock
+9 silly lockFile 30d7cd7d-phantomjs phantomjs
+10 silly lockFile 30d7cd7d-phantomjs phantomjs
+11 verbose addNamed [ 'phantomjs', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 29cf7fd6-phantomjs phantomjs@
+14 verbose lock phantomjs@ /Users/kyleknott/.npm/29cf7fd6-phantomjs.lock
+15 silly addNameRange { name: 'phantomjs', range: '*', hasData: false }
+16 verbose request where is /phantomjs
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 2c54b0641e9d95a7
+19 verbose url raw /phantomjs
+20 verbose url resolving [ 'https://registry.npmjs.org/', './phantomjs' ]
+21 verbose url resolved https://registry.npmjs.org/phantomjs
+22 verbose request where is https://registry.npmjs.org/phantomjs
+23 info trying registry request attempt 1 at 12:16:43
+24 http GET https://registry.npmjs.org/phantomjs
+25 http 200 https://registry.npmjs.org/phantomjs
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Wed, 26 Nov 2014 20:16:45 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"AF1CVL5I7XYE1FO5PWCLLKFI3"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '89565',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '10',
+26 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+26 silly registry.get     'x-cache': 'HIT',
+26 silly registry.get     'x-cache-hits': '1',
+26 silly registry.get     'x-timer': 'S1417033005.583130,VS0,VE0',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'phantomjs', range: '*', hasData: true }
+28 silly addNameRange versions [ 'phantomjs',
+28 silly addNameRange   [ '0.0.1',
+28 silly addNameRange     '0.0.2',
+28 silly addNameRange     '0.0.3',
+28 silly addNameRange     '0.0.4',
+28 silly addNameRange     '0.0.5',
+28 silly addNameRange     '0.0.6',
+28 silly addNameRange     '0.0.7',
+28 silly addNameRange     '0.0.8',
+28 silly addNameRange     '0.0.9',
+28 silly addNameRange     '0.1.0',
+28 silly addNameRange     '0.1.1',
+28 silly addNameRange     '0.2.0',
+28 silly addNameRange     '0.2.1',
+28 silly addNameRange     '0.2.2',
+28 silly addNameRange     '0.2.3',
+28 silly addNameRange     '0.2.4',
+28 silly addNameRange     '0.2.5',
+28 silly addNameRange     '0.2.6',
+28 silly addNameRange     '1.8.0-1',
+28 silly addNameRange     '1.8.1-1',
+28 silly addNameRange     '1.8.1-2',
+28 silly addNameRange     '1.8.1-3',
+28 silly addNameRange     '1.8.2-0',
+28 silly addNameRange     '1.8.2-1',
+28 silly addNameRange     '1.8.2-2',
+28 silly addNameRange     '1.9.0-0',
+28 silly addNameRange     '1.9.0-1',
+28 silly addNameRange     '1.9.0-2',
+28 silly addNameRange     '1.9.0-3',
+28 silly addNameRange     '1.9.0-4',
+28 silly addNameRange     '1.9.0-5',
+28 silly addNameRange     '1.9.0-6',
+28 silly addNameRange     '1.9.1-0',
+28 silly addNameRange     '1.9.1-2',
+28 silly addNameRange     '1.9.1-3',
+28 silly addNameRange     '1.9.1-4',
+28 silly addNameRange     '1.9.1-5',
+28 silly addNameRange     '1.9.1-6',
+28 silly addNameRange     '1.9.1-7',
+28 silly addNameRange     '1.9.1-8',
+28 silly addNameRange     '1.9.1-9',
+28 silly addNameRange     '1.9.2-0',
+28 silly addNameRange     '1.9.2-1',
+28 silly addNameRange     '1.9.2-2',
+28 silly addNameRange     '1.9.2-3',
+28 silly addNameRange     '1.9.2-4',
+28 silly addNameRange     '1.9.2-5',
+28 silly addNameRange     '1.9.2-6',
+28 silly addNameRange     '1.9.6-0',
+28 silly addNameRange     '1.9.7-1',
+28 silly addNameRange     '1.9.7-3',
+28 silly addNameRange     '1.9.7-4',
+28 silly addNameRange     '1.9.7-5',
+28 silly addNameRange     '1.9.7-6',
+28 silly addNameRange     '1.9.7-7',
+28 silly addNameRange     '1.9.7-8',
+28 silly addNameRange     '1.9.7-9',
+28 silly addNameRange     '1.9.7-10',
+28 silly addNameRange     '1.9.7-11',
+28 silly addNameRange     '1.9.7-12',
+28 silly addNameRange     '1.9.7-13',
+28 silly addNameRange     '1.9.7-14',
+28 silly addNameRange     '1.9.7-15',
+28 silly addNameRange     '1.8.2-3',
+28 silly addNameRange     '1.9.8',
+28 silly addNameRange     '1.9.9',
+28 silly addNameRange     '1.9.10',
+28 silly addNameRange     '1.9.11',
+28 silly addNameRange     '1.9.12' ] ]
+29 verbose addNamed [ 'phantomjs', '1.9.12' ]
+30 verbose addNamed [ '1.9.12', '1.9.12' ]
+31 silly lockFile ad41401c-phantomjs-1-9-12 phantomjs@1.9.12
+32 verbose lock phantomjs@1.9.12 /Users/kyleknott/.npm/ad41401c-phantomjs-1-9-12.lock
+33 silly lockFile e07a86e2-g-phantomjs-phantomjs-1-9-12-tgz https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+34 verbose lock https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz /Users/kyleknott/.npm/e07a86e2-g-phantomjs-phantomjs-1-9-12-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz',
+35 verbose addRemoteTarball   '812b137654585413ecb82bf3db9dcd39d8f85f91' ]
+36 info retry fetch attempt 1 at 12:16:43
+37 verbose fetch to= /var/folders/w8/vchrv8456y72m31dhjtgtvdc0000gn/T/npm-93338-lp_32LGP/registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+38 http GET https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+39 http 200 https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+40 silly lockFile e07a86e2-g-phantomjs-phantomjs-1-9-12-tgz https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+41 silly lockFile e07a86e2-g-phantomjs-phantomjs-1-9-12-tgz https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz
+42 silly lockFile ad41401c-phantomjs-1-9-12 phantomjs@1.9.12
+43 silly lockFile ad41401c-phantomjs-1-9-12 phantomjs@1.9.12
+44 silly lockFile 29cf7fd6-phantomjs phantomjs@
+45 silly lockFile 29cf7fd6-phantomjs phantomjs@
+46 silly resolved [ { name: 'phantomjs',
+46 silly resolved     version: '1.9.12',
+46 silly resolved     keywords: [ 'phantomjs', 'headless', 'webkit' ],
+46 silly resolved     description: 'Headless WebKit with JS API',
+46 silly resolved     homepage: 'https://github.com/Obvious/phantomjs',
+46 silly resolved     repository: { type: 'git', url: 'git://github.com/Obvious/phantomjs.git' },
+46 silly resolved     licenses: [ [Object] ],
+46 silly resolved     author:
+46 silly resolved      { name: 'Dan Pupius',
+46 silly resolved        email: 'dan@obvious.com',
+46 silly resolved        url: 'http://pupius.co.uk' },
+46 silly resolved     maintainers: [ [Object], [Object], [Object] ],
+46 silly resolved     main: 'lib/phantomjs',
+46 silly resolved     bin: { phantomjs: './bin/phantomjs' },
+46 silly resolved     scripts:
+46 silly resolved      { install: 'node install.js',
+46 silly resolved        test: 'nodeunit --reporter=minimal test/tests.js' },
+46 silly resolved     dependencies:
+46 silly resolved      { 'adm-zip': '0.4.4',
+46 silly resolved        kew: '0.4.0',
+46 silly resolved        ncp: '~1.0.1',
+46 silly resolved        npmconf: '2.0.9',
+46 silly resolved        mkdirp: '0.5.0',
+46 silly resolved        progress: '1.1.8',
+46 silly resolved        request: '2.42.0',
+46 silly resolved        'request-progress': '0.3.1',
+46 silly resolved        rimraf: '~2.2.8',
+46 silly resolved        which: '~1.0.5' },
+46 silly resolved     devDependencies: { nodeunit: '0.9.0' },
+46 silly resolved     gitHead: 'bf1ec7ae211b8162779be59e945b92613ffe8d4e',
+46 silly resolved     bugs: { url: 'https://github.com/Obvious/phantomjs/issues' },
+46 silly resolved     _id: 'phantomjs@1.9.12',
+46 silly resolved     _shasum: '812b137654585413ecb82bf3db9dcd39d8f85f91',
+46 silly resolved     _from: 'phantomjs@',
+46 silly resolved     _npmVersion: '1.4.24',
+46 silly resolved     _npmUser: { name: 'nicks', email: 'nicholas.j.santos@gmail.com' },
+46 silly resolved     dist:
+46 silly resolved      { shasum: '812b137654585413ecb82bf3db9dcd39d8f85f91',
+46 silly resolved        tarball: 'http://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/phantomjs/-/phantomjs-1.9.12.tgz' } ]
+47 info install phantomjs@1.9.12 into /usr/local/lib
+48 info installOne phantomjs@1.9.12
+49 verbose lib/node_modules/phantomjs unbuild
+50 verbose tar unpack /Users/kyleknott/.npm/phantomjs/1.9.12/package.tgz
+51 silly lockFile 4d5acaea-local-lib-node-modules-phantomjs tar:///usr/local/lib/node_modules/phantomjs
+52 verbose lock tar:///usr/local/lib/node_modules/phantomjs /Users/kyleknott/.npm/4d5acaea-local-lib-node-modules-phantomjs.lock
+53 silly lockFile 52518960-npm-phantomjs-1-9-12-package-tgz tar:///Users/kyleknott/.npm/phantomjs/1.9.12/package.tgz
+54 verbose lock tar:///Users/kyleknott/.npm/phantomjs/1.9.12/package.tgz /Users/kyleknott/.npm/52518960-npm-phantomjs-1-9-12-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/phantomjs'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/phantomjs']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/phantomjs',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/phantomjs',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 13.4.0
+59 error command "node" "/usr/local/bin/npm" "install" "phantomjs" "-g"
+60 error cwd /Users/kyleknott/practice/node/express-node
+61 error node -v v0.10.33
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/phantomjs
+64 error fstream_path /usr/local/lib/node_modules/phantomjs
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/phantomjs'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]
