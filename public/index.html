@@ -1,8 +1,47 @@
-<html>
+<html ng-app="toDo">
 <head>
   <title>Awesome App(maybe)</title>
+  <!-- loading bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <style>
+    html { overflow-y:scroll; }
+    body { padding-top:50px; }
+    #todo-list { margin-bottom:30px; }
+  </style>
+  <!-- jquery -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- angular -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <!-- Inserting the local angular file with all of the controllers that were made for posting to the database -->
+<script type="text/javascript" src="core.js"></script>
 </head>
-<body>
-  <h1>Working</h1>
+<body ng-controller="mainController">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1>Todo List! <span class="label lbel-info">{{ todos.length }}</span></h1></div>
+
+      <!-- The List itself -->
+      <div id="todo-list">
+        <div class="col-sm-4">
+          <!-- loop through all of the todos located in $scope.todos -->
+          <div class="checkbox" ng-repeat="todo in todos">
+            <label>
+              <input type="checkbox" ng-click="deleteTodo(todo._id)">{{todo.text}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- form for creating todos. eventually looking to make into a modal -->
+      <div id="todo-form">
+        <div class="col-sm-8">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg text-center" placeholder="Add something to your list for today!" ng-model="formData.text">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add to list</button>
+          </form>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
