@@ -6,17 +6,19 @@ var express = require('express'),
       // this would almost eliminate the need for requiring specific folders in the filesystem
       Bear = require('./app/models/bear'),
       // mongodb connection using mongoose
-      mongoose = require('mongoose');
+      mongoose = require('mongoose'),
+      // using the express router to make custom routes
+      router = express.Router(),
+      // setting the port that you want to use
+      port = process.env.PORT || 8080;
 
 mongoose.connect('mongodb://localhost/express-node');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;  // setting the port that you want to use
 
 // API routes
-var router = express.Router(); //getting an instance of the express router
 
 // middleware for all requests
 // everything runs in the order that is specified
