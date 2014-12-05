@@ -1,48 +1,67 @@
-// server.js
+// calling all of the needed packages
+var express = require('express'),
+      app = express(),
+      bodyParser = require('body-parser'),
+      // adding the bear model to the server
+      // this would almost eliminate the need for requiring specific folders in the filesystem
+      Bear = require('./app/models/bear'),
+      // mongodb connection using mongoose
+      mongoose = require('mongoose');
 
-// modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
-var methodOverride = require('method-override');
+mongoose.connect('mongodb://localhost/express-node');
 
-// configuration ===========================================
-    
-// config files
-var db = require('./config/db');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// set our port
-var port = process.env.PORT || 8080; 
+var port = process.env.PORT || 8080;  // setting the port that you want to use
 
-// connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in config/db.js)
-// mongoose.connect(db.url); 
+// API routes
+var router = express.Router(); //getting an instance of the express router
 
-// get all data/stuff of the body (POST) parameters
-// parse application/json 
-app.use(bodyParser.json()); 
+// middleware for all requests
+// everything runs in the order that is specified
+router.use(function(req, res, next) {
+  // do some logging
+  console.log('something is working');
+  next(); //this makes sure it proceeds to the next route instead of stopping here
+});
 
-// parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+// more routes for CRUD here
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true })); 
+// here it is for all routes that end in bears specifically
+// the bears api endpoint is http://localhost:8080/api/bears
+router.route('/bears')
+  // .post is indicating that this will be saving something to the server
+  .post(function(req, res) {
+    var bear = new Bear(); //creating a new instance of the bear model
+    bear.name = req.body.name; //setting the bears name depending on what the request says
 
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
-app.use(methodOverride('X-HTTP-Method-Override')); 
+    // saving the bear and checking for errors
+    bear.save(function(err) {
+      if (err)
+       res.send(err);
 
-// set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public')); 
+      res.json({ message: 'bear has been created!' });
+    });
+  })
+  
+  .get(function(req, res) {
+    Bear.find(function(err, bears) {
+      if (err)
+        res.send(err);
+      res.json(bears);
+    });
+  });
 
-// routes ==================================================
-require('./app/routes')(app); // configure our routes
+  // all of the routes are currently set up to be used as api routes
+  // this line creates a new path that the client can access called /api so it would look like http://localhost:8080/api
+  app.use('/api', router);
 
-// start app ===============================================
-// startup our app at http://localhost:8080
-app.listen(port);               
+// testing the route to make sure everything is connected
+router.get('/', function(req, res) {
+  res.json({ message: 'everything is working for this api route' });
+});
 
-// shoutout to the user                     
-console.log('Magic happens on port ' + port);
-
-// expose app           
-exports = module.exports = app;   
+// run server
+app.listen(port);
+console.log('it should be running if this message is showing. it is working on port ' + port);
