@@ -44,7 +44,7 @@ router.route('/bears')
       res.json({ message: 'bear has been created!' });
     });
   })
-  
+  // with chaining the methods in this cleaner way it is important to only put a semicolon on the end of the final method for the route
   .get(function(req, res) {
     Bear.find(function(err, bears) {
       if (err)
@@ -52,6 +52,51 @@ router.route('/bears')
       res.json(bears);
     });
   });
+
+  // getting a specific bear from the databse back
+  router.route('/bears/:bear_id')
+
+    // making a get method that will take a bear from the database with a specific id and return the json data for that object
+    .get(function(req, res) {
+      Bear.findById(req.params.bear_id, function(err, bear) {
+        if (err)
+          res.send(err)
+        res.json(bear);
+      });
+    })
+
+    // updating a specific bear by id
+    .put(function(req, res) {
+      // once again using the bear model to find a specific bear by id
+      Bear.findById(req.params.bear_id, function(err, bear) {
+        if (err)
+          res.send(err);
+
+        bear.name = req.body.name; //updating the bear's info here
+
+        // saving the bear after the update has been completed
+        bear.save(function(err) {
+          if (err) 
+            res.send(err);
+
+          res.json({ message: 'bear has been updated!' });
+        });
+      });
+    })
+
+    // deleting a bear with a specific id
+    .delete(function(req, res) {
+      Bear.remove({
+        _id: req.params.bear_id
+      }, function(err, bear){
+          if (err)
+            res.send(err)
+
+          res.json({ message: 'successfully deleted' });
+      });
+    });
+
+
 
   // all of the routes are currently set up to be used as api routes
   // this line creates a new path that the client can access called /api so it would look like http://localhost:8080/api
