@@ -10,6 +10,7 @@
     // configuration =================
 
     mongoose.connect('mongodb://localhost/express-node');
+    mongoose.connect('mongodb://heroku_app32217691:r6boqevj1e319cp31900ets09c@ds061200.mongolab.com:61200/heroku_app32217691');
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
     app.use(morgan('dev'));                                         // log every request to the console
