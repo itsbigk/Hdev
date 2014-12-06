@@ -1,0 +1,42 @@
+<!doctype html>
+
+<!-- adding the angular app to the page -->
+<html ng-app="myApp">
+<head>
+  <title>Node/Angular</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- jQuery library -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+   <!-- Angularjs -->
+   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+   <script src="app.js"></script>
+</head>
+<body ng-controller="mainController">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <h1><span class="label label-info">All of your todo items: {{ todos.length }}</span></h1>
+    </div>
+    <div id="todo-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="checkbox" ng-repeat="todo in todos">
+          <label>
+            <input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text }}
+          </label>
+        </div>
+      </div>
+    </div>
+      <div id="todo-form">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg text-center" placeholder="This placeholder is working" ng-model="formData.text">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add Todo!</button>
+          </form>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

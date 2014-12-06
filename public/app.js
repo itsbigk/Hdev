@@ -1,7 +1,7 @@
-angular.module('myApp', []);
+angular.module('myApp', [])
   // controller will eventualy move to its own folder. all depends
-  .controller('mainController'($scope, $http) {
-
+  .controller('mainController', function($scope, $http) {
+    $scope.formData = {};
     // once the page loads it automatically will get all of the todos from the api path
     $http.get('/api/todos')
       .success(function(data) {
@@ -15,7 +15,7 @@ angular.module('myApp', []);
     $scope.createTodo = function() {
       $http.post('/api/todos', $scope.formData)
         .success(function(data) {
-          // $scope.formData = {}; clears the form at the end so a new entry can be added automatically
+          $scope.formData = {}; //clears the form at the end so a new entry can be added automatically
           $scope.todos = data;
           console.log(data);
         })
