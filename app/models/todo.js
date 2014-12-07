@@ -1,6 +1,5 @@
 // need to require mongoose everyewhere that you want to save to your database
-// to avoid something like this then the file system would need to be entered into the serverjs file
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 // Adding a schema may be needed in the future for bigger and more complex databases
 // var TodoSchema = new mongoose.Schema({
@@ -12,3 +11,9 @@
 // var Todo = mongoose.model('Todo', {
 //   text : String
 // });
+
+// exporting the model here instead of leaving it in the server.js
+module.exports = mongoose.model('Todo', {
+  text : String,
+  done : Boolean
+});
