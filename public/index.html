@@ -4,28 +4,32 @@
 <html ng-app="myApp">
 <head>
   <title>Node/Angular</title>
-  <!-- REPLACE ALL CDN LINKED ITEMS WITH THE NEWLY INSTALLED BOWER COMPONENTS -->
 
+  <!-- local stylesheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- jQuery library. this goes before bootstrap because bootstrap's js file requires jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
   <!-- bootstrap -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <!-- jQuery library -->
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
    <!-- Angularjs -->
+   <script src="/bower_components/angular/angular.min.js"></script>
 
-   <!-- older angular version  -->
-   <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
-
-   <!-- latest angular version -->
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+   <!-- angular-bootstrap -->
+   <link rel="stylesheet" href="/bower_components/angular-bootstrap/ui-bootstrap.min.js">
 
    <!-- angular controllers and services -->
-   <script src="js/controllers/mainController.js"></script>
-   <script src="js/services/todoService.js"></script>
+   <script src="/js/controllers/mainController.js"></script>
+   <script src="/js/services/todoService.js"></script>
+
+   <!-- angular ui router -->
+   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
    <!-- local angular app file -->
-   <script src="../js/app.js"></script>
+   <script src="/js/app.js"></script>
 </head>
 <body ng-controller="mainController">
   <div class="container">
