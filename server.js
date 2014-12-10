@@ -1,6 +1,6 @@
 // calling all of the needed packages
     // set up ========================
-    var express  = require('express'),
+    var express    = require('express'),
     app            = express(),                               // create our app w/ express
     mongoose       = require('mongoose'),                     // mongoose for mongodb
     morgan         = require('morgan'),             // log requests to the console (express4)
