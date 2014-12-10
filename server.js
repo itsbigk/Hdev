@@ -1,10 +1,10 @@
 // calling all of the needed packages
     // set up ========================
     var express  = require('express'),
-    app      = express(),                               // create our app w/ express
-    mongoose = require('mongoose'),                     // mongoose for mongodb
-    morgan = require('morgan'),             // log requests to the console (express4)
-    bodyParser = require('body-parser'),    // pull information from HTML POST (express4)
+    app            = express(),                               // create our app w/ express
+    mongoose       = require('mongoose'),                     // mongoose for mongodb
+    morgan         = require('morgan'),             // log requests to the console (express4)
+    bodyParser     = require('body-parser'),    // pull information from HTML POST (express4)
     methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
