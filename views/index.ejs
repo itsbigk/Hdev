@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- adding the angular app to the page -->
+<html ng-app="myApp">
+<head>
+  <title>Homeless Devices</title>
+
+  <!-- jQuery library. this goes before bootstrap because bootstrap's js file requires jQuery -->
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- pure -->
+  <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+
+  <!-- Angularjs -->
+  <script src="/bower_components/angular/angular.min.js"></script>
+
+  <!-- angular-bootstrap -->
+  <link rel="stylesheet" href="/bower_components/angular-bootstrap/ui-bootstrap.min.js">
+
+  <!-- angular route -->
+  <script src="/bower_components/angular-route/angular-route.min.js"></script>
+
+  <!-- local angular app file -->
+  <script src="js/app.js"></script>
+
+  <!-- local stylesheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- injecting views with ng-view -->
+    <!-- each angular controller can apply a different class -->
+    <div class="{{animationClass}}" ng-view>
+      <div class="jumbotron text-center">
+        <h1><span class="fa fa-lock">Homeless Devices</span></h1>
+        <p>Login or register:</p>
+        <a href="#/login" class="pure-button"><span class="fa fa-user">Local Login</span></a>
+        <a href="#/signUp" class="pure-button"><span class="fa fa-user">Local Signup</span></a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

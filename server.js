@@ -1,20 +1,33 @@
 // calling all of the needed packages
-    // set up ========================
-    var express    = require('express'),
-    app            = express(),                      // create app with express
-    mongoose       = require('mongoose'),           // mongoose for mongodb
-    morgan         = require('morgan'),            // log requests to the console (express4)
-    bodyParser     = require('body-parser'),      // pull information from HTML POST (express4)
-    methodOverride = require('method-override'), // simulate DELETE and PUT (express4)
-    port           = process.env.PORT || 3000;  // defining the port to be whatever the current environment's port is or 3000
+    var express    = require('express'),                  // requiring express in the app
+    app            = express(),                          // create app with express
+    mongoose       = require('mongoose'),               // mongoose for mongodb
+    morgan         = require('morgan'),                // log requests to the console (express4)
+    bodyParser     = require('body-parser'),          // pull information from HTML POST (express4)
+    methodOverride = require('method-override'),     // simulate DELETE and PUT (express4)
+    port           = process.env.PORT || 3000,      // defining the port to be whatever the current environment's port is or 3000
+    passport       = require('passport'),          // requiring passport for authentication
+    session        = require('express-session'),  // calling the express-session package to help with user sessions
+    cookieParser   = require('cookie-parser'),   // parsing through cookies
+    flash          = require('connect-flash');
 
-    app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+    app.use(express.static(__dirname + '/public'));                 // set the static files location /public/js will be /js for users
     app.use('/bower_components',  express.static(__dirname + '/bower_components')); // making the bower_components folder accessible
     app.use(morgan('dev'));                                         // log every request to the console
     app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
     app.use(bodyParser.json());                                     // parse application/json
     app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
     app.use(methodOverride());                                      // gives the ability to use HTTP verbs in places where it is not normally supported
+    app.set('view engine', 'ejs');                                  // using ejs for templating. this app only uses one ejs file
+    app.use(passport.initialize());                                 // initializing passport
+    app.use(passport.session());                                    // persistent login sessions
+    app.use(flash());                                               // flash messages that are stored inside of sessions
+    app.use(session({                                               // setting the session's secret. there are ways to randomize this every time and store this into a variable
+      secret            : 'homelessdevices',
+      resave            : 'true',
+      saveUninitialized : true
+    }));
+
 
     // listen (start app with node server.js) ======================================
     // app.listen(8080);
@@ -28,4 +41,7 @@
     mongoose.connect(database.url);
 
     // loading all routes for the app
-    require('./app/routes')(app);
+    require('./app/routes')(app, passport);
+
+    // adding the passport configuration file
+    require('./config/passport')(passport);

@@ -4,67 +4,107 @@
 
 // anything involving the need to access something from the server will need to have the model required in this file
 
-// below is accessing the todo.js file which contains the todo model
-var Todo = require('./models/todo');
+// below is accessing the case.js file which contains the case model
+var Case = require('./models/case');
 
 // using module.exports makes everything inside of it accessible to outside files that require the file
 // when using module.exports here, it needs to equal a function that passes in the variable that is calling express in the server.js file
 // in this case the 'app' variable is ehat is calling express on server.js
-module.exports = function(app) {
-// get all todos
-app.get('/api/todos', function(req, res) {
+module.exports = function(app, passport) {
 
-  // use mongoose to get all todos in the database
-  Todo.find(function(err, todos) {
-
-    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-    if (err)
-      res.send(err)
-
-      res.json(todos); // return all todos in JSON format
-    });
+  // the one and only route for the application to run ===================
+  app.get('/', function(req, res) {
+    res.render('index.ejs'); // loads the one and only page that you need and angular will take care of the rest on the front end
   });
 
-  // create todo and send back all todos after creation
-  app.post('/api/todos', function(req, res) {
+  // get all cases
+  app.get('/api/cases', function(req, res) {
 
-    // create a todo, information comes from AJAX request from Angular
-    Todo.create({
+    // use mongoose to get all cases in the database
+    Case.find(function(err, cases) {
+
+      // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err)
+        res.send(err)
+
+        res.json(cases); // return all cases in JSON format
+      });
+  });
+
+  // create case and send back all cases after creation
+  app.post('/api/cases', function(req, res) {
+
+    // create a case, information comes from AJAX request from Angular
+    Case.create({
       text : req.body.text,
       done : false
-    }, function(err, todo) {
+    }, function(err, cases) {
       if (err)
         res.send(err);
 
-        // get and return all the todos after you create another
-        Todo.find(function(err, todos) {
+        // get and return all the cases after you create another
+        Case.find(function(err, cases) {
           if (err)
             res.send(err)
-            res.json(todos);
+            res.json(cases);
           });
         });
 
       });
 
-      // delete a todo
-      app.delete('/api/todos/:todo_id', function(req, res) {
-        Todo.remove({
+      // delete a case
+      app.delete('/api/cases/:todo_id', function(req, res) {
+        Case.remove({
           _id : req.params.todo_id
-        }, function(err, todo) {
+        }, function(err, cases) {
           if (err)
             res.send(err);
 
-            // get and return all the todos after you create another
-            Todo.find(function(err, todos) {
+            // get and return all the cases after you create another
+            Case.find(function(err, cases) {
               if (err)
                 res.send(err)
-                res.json(todos);
-              });
+              res.json(cases);
             });
           });
+      });
 
-          // the one and only route for the application to run ===================
-          app.get('*', function(req, res) {
-            res.sendfile('./public/index.html'); // loads the one and only page that you need and angular will take care of the rest on the front end
-          });
-};
+      // all of the user routes below
+
+      // the routes are being obtained here but they should not need anything inside of the function
+      // all of the posting will happen on the angular side as long as the routes are defined
+      app.get('/loggedin', function(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0')
+      });
+
+      app.get('/login', passport.authenticate('local-login'), function(req, res) {
+        res.send(req.user)
+      });
+
+      // getting the signup route
+      // this is going to pass in the local-signup strategy as well since the actual post will happen on the angular side
+      app.get('/signup', passport.authenticate('local-signup'), function(req, res) {
+
+      });
+
+
+      // logout route
+      app.get('/logout', function(req, res) {
+        req.logout();
+        res.send(200);
+
+        // after logout then redirect to the root page
+        res.redirect('/');
+      });
+
+      // routing middleware to check if a user is logged in
+      function isLoggedIn(req, res, next) {
+
+        // if a user is authenticated then move on
+        if (req.isAuthenticated())
+          return next();
+
+        // if there is nobody logged in then redirect them to the root page
+        res.redirect('/');
+      }
+    };
