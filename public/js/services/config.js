@@ -1,24 +1,24 @@
-angular.module('appRouting', ['ui.router'])
+angular.module('homeless')
 
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $scope, $state) {
-    $urlRouterProvider.otherwise('/');
+.config(function($locationProvider, $urlRouterProvider, $scope, $state) {
+  $urlRouterProvider.otherwise('/');
 
-    $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true);
 
-    // for ng-show on the index page
-    $scope.uiRouterState = $state;
+  // for ng-show on the index page
 
-    $stateProvider
 
-    // main page
-    .when('/', {
-      templateUrl  : '../views/index.ejs',
-      controller   : 'mainController'
-    })
+  $stateProvider
 
-    .when('login', {
-      url         : '/login',
-      template    : 'js/templates/login.html',
-      controller  : 'mainController'
-    });
+  // main page
+  .when('/', {
+    templateUrl  : '../views/index.ejs',
+    controller   : 'mainController'
+  })
+
+  .when('login', {
+    url         : '/login',
+    template    : 'js/templates/login.html',
+    controller  : 'mainController'
   });
+});

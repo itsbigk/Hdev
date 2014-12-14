@@ -5,41 +5,45 @@
   <title>Homeless Devices</title>
 
   <!-- jQuery library. this goes before bootstrap because bootstrap's js file requires jQuery -->
-  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/lib/jquery/dist/jquery.min.js"></script>
 
   <!-- bootstrap -->
-  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
-  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+  <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <!-- pure -->
-  <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
+  <link rel="stylesheet" href="/lib/pure/pure-min.css">
 
   <!-- Animate.css -->
-  <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css">
 
   <!-- font awesome -->
-  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
   <!-- Angularjs -->
-  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/lib/angular/angular.js"></script>
 
-  <!-- angular-bootstrap -->
-  <link rel="stylesheet" href="/bower_components/angular-bootstrap/ui-bootstrap.min.js">
+  <!-- angular ui router
+  <script src="/lib/angular/angular-ui-router.min.js"></script> -->
 
-  <!-- angular ui router -->
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-  <!-- angular animate -->
-  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
 
   <!-- local angular app file -->
-  <script src="js/app.js"></script>
+  <script src="../js/app.js"></script>
+
+  <!-- angular-bootstrap -->
+  <script type="text/javascript" src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+  <!-- angular controllers and services -->
+  <script src="../js/controllers/mainController.js"></script>
+  <script src="../js/services/caseService.js"></script>
+  <script src="../js/services/config.js"></script>
 
   <!-- local stylesheet -->
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="homeless">
-  <div class="container" ng-controller="mainController" ng-show="uiRouterState.current.name == '/'">
+  <div class="container" ng-controller="mainController">
     {{test}}
     <!-- injecting views with ng-view -->
     <!-- each angular controller can apply a different class -->
