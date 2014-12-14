@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- adding the angular app to the page -->
-<html ng-app="homeless">
+<html>
 <head>
   <title>Homeless Devices</title>
 
@@ -26,8 +26,11 @@
   <!-- angular-bootstrap -->
   <link rel="stylesheet" href="/bower_components/angular-bootstrap/ui-bootstrap.min.js">
 
-  <!-- angular route -->
-  <script src="/bower_components/angular-route/angular-route.min.js"></script>
+  <!-- angular ui router -->
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <!-- angular animate -->
+  <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
 
   <!-- local angular app file -->
   <script src="js/app.js"></script>
@@ -35,19 +38,20 @@
   <!-- local stylesheet -->
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-  <div class="container">
+<body ng-app="homeless">
+  <div class="container" ng-controller="mainController" ng-show="uiRouterState.current.name == '/'">
+    {{test}}
     <!-- injecting views with ng-view -->
     <!-- each angular controller can apply a different class -->
-    <div class="{{animationClass}}" ng-view>
+    <div class="{{animationClass}}">
       <div class="jumbotron text-center">
         <h1><span class="fa fa-lock">Homeless Devices</span></h1>
         <p>Login or register:</p>
-        <a href="#/login" class="pure-button"><span class="fa fa-user">Local Login</span></a>
-        <a href="#/signUp" class="pure-button"><span class="fa fa-user">Local Signup</span></a>
+        <a href="login" class="pure-button"><span class="fa fa-user">Local Login</span></a>
+        <a href="signUp" class="pure-button"><span class="fa fa-user">Local Signup</span></a>
       </div>
     </div>
-
   </div>
+  <div ui-view></div>
 </body>
 </html>

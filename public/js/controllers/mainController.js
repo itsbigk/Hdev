@@ -1,9 +1,10 @@
-angular.module('homeless')
+angular.module('mainControl', [])
 
   // injecting the todo service in the controller's function to simplify a lot of the api actions
   // in this specific case, a factory instead of a service was used but that may be changed later
   .controller('mainController', function($scope, $http, Cases) {
     $scope.formData = {};
+    $scope.test = 'test';
 
     // Getting all of the cases when landing on the page
     // using the service that has been injected to get all of the cases

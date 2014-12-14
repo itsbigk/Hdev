@@ -1,14 +1,15 @@
 // calling all of the needed packages
-    var express    = require('express'),                  // requiring express in the app
-    app            = express(),                          // create app with express
-    mongoose       = require('mongoose'),               // mongoose for mongodb
-    morgan         = require('morgan'),                // log requests to the console (express4)
-    bodyParser     = require('body-parser'),          // pull information from HTML POST (express4)
-    methodOverride = require('method-override'),     // simulate DELETE and PUT (express4)
-    port           = process.env.PORT || 3000,      // defining the port to be whatever the current environment's port is or 3000
-    passport       = require('passport'),          // requiring passport for authentication
-    session        = require('express-session'),  // calling the express-session package to help with user sessions
-    cookieParser   = require('cookie-parser'),   // parsing through cookies
+    var express    = require('express'),                     // requiring express in the app
+    app            = express(),                             // create app with express
+    mongoose       = require('mongoose'),                  // mongoose for mongodb
+    morgan         = require('morgan'),                   // log requests to the console (express4)
+    bodyParser     = require('body-parser'),             // pull information from HTML POST (express4)
+    methodOverride = require('method-override'),        // simulate DELETE and PUT (express4)
+    port           = process.env.PORT || 3000,         // defining the port to be whatever the current environment's port is or 3000
+    passport       = require('passport'),             // requiring passport for authentication
+    session        = require('express-session'),     // calling the express-session package to help with user sessions
+    cookieParser   = require('cookie-parser'),      // parsing through cookies
+    database       = require('./config/database'); // making sure the database is required in the app by specifying the path to the database.js file here
     flash          = require('connect-flash');
 
     app.use(express.static(__dirname + '/public'));                 // set the static files location /public/js will be /js for users
@@ -33,9 +34,6 @@
     // app.listen(8080);
     app.listen(port);
     console.log('App listening on port: ' + port);
-
-    // making sure the database is required in the app by specifying the path to the database.js file here
-    var database = require('./config/database');
 
     // connecting to mongodb on the local side may need to add another connection for production when deploying to heroku
     mongoose.connect(database.url);

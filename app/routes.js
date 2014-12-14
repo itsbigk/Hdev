@@ -13,7 +13,7 @@ var Case = require('./models/case');
 module.exports = function(app, passport) {
 
   // the one and only route for the application to run ===================
-  app.get('/', function(req, res) {
+  app.get('*', function(req, res) {
     res.render('index.ejs'); // loads the one and only page that you need and angular will take care of the rest on the front end
   });
 
