@@ -4,7 +4,7 @@ userSchema   = mongoose.Schema({        // making the user schema
 
   local            : {
     email        : String,
-    password     : String,
+    password     : String
   },
   facebook         : {
     id           : String,

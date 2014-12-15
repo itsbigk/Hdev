@@ -12,9 +12,17 @@ var Case = require('./models/case');
 // in this case the 'app' variable is ehat is calling express on server.js
 module.exports = function(app, passport) {
 
-  // the one and only route for the application to run ===================
-  app.get('/*', function(req, res) {
-    res.render('index.ejs'); // loads the one and only page that you need and angular will take care of the rest on the front end
+  // this is saying that if you are on the root page of your app then render the index page
+  app.get('/', function(req, res) {
+    res.render('index.ejs');
+  });
+
+  // this route is similar to an 'otherwise' statement in angular where if the partial does not exist then it will redirect you back to the index page
+
+
+  app.get('/views/:name', function(req, res) {
+    var name = req.params.name;
+    res.render('/views/partials/' + name);
   });
 
   // get all cases
@@ -53,9 +61,9 @@ module.exports = function(app, passport) {
       });
 
       // delete a case
-      app.delete('/api/cases/:todo_id', function(req, res) {
+      app.delete('/api/cases/:case_id', function(req, res) {
         Case.remove({
-          _id : req.params.todo_id
+          _id : req.params.case_id
         }, function(err, cases) {
           if (err)
             res.send(err);

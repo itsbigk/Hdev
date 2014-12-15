@@ -1,12 +1,13 @@
 angular.module('homeless')
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
   $urlRouterProvider.otherwise('/');
 
-  $locationProvider.html5Mode({
-    enabled : true,
-    requireBase : false
-  });
+  // $locationProvider.html5Mode({
+  //   enabled : true,
+  //   requireBase : false
+  // });
 
   // for ng-show on the index page
 
@@ -20,7 +21,7 @@ angular.module('homeless')
   })
 
   .state('login', {
-    templateUrl : '../views/login.html',
+    templateUrl : '../views/partials/login.ejs',
     controller  : 'mainController'
   });
 });

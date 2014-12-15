@@ -26,8 +26,6 @@
   <!-- angular ui router -->
   <script src="/lib/angular/angular-ui-router.min.js"></script>
 
-
-
   <!-- local angular app file -->
   <script src="../js/app.js"></script>
 
@@ -49,13 +47,12 @@
     <!-- each angular controller can apply a different class -->
     <div class="{{animationClass}}">
       <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock">Homeless Devices</span></h1>
+        <h1><span class="fa fa-phone-square">Homeless Devices</span></h1>
         <p>Login or register:</p>
-        <a href="login" class="pure-button"><span class="fa fa-user">Local Login</span></a>
-        <a href="signUp" class="pure-button"><span class="fa fa-user">Local Signup</span></a>
+        <a ui-sref="login" class="pure-button"><span class="fa fa-user">Local Login</span></a>
+        <a ui-sref="signUp" class="pure-button"><span class="fa fa-user">Local Signup</span></a>
       </div>
     </div>
   </div>
-  <div ui-view></div>
 </body>
 </html>
