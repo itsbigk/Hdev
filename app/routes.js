@@ -17,16 +17,6 @@ module.exports = function(app, passport) {
     res.render('index.ejs');
   });
 
-  // this route is similar to an 'otherwise' statement in angular where if the partial does not exist then it will redirect you back to the index page
-  app.get('*', function(req, res) {
-    res.render('index.ejs');
-  });
-
-  app.get('/views/:name', function(req, res) {
-    var name = req.params.name;
-    res.render('/views/partials/' + name);
-  });
-
   // get all cases
   app.get('/api/cases', function(req, res) {
 

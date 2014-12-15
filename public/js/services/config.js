@@ -4,10 +4,10 @@ angular.module('homeless')
 
   $urlRouterProvider.otherwise('/');
 
-  // $locationProvider.html5Mode({
-  //   enabled : true,
-  //   requireBase : false
-  // });
+  $locationProvider.html5Mode({
+    enabled : true,
+    requireBase : false
+  });
 
   // for ng-show on the index page
 
