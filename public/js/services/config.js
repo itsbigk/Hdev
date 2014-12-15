@@ -1,9 +1,12 @@
 angular.module('homeless')
 
-.config(function($locationProvider, $urlRouterProvider, $scope, $state) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode({
+    enabled : true,
+    requireBase : false
+  });
 
   // for ng-show on the index page
 
@@ -11,14 +14,13 @@ angular.module('homeless')
   $stateProvider
 
   // main page
-  .when('/', {
+  .state('/', {
     templateUrl  : '../views/index.ejs',
     controller   : 'mainController'
   })
 
-  .when('login', {
-    url         : '/login',
-    template    : 'js/templates/login.html',
+  .state('login', {
+    templateUrl : '../views/login.html',
     controller  : 'mainController'
   });
 });
