@@ -14,7 +14,8 @@ var mongoose = require('mongoose');
 
 // exporting the model here instead of leaving it in the server.js
 module.exports = mongoose.model('Case', {
-  device      : String,
-  serial      : String,
-  description : String
+  title      : String,
+  desc       : String,
+  serial     : String,
+  completed  : Boolean
 });

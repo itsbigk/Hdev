@@ -1,27 +1,20 @@
-angular.module('homeless')
+angular.module('ngRouting', ['ui.router', 'ngAnimate'])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 
-  $locationProvider.html5Mode({
-    enabled : true,
-    requireBase : false
+    $stateProvider
+
+      .state('home', {
+        url         : '/',
+        templateUrl : 'views/home.html',
+        controller  : 'rootController'
+      })
+
+      .state('login', {
+        url         : '/login',
+        templateUrl : '/views/login.html'
+      });
+
   });
-
-  // for ng-show on the index page
-
-
-  $stateProvider
-
-  // main page
-  .state('/', {
-    templateUrl  : '../views/index.ejs',
-    controller   : 'mainController'
-  })
-
-  .state('login', {
-    templateUrl : '../views/partials/login.ejs',
-    controller  : 'mainController'
-  });
-});

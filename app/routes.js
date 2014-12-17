@@ -12,11 +12,8 @@ var Case = require('./models/case');
 // in this case the 'app' variable is ehat is calling express on server.js
 module.exports = function(app, passport) {
 
-  // this is saying that if you are on the root page of your app then render the index page
-  app.get('/', function(req, res) {
-    res.render('index.ejs');
-  });
-
+  // API ROUTES FIRST SO IT LOADS EVERYTHING YOU WANT TO RENDER ON THE PAGE AND THEN YOUR ANGULAR ROUTE LAST
+  // IF YOU DO NOT PUT YOUR ANGULAR ROUTE LAST THEN IT WILL GIVE AN ERROR AND A RANDOM VALUE
   // get all cases
   app.get('/api/cases', function(req, res) {
 
@@ -29,7 +26,7 @@ module.exports = function(app, passport) {
 
         res.json(cases); // return all cases in JSON format
       });
-  });
+    });
 
   // create case and send back all cases after creation
   app.post('/api/cases', function(req, res) {
@@ -64,47 +61,17 @@ module.exports = function(app, passport) {
             Case.find(function(err, cases) {
               if (err)
                 res.send(err)
-              res.json(cases);
+                res.json(cases);
+              });
             });
           });
-      });
 
       // all of the user routes below
+      // app.post('/login', passport.authenticate('local-login'), function(req, res) {
+        // add logic here that works with angular in some way
+      // });
 
-      // the routes are being obtained here but they should not need anything inside of the function
-      // all of the posting will happen on the angular side as long as the routes are defined
-      app.get('/loggedin', function(req, res) {
-        res.send(req.isAuthenticated() ? req.user : '0')
-      });
-
-      app.get('/login', passport.authenticate('local-login'), function(req, res) {
-        res.send(req.user)
-      });
-
-      // getting the signup route
-      // this is going to pass in the local-signup strategy as well since the actual post will happen on the angular side
-      app.get('/signup', passport.authenticate('local-signup'), function(req, res) {
-
-      });
-
-
-      // logout route
-      app.get('/logout', function(req, res) {
-        req.logout();
-        res.send(200);
-
-        // after logout then redirect to the root page
-        res.redirect('/');
-      });
-
-      // routing middleware to check if a user is logged in
-      function isLoggedIn(req, res, next) {
-
-        // if a user is authenticated then move on
-        if (req.isAuthenticated())
-          return next();
-
-        // if there is nobody logged in then redirect them to the root page
-        res.redirect('/');
-      }
-    };
+          app.get('*', function(req, res) {
+            res.render('index'); // loads the one and only page that you need and angular will take care of the rest on the front end
+          });
+};

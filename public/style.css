@@ -1,11 +1,7 @@
-html {
-  overflow-y: scroll;
-}
-
-body {
-  padding-top: 50px;
-}
-
-#todo-list {
-  margin-bottom: 30px;
+@import url('/lib/animate.css/animate.min.css');
+.homePage.ng-enter.animated {
+  -webkit-animation: fadeInDown .5s;
+  -moz-animation: fadeInDown .5s;
+  -ms-animation: fadeInDown .5s;
+  animation: fadeInDown .5s;
 }
