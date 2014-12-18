@@ -71,7 +71,7 @@ module.exports = function(app, passport) {
         // add logic here that works with angular in some way
       // });
 
-          app.get('/', function(req, res) {
+          app.get('*', function(req, res) {
             res.render('index'); // loads the one and only page that you need and angular will take care of the rest on the front end
           });
 };
