@@ -67,9 +67,9 @@ module.exports = function(app, passport) {
           });
 
       // all of the user routes below
-      // app.post('/login', passport.authenticate('local-login'), function(req, res) {
+      app.post('/signup', passport.authenticate('local-signup'), function(req, res) {
         // add logic here that works with angular in some way
-      // });
+      });
 
           app.get('*', function(req, res) {
             res.render('index'); // loads the one and only page that you need and angular will take care of the rest on the front end

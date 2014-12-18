@@ -38,7 +38,7 @@ console.log("App listening on port: " + port);
 mongoose.connect(database.url);
 
 // loading all routes for the app
-require('./app/routes')(app);
+require('./app/routes')(app, passport);
 
 // adding the passport configuration file
-require('./config/passport');
+require('./config/passport')(passport);

@@ -15,6 +15,11 @@ angular.module('ngRouting', ['ui.router', 'ngAnimate'])
       .state('login', {
         url         : '/login',
         templateUrl : '/views/login.html'
+      })
+
+      .state('signup', {
+        url         : '/register',
+        templateUrl : '/views/register.html'
       });
 
   });
