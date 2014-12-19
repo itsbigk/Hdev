@@ -35,7 +35,8 @@ app.listen(port);
 console.log("App listening on port: " + port);
 
 // connecting to mongodb on the local side may need to add another connection for production when deploying to heroku
-// mongoose.connect(database.url);//////////////
+// mongoose.connect(database.url);
+mongoose.connect(database.mongoLab);
 
 // loading all routes for the app
 require('./app/routes')(app, passport);
