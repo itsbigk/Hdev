@@ -1,9 +1,7 @@
 <!doctype html>
-<!-- adding the angular app to the page -->
 <html>
 <head>
-  <title>Homeless Devices</title>
-
+  <title>Registration</title>
   <!-- jQuery library. this goes before bootstrap because bootstrap's js file requires jQuery -->
   <script src="/lib/jquery/dist/jquery.min.js"></script>
 
@@ -40,29 +38,50 @@
   </div>
   <div class="form-group">
   <input type="password" placeholder="Password" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-success">Sign in</button>
-  </form>
-  </div> -->
-  <!--/.navbar-collapse commented out above -->
-  </div>
-</nav>
+</div>
+<button type="submit" class="btn btn-success">Sign in</button>
+</form>
+</div> -->
+<!--/.navbar-collapse commented out above -->
+    </div>
+  </nav>
   <br>
   <br>
-  <div class="center-block animated fadeIn">
-    <div class="jumbotron vertical-center">
-      <div class="container">
-        <h1>Welcome!</h1>
-        <a class="btn btn-success btn-lg align-btn fa fa-sign-in fa-lg" href="/login" role="button">Login</a>
-        <a class="btn btn-success btn-lg align-btn fa fa-angle-double-right fa-lg" href="/register" role="button">Sign Up</a>
+<div class="animated bounceInDown">
+
+  <div class="col-sm-6 col-sm-offset-3">
+
+    <h1>Sign Up</h1>
+
+    <!-- show any messages that come back with authentication -->
+     <% if (message.length > 0) { %>
+      <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <form action="/register" method="post">
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+        <input class="form-control" type="text" placeholder="Email address" name="email">
+      </div><br>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+        <input class="form-control" type="password" placeholder="Password" name="password">
       </div>
-    </div>
+      <br>
+      <button type="submit" class="btn btn-success btn-lg">Sign Up</button>
+    </form>
+
+    <hr>
+
+    <p>Already have an account? <a href="/login">Login</a></p>
+    <p>Return to the <a href="/index">home</a> page.</p>
   </div>
-  <div class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="container">
-      <p class="navbar-text pull-left fa fa-terminal on fa-square">  Built by Kyle Knott</p>
-      <a class="btn-success btn pull-right" href="https://github.com/ktk10191/project4-homeless-devices"><span class="fa fa-github-alt">  Follow this poject</span></a>
-    </div>
+</div>
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container">
+    <p class="navbar-text pull-left fa fa-terminal on fa-square">  Built by Kyle Knott</p>
+    <a class="btn-success btn pull-right" href="https://github.com/ktk10191/project4-homeless-devices"><span class="fa fa-github-alt">  Follow this poject</span></a>
   </div>
+</div>
 </body>
 </html>

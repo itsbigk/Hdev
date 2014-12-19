@@ -67,11 +67,50 @@ module.exports = function(app, passport) {
           });
 
       // all of the user routes below
-      app.post('/signup', passport.authenticate('local-signup'), function(req, res) {
-        // add logic here that works with angular in some way
+      app.post('/register', passport.authenticate('local-signup', {
+        successRedirect : '/profile', // if the user was successfully created then redirect to the profile page where Angular will take care of the rest
+        failureRedirect : '/register', // if there is an error then redirect to the signup page and display message
+        failureFlash : true // allow flash messages to tell if you made it successfully
+      }));
+
+      app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/profile',
+        failureRedirect : '/login',
+        failureFlash : true
+      }));
+
+      app.get('/', function(req, res) {
+        res.render('index');
       });
 
-          app.get('*', function(req, res) {
-            res.render('index'); // loads the one and only page that you need and angular will take care of the rest on the front end
-          });
+      app.get('/register', function(req, res) {
+        // render the page and pass in any flash data if it exists
+        res.render('register.ejs', { message : req.flash('gotToSignup') });
+      });
+
+      app.get('/login', function(req,res) {
+        res.render('login.ejs', { message : req.flash('gotToLogin') });
+      });
+
+      app.get('/profile', function(req, res) {
+        res.render('profile.ejs', {
+          user : req.user //taking the user in the session and add it to the template
+        });
+      });
+
+      // logout route
+      app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+      });
 };
+
+function isLoggedIn(req, res, next) {
+
+  // if user is authenticated then move on with what was happening
+  if (req.isAuthenticated())
+    return next();
+
+    // if the user is not authenticated then it will redirect the user to the root page using below
+    res.redirect('/');
+}

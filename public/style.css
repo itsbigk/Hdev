@@ -9,10 +9,6 @@
   text-align: center;
 }
 
-.align-btn {
-  display: inline-block;
-}
-
 .homePage.ng-enter.animated {
   -webkit-animation: fadeInDown .5s;
   -moz-animation: fadeInDown .5s;
