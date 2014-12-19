@@ -5,6 +5,10 @@ angular.module('caseController', [])
   .controller('caseController', function($scope, $http, $state, Cases) {
     $scope.uiRouterState = $state;
 
+    $scope.logout = function() {
+      Cases.logout();
+    };
+
     $scope.formData = {};
 
     // Getting all of the cases when landing on the page

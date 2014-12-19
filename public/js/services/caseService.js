@@ -3,19 +3,22 @@
 angular.module('caseService', [])
 
   // returning a promise from getting the cases
-  .factory('Cases', function($http) {
+  .factory('Cases', function($http, $location, $window) {
     return {
       get : function() {
         return $http.get('/api/cases');
       },
-      create : function(todoData) {
-        return $http.post('/api/cases', todoData);
+      create : function(caseData) {
+        return $http.post('/api/cases', caseData);
       },
       delete : function(id) {
         return $http.delete('/api/cases/' + id);
       },
       logout : function() {
-        return $http.post('/logout');
+        // return $http.get('/logout');
+        $location.path('/logout');
+        console.log($location.path());
+        window.location.reload(false);
+        }
       }
-    }
   });

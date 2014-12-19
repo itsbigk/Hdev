@@ -7,7 +7,7 @@ angular.module('ngRouting', ['ui.router', 'ngAnimate'])
       requireBase: false
     });
 
-    // $urlRouterProvider.otherwise('/profile');
+    // $urlRouterProvider.otherwise('/');
 
     $stateProvider
 
@@ -22,9 +22,8 @@ angular.module('ngRouting', ['ui.router', 'ngAnimate'])
         templateUrl : '/views/new-case.html'
       })
 
-      .state('signup', {
-        url         : '/register',
-        templateUrl : '/views/register.html'
+      .state('/', {
+        url         : '/',
+        templateUrl : '../views/index.ejs'
       });
-
   });
