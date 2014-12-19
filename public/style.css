@@ -13,3 +13,10 @@
   display: inline;
   float: right;
 }
+
+.fixingAlign {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0;
+}

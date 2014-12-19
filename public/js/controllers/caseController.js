@@ -9,6 +9,10 @@ angular.module('caseController', [])
       Cases.logout();
     };
 
+    $scope.home = function() {
+      Cases.home();
+    };
+
     $scope.formData = {};
 
     // Getting all of the cases when landing on the page

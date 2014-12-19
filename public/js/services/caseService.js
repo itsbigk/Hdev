@@ -19,6 +19,6 @@ angular.module('caseService', [])
         $location.path('/logout');
         console.log($location.path());
         window.location.reload(false);
-        }
       }
+    }
   });
