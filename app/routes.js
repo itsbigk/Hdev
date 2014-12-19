@@ -99,9 +99,9 @@ module.exports = function(app, passport) {
       });
 
       // logout route
-      app.get('/logout', function(req, res) {
+      app.post('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.render('index');
       });
 };
 

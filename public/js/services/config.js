@@ -2,16 +2,19 @@ angular.module('ngRouting', ['ui.router', 'ngAnimate'])
 
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 
-    $urlRouterProvider.otherwise('/profile');
+    // $urlRouterProvider.otherwise('/profile');
 
     $stateProvider
 
       .state('profile', {
         url         : '/profile',
         templateUrl : 'views/profileHome.ejs',
-        controller  : 'rootController'
+        controller  : 'caseController'
       })
 
       .state('new', {

@@ -13,6 +13,9 @@ angular.module('caseService', [])
       },
       delete : function(id) {
         return $http.delete('/api/cases/' + id);
+      },
+      logout : function() {
+        return $http.post('/logout');
       }
     }
   });
