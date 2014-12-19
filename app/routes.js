@@ -5,7 +5,7 @@
 // anything involving the need to access something from the server will need to have the model required in this file
 
 // below is accessing the case.js file which contains the case model
-var Case = require('./models/case');
+var Todo = require('./models/case');
 
 // using module.exports makes everything inside of it accessible to outside files that require the file
 // when using module.exports here, it needs to equal a function that passes in the variable that is calling express in the server.js file
@@ -18,13 +18,13 @@ module.exports = function(app, passport) {
   app.get('/api/cases', function(req, res) {
 
     // use mongoose to get all cases in the database
-    Case.find(function(err, cases) {
+    Todo.find(function(err, todos) {
 
       // if there is an error retrieving, send the error. nothing after res.send(err) will execute
       if (err)
         res.send(err)
 
-        res.json(cases); // return all cases in JSON format
+        res.json(todos); // return all cases in JSON format
       });
     });
 
@@ -32,18 +32,20 @@ module.exports = function(app, passport) {
   app.post('/api/cases', function(req, res) {
 
     // create a case, information comes from AJAX request from Angular
-    Case.create({
-      text : req.body.text,
-      done : false
+    Todo.create({
+      user_id   : process.getuid(),
+      serial    : req.body.serial,
+      desc      : req.body.desc,
+      done      : false
     }, function(err, cases) {
       if (err)
         res.send(err);
 
         // get and return all the cases after you create another
-        Case.find(function(err, cases) {
+        Todo.find(function(err, todos) {
           if (err)
             res.send(err)
-            res.json(cases);
+            res.json(todos);
           });
         });
 
@@ -51,17 +53,17 @@ module.exports = function(app, passport) {
 
       // delete a case
       app.delete('/api/cases/:case_id', function(req, res) {
-        Case.remove({
+        Todo.remove({
           _id : req.params.case_id
-        }, function(err, cases) {
+        }, function(err, todo) {
           if (err)
             res.send(err);
 
             // get and return all the cases after you create another
-            Case.find(function(err, cases) {
+            Todo.find(function(err, todos) {
               if (err)
                 res.send(err)
-                res.json(cases);
+                res.json(todos);
               });
             });
           });

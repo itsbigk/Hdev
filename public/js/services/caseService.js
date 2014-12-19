@@ -3,7 +3,7 @@
 angular.module('caseService', [])
 
   // returning a promise from getting the cases
-  .factory('Cases', function($http, $location, $window) {
+  .factory('Cases', function($http, $location) {
     return {
       get : function() {
         return $http.get('/api/cases');

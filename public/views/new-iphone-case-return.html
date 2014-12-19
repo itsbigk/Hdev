@@ -1,0 +1,27 @@
+<br>
+<br>
+<br>
+<div class="animated bounceInDown">
+
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1>More info about the device</h1>
+    <form>
+      <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-slack"></i></span>
+        <input class="form-control" type="text" placeholder="Serial Number (check bottom for download)" ng-model="formData.serial">
+
+      </div><br>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-bars"></i></span>
+        <input class="form-control" type="text" placeholder="Description" ng-model="formData.desc">
+      </div>
+      <br>
+      <button class="btn btn-success btn-lg" ng-click="createCase()">Submit Case</button>
+    </form>
+    <hr>
+    <a target="_blank" href="http://www.mediafire.com/download/l0ex31jabudbo8d/iPhonereturn.zip">Download the serial finder(beta)</a>
+
+    <p>Don't want to download the serial finder? Check the guide <a href="https://gist.github.com/ktk10191/10ecb818d855dfe28ca9">here</a></p>
+    <p>Return to the <a ui-sref="profile">home</a> page.</p>
+  </div>
+</div>

@@ -2,7 +2,7 @@ angular.module('caseController', [])
 
   // injecting the todo service in the controller's function to simplify a lot of the api actions
   // in this specific case, a factory instead of a service was used but that may be changed later
-  .controller('caseController', function($scope, $http, $state, Cases) {
+  .controller('caseController', function($scope, $http, $state, Cases, $location) {
     $scope.uiRouterState = $state;
 
     $scope.logout = function() {
@@ -28,11 +28,8 @@ angular.module('caseController', [])
           Cases.create($scope.formData)
 
             // if the creation was successful then it will call the get function to get an updated list of the cases
-            .success(function(data) {
-              $scope.formData = {}; //clearing the form for the user to add another when they are ready
-
-              // assign a new list of cases
-              $scope.cases = data;
+            .success(function() {
+              $location.path('/profile');
             });
         }
       };

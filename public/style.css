@@ -9,9 +9,7 @@
   text-align: center;
 }
 
-.homePage.ng-enter.animated {
-  -webkit-animation: fadeInDown .5s;
-  -moz-animation: fadeInDown .5s;
-  -ms-animation: fadeInDown .5s;
-  animation: fadeInDown .5s;
+.btnAlign {
+  display: inline;
+  float: right;
 }
