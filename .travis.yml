@@ -1,0 +1,8 @@
+language: node_js
+node_js: '0.10'
+deploy:
+  provider: heroku
+  api_key:
+    secure: iljfguILrZwzJ0R5pau4SctPsdFg0bl+fw0ZuCC5x8LwHDHrFXrfdckqLb1PeykM3pLgLhOJzsQWsWfG7tLecYwNAT9ERBxtJyB2MMwU07UcKoqCEXLTTPqlF2CaNcMKGjot3HEYF7ZBTikClBNENim8DyjWqV1+Y2OoL2va02g=
+    on: master
+  skip_cleanup: true

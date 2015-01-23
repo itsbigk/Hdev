@@ -1,4 +1,4 @@
-angular.module('ngRouting', ['ui.router', 'ngAnimate'])
+angular.module('ngRouting', ['ui.router'])
 
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -10,6 +10,21 @@ angular.module('ngRouting', ['ui.router', 'ngAnimate'])
     // $urlRouterProvider.otherwise('/');
 
     $stateProvider
+
+      .state('/', {
+        url         : '/',
+        templateUrl : 'views/welcome.html'
+      })
+
+      .state('login', {
+        url         : '/login',
+        templateUrl : 'views/login.html'
+      })
+
+      .state('register', {
+        url         : '/signup',
+        templateUrl : 'views/register.html'
+      })
 
       .state('profile', {
         url         : '/profile',

@@ -6,8 +6,10 @@ morgan         = require('morgan'),                    // log requests to the co
 bodyParser     = require('body-parser'),              // pull information from HTML POST (express4)
 methodOverride = require('method-override'),         // simulate DELETE and PUT (express4)
 port           = process.env.PORT || 3000,          // defining the port to be whatever the current environment's port is or 3000
-passport       = require('passport'),              // requiring passport for authentication
-passportLocal  = require('passport-local'),       // using passport for local authentication
+jwt            = require('jsonwebtoken'),          // adding json web token to handle authentication as a passport replacement
+secret         = 'homelessdecivesecret'           // secret to use for json web token
+// passport       = require('passport'),              // requiring passport for authentication
+// passportLocal  = require('passport-local'),       // using passport for local authentication
 session        = require('express-session'),     // calling the express-session package to help with user sessions
 cookieParser   = require('cookie-parser'),      // parsing through cookies and helps store the session id into the browser
 database       = require('./config/database'), // making sure the database is required in the app by specifying the path to the database.js file here
@@ -21,14 +23,14 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());                                      // gives the ability to use HTTP verbs in places where it is not normally supported
 app.set('view engine', 'ejs');                                  // changing the view engine to ejs
 app.use(cookieParser());                                        // using cookie parser in the app for sessions
-app.use(passport.initialize());                                 // initializing passport and getting user data for session
-app.use(passport.session());                                    // putting user data into the session
+// app.use(passport.initialize());                                 // initializing passport and getting user data for session
+// app.use(passport.session());                                    // putting user data into the session
 app.use(flash());                                               // flash messages that are stored inside of sessions
-app.use(session({                                               // setting the session's secret. there are ways to randomize this every time and store this into a variable
-  secret            : process.env.SESSION_SECRET || 'homeless',
-  resave            : 'true',
-  saveUninitialized : false
-}));
+// app.use(session({                                               // setting the session's secret. there are ways to randomize this every time and store this into a variable
+//   secret            : process.env.SESSION_SECRET || 'homeless',
+//   resave            : 'true',
+//   saveUninitialized : false
+// }));
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
@@ -39,7 +41,12 @@ console.log("App listening on port: " + port);
 mongoose.connect(process.env.MONGOLAB_URI || database.url);
 
 // loading all routes for the app
-require('./app/routes')(app, passport);
+// passport was also formerly next to app
+require('./app/routes')(app, jwt);
 
 // adding the passport configuration file
-require('./config/passport')(passport);
+// commented out to use json web token
+// require('./config/passport')(passport);
+
+// adding a jwt middleware file similar to how the passport file was set up
+require('./config/jwt.js')(app, jwt);
