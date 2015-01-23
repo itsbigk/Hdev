@@ -17,13 +17,17 @@ angular.module('ngRouting', ['ui.router'])
       })
 
       .state('login', {
-        url         : '/login',
-        templateUrl : 'views/login.html'
+        url          : '/login',
+        templateUrl  : 'views/login.html',
+        controller   : 'rootController',
+        controllerAs : 'login'
       })
 
       .state('register', {
-        url         : '/signup',
-        templateUrl : 'views/register.html'
+        url          : '/signup',
+        templateUrl  : 'views/register.html',
+        controller   : 'rootController',
+        controllerAs : 'signup'
       })
 
       .state('profile', {

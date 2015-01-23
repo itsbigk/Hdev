@@ -4,17 +4,17 @@
 
     <h1>Log In</h1>
 
-      <form action="/login" method="post">
+      <form ng-submit="login.doLogin()">
         <div class="input-group margin-bottom-sm">
           <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-          <input class="form-control" type="text" placeholder="Email address" name="email">
+          <input class="form-control" type="text" placeholder="Email address" ng-model="login.loginData.email">
         </div><br>
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-          <input class="form-control" type="password" placeholder="Password" name="password">
+          <input class="form-control" type="password" placeholder="Password" ng-model="login.loginData.password">
         </div>
         <br>
-        <button type="submit" class="btn btn-success btn-lg">Log In</button>
+        <button type="submit" class="btn btn-success btn-lg">Login</button>
       </form>
 
       <hr>

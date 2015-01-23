@@ -2,8 +2,12 @@ angular.module('caseController', [])
 
   // injecting the todo service in the controller's function to simplify a lot of the api actions
   // in this specific case, a factory instead of a service was used but that may be changed later
-  .controller('caseController', function($scope, $http, $state, Cases, $location) {
+  .controller('caseController', function($scope, $http, $state, Cases, $location, $rootScope, Auth) {
     $scope.uiRouterState = $state;
+
+    $rootScope.$on('$routeChangeStart', function() {
+      vm.loggedIn = Auth.isLoggedIn();
+    });
 
     $scope.logout = function() {
       Cases.logout();
