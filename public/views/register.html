@@ -4,14 +4,14 @@
 
     <h1>Sign Up</h1>
 
-    <form action="/register" method="post">
+    <form ng-submit="user.saveUser()">
       <div class="input-group margin-bottom-sm">
         <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
-        <input class="form-control" type="text" placeholder="Email address" name="email">
+        <input class="form-control" type="text" placeholder="Email address" ng-model="user.userData.email">
       </div><br>
       <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-        <input class="form-control" type="password" placeholder="Password" name="password">
+        <input class="form-control" type="password" placeholder="Password" ng-model="user.userData.password">
       </div>
       <br>
       <button type="submit" class="btn btn-success btn-lg">Sign Up</button>

@@ -2,38 +2,39 @@ angular.module('caseController', [])
 
   // injecting the todo service in the controller's function to simplify a lot of the api actions
   // in this specific case, a factory instead of a service was used but that may be changed later
-  .controller('caseController', function($scope, $http, $state, Cases, $location, $rootScope, Auth) {
-    $scope.uiRouterState = $state;
+  .controller('caseController', function($http, $state, Cases, $location, $rootScope, $scope, Auth) {
+
+    var vm = this;
+
+    vm.uiRouterState = $state;
 
     $rootScope.$on('$routeChangeStart', function() {
       vm.loggedIn = Auth.isLoggedIn();
     });
 
-    $scope.logout = function() {
-      Cases.logout();
-    };
+
 
     $scope.home = function() {
       Cases.home();
     };
 
-    $scope.formData = {};
+    vm.formData = {};
 
     // Getting all of the cases when landing on the page
     // using the service that has been injected to get all of the cases
     Cases.get()
       .success(function(data) {
-        $scope.cases = data;
+        vm.cases = data;
       });
 
       // sending the text to the node api that has been made when submitting a form
-      $scope.createCase = function() {
+      vm.createCase = function() {
         // checking to see if the form has content inside of it
         if (!$.isEmptyObject($scope.formData)) {
 
           // calling the create funciton from the service if the object is not empty
           // then returns promise object just like it says in the function in the service
-          Cases.create($scope.formData)
+          Cases.create(vm.formData)
 
             // if the creation was successful then it will call the get function to get an updated list of the cases
             .success(function() {
@@ -44,13 +45,13 @@ angular.module('caseController', [])
 
       // deleting a todo after checking it
       // passing in the id to the function to look up a specific todo item
-      $scope.deleteCase = function(id) {
+      vm.deleteCase = function(id) {
         // calling the service function and passing in the id that was passed into the deleteCase function
         Cases.delete(id)
 
         // if the todo was successfully deleted then get the updted list of cases
         .success(function(data) {
-          $scope.cases = data;
+          vm.cases = data;
         });
       };
     });

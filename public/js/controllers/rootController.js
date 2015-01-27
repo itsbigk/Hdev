@@ -27,9 +27,4 @@ angular.module('rootController', [])
           vm.user = data.data;
         });
     };
-
-    vm.doLogout = function() {
-      Auth.logout();
-      $location.path('/');
-    };
   });

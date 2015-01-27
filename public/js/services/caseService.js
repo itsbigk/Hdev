@@ -13,12 +13,11 @@ angular.module('caseService', [])
       },
       delete : function(id) {
         return $http.delete('/api/cases/' + id);
-      },
-      logout : function() {
-        // return $http.get('/logout');
-        $location.path('/logout');
-        console.log($location.path());
-        window.location.reload(false);
       }
-    }
+      // logout : function() {
+      //   $location.path('/');
+      //   console.log($location.path());
+      //   window.location.reload(false);
+      // }
+    };
   });

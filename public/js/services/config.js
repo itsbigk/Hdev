@@ -26,14 +26,15 @@ angular.module('ngRouting', ['ui.router'])
       .state('register', {
         url          : '/signup',
         templateUrl  : 'views/register.html',
-        controller   : 'rootController',
-        controllerAs : 'signup'
+        controller   : 'usersController',
+        controllerAs : 'user'
       })
 
       .state('profile', {
-        url         : '/profile',
-        templateUrl : 'views/profileHome.ejs',
-        controller  : 'caseController'
+        url          : '/profile',
+        templateUrl  : 'views/profileHome.html',
+        controller   : 'caseController',
+        controllerAs : 'cases'
       })
 
       .state('new', {
