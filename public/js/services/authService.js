@@ -1,23 +1,5 @@
 angular.module('authService', [])
 
-  .factory('AuthToken', function($window) {
-    var authTokenFactory = {};
-
-    // get token from local storage
-    authTokenFactory.getToken = function() {
-      return $window.localStorage.getItem('token');
-    };
-
-    authTokenFactory.setToken = function(token) {
-      if (token)
-        $window.localStorage.setItem('token', token);
-      else
-        $window.localStorage.removeItem('token');
-    };
-
-    return authTokenFactory;
-  })
-
   .factory('Auth', function($http, $q, AuthToken) {
     var authFactory = {};
 
@@ -43,12 +25,38 @@ angular.module('authService', [])
 
     // checking to see if the user is logged in
     authFactory.isLoggedIn = function() {
+        if (AuthToken.getToken())
+          return true;
+        else
+          return false;
+        };
+    // getting the loged in user
+    authFactory.getUser = function() {
       if (AuthToken.getToken())
-        return true;
+        return $http.get('/api/me');
       else
-        return false;
-      };
+        return $q.reject({ message : 'User has no token' });
+    };
+
     return authFactory;
+  })
+
+  .factory('AuthToken', function($window) {
+    var authTokenFactory = {};
+
+    // get token from local storage
+    authTokenFactory.getToken = function() {
+      return $window.localStorage.getItem('token');
+    };
+
+    authTokenFactory.setToken = function(token) {
+      if (token)
+        $window.localStorage.setItem('token', token);
+      else
+        $window.localStorage.removeItem('token');
+    };
+
+    return authTokenFactory;
   })
 
   .factory('AuthInterceptor', function($q, $location, AuthToken) {
@@ -71,7 +79,7 @@ angular.module('authService', [])
 
       // if the server returns a 403 message then redirect to the root page
       if (response.status == 403)
-        $location.path('/');
+        $location.path('/login');
 
       // return the errors from the server as a promise
       return $q.reject(response);

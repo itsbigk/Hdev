@@ -1,3 +1,5 @@
+'use-strict';
+
 angular.module('ngRouting', ['ui.router'])
 
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {

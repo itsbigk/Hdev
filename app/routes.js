@@ -27,7 +27,7 @@ module.exports = function(app, jwt) {
 
       // if there is an error retrieving, send the error. nothing after res.send(err) will execute
       if (err)
-        res.send(err)
+        res.send(err);
 
         res.json(todos); // return all cases in JSON format
       });
@@ -49,7 +49,7 @@ module.exports = function(app, jwt) {
         // get and return all the cases after you create another
         Todo.find(function(err, todos) {
           if (err)
-            res.send(err)
+            res.send(err);
             res.json(todos);
           });
         });
@@ -67,7 +67,7 @@ module.exports = function(app, jwt) {
             // get and return all the cases after you create another
             Todo.find(function(err, todos) {
               if (err)
-                res.send(err)
+                res.send(err);
                 res.json(todos);
               });
             });
@@ -92,7 +92,7 @@ module.exports = function(app, jwt) {
 
           res.json({ message : 'User created!' });
         });
-      })
+      });
 
       // getting all users
       app.get('/api/users', function(req, res) {
@@ -112,7 +112,7 @@ module.exports = function(app, jwt) {
           // return user
           res.json(user);
         });
-      })
+      });
 
       // route to edit user information
       app.put('/api/users/:user_id', function(req, res) {
@@ -131,7 +131,7 @@ module.exports = function(app, jwt) {
             res.json({ message : 'User updated!' });
           });
         });
-      })
+      });
 
       // deleting a user
       app.delete('/api/users/:user_id', function(req, res) {
@@ -141,7 +141,7 @@ module.exports = function(app, jwt) {
           if (err) res.send(err);
           res.json({ message : 'Successfully deleted user!' });
         });
-      })
+      });
 
       app.post('/authenticate', function(req, res) {
         // finding the user
