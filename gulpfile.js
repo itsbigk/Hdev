@@ -1,5 +1,5 @@
 const gulp       = require('gulp'),
-      webpack    = require('gulp-webpack'),
+      webpack    = require('webpack-stream'),
       sass       = require('gulp-sass'),
       rename     = require('gulp-rename'),
       sourcemaps = require('gulp-sourcemaps'),

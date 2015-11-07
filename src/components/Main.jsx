@@ -1,11 +1,14 @@
 import React from 'react'
 import { RouteHandler, Link } from 'react-router'
+import UserStore from '../stores/userStore'
 
 class Main extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      currentUser: UserStore.getCurrentUser()
+    }
   }
 
   render() {
