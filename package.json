@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/itsbigk/node-react#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.0",
     "express": "^4.13.3",
     "flux": "^2.1.1",
