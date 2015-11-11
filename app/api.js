@@ -1,8 +1,13 @@
 import { Router } from 'express'
-import User from './models/User'
+import UserSchema as User from './models/User'
 
 export default function() {
    let api = Router()
+
+   api.use((req, res, next) => {
+     console.log('Connecting to the api...')
+     next()
+   })
 
    api.get('/', (req, res) => {
      res.json({
@@ -15,8 +20,6 @@ export default function() {
        res.json(users)
      })
    })
-
-   
 
    return api
 }
