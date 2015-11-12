@@ -1,7 +1,7 @@
-import { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
 
-const UserSchema = new Schema({
+let UserSchema = new Schema({
   name: {
     type: 'String',
     required: true
@@ -15,7 +15,8 @@ const UserSchema = new Schema({
   },
   password: {
     type: 'String',
-    required: true
+    required: true,
+    select: false
   },
   admin: {
     type: 'Boolean'
@@ -24,7 +25,7 @@ const UserSchema = new Schema({
 
 // run before save
 UserSchema.pre('save', (next) => {
-  let user = this
+  let user = UserSchema
 
   // for new users
   if(!user.isModified('password')) return next()
