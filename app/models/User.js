@@ -20,14 +20,14 @@ const UserSchema = new Schema({
   },
   admin: {
     type: 'Boolean'
-  }
+  },
+  devices: []
 })
 
 // run before save
 UserSchema.pre('save', function(next) {
   let user = this
 
-  // for new users
   if(!user.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
