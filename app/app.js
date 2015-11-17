@@ -45,7 +45,7 @@ db(() => {
 
   app.server.listen(port)
 
-  console.log('Server running on http://localhost:%s', port);
+  console.log('Server running on http://localhost:${port}');
 })
 
 export default app
