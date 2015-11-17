@@ -6,7 +6,8 @@ import Device from './models/Device'
 export default function() {
    let api = Router()
 
-   // @TODO authentication
+  // @TODO authentication
+  // @TODO flash messages from server to client
    api.use((req, res, next) => {
      console.log('Connecting to the api...')
      next()
