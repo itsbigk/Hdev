@@ -7,6 +7,10 @@ class employeeController {
     // @TODO
   }
 
+  logout(req, res) {
+    // @TODO
+  }
+
   getEmployees(req, res) {
     Employee.find({}, (err, employees) => {
       if(err) res.send(err)
@@ -22,6 +26,7 @@ class employeeController {
     employee.email = req.body.email
     employee.password = req.body.password
     employee.admin = req.body.admin
+    employee.newEmployee = true
 
     employee.save((err) => {
       console.log(employee)
@@ -65,7 +70,7 @@ class employeeController {
       employee.save((err) => {
         if(err) res.send(err)
 
-        res.json({ message: 'Employee has been updated.' })
+        res.json({ message: 'Employee updated.' })
       })
     })
   }
@@ -73,7 +78,7 @@ class employeeController {
   deleteEmployee(req, res) {
     Employee.remove({
       _id: req.params.employee_id
-    }, (err, employee) => {
+    },(err, employee) => {
         if(err) return res.send(err)
 
         res.json({ message: 'Employee deleted.' })
