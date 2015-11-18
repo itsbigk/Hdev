@@ -18,9 +18,6 @@ const UserSchema = new Schema({
     required: true,
     select: false
   },
-  admin: {
-    type: 'Boolean'
-  },
   devices: []
 })
 
