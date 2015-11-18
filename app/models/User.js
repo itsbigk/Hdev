@@ -18,6 +18,7 @@ const UserSchema = new Schema({
     required: true,
     select: false
   },
+  lines: [],
   devices: []
 })
 

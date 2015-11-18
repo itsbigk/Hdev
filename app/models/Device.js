@@ -7,10 +7,16 @@ const DeviceSchema = new Schema({
   },
   serial: {
     type: 'String',
-    required: true
+    required: true,
+    index: {
+      unique: true
+    }
   },
   manufacturer: {
     type: 'String'
+  },
+  lost: {
+    type: 'Boolean'
   }
 })
 

@@ -1,8 +1,11 @@
 import { Router } from 'express'
-import mongoose from 'mongoose'
-import auth from './controllers/auth'
-import User from './models/User'
-import Device from './models/Device'
+import userController from './controllers/userController'
+import deviceController from './controllers/deviceController'
+import employeeController from './controllers/employeeController'
+import authController from './controllers/authController'
+
+// import User from './models/User'
+// import Device from './models/Device'
 
 export default function() {
    let api = Router()
@@ -19,142 +22,54 @@ export default function() {
 
     api.route('/users')
 
-      .get((req, res) => {
-        User.find({}, (err, users) => {
-          if(err) res.send(err)
+      .get(userController.getUsers)
 
-          res.json(users)
-        })
-      })
-
-      .post((req, res) => {
-        let user = new User()
-
-        user.name = req.body.name
-        user.email = req.body.email
-        user.password = req.body.password
-        user.admin = req.body.admin
-
-        user.save((err) => {
-
-          console.log(user)
-
-          if(err) {
-            // checking duplicates
-            if(err.code === 11000) {
-              return res.json({
-                success: false,
-                message: 'A user with that email already exists.'
-              })
-            } else {
-              return res.send(err)
-            }
-          }
-          res.json({ message: 'User created successfully' })
-        })
-      })
+      .post(userController.newUser)
 
     // single user routes
     api.route('/users/:user_id')
 
-      .get((req, res) => {
-        User.findById(req.params.user_id, (err, user) => {
-          if(err) res.send(err)
+      .get(userController.getSingleUser)
 
-          res.json(user);
-        })
-      })
+      .put(userController.updateUser)
 
-      .put((req, res) => {
-        User.findById(req.params.user_id, (err, user) => {
-          if(err) res.send(err)
-
-          if(req.body.name) user.name = req.body.name
-          if(req.body.email) user.email = req.body.email
-          if(req.body.password) user.password = req.body.password
-          if(req.body.admin) user.admin = req.body.admin
-
-          user.save((err) => {
-            if(err) res.send(err)
-
-            res.json({ message: 'User updated.' })
-          })
-        })
-      })
-
-      .delete((req, res) => {
-        User.remove({
-          _id: req.params.user_id,
-        },(err, user) => {
-          if(err) return res.send(err)
-
-          res.json({ message: 'User deleted.' })
-        })
-      })
+      .delete(userController.deleteUser)
     // end user routes
 
     // begin device routes
+
     api.route('/devices')
 
-      .get((req, res) => {
-        Device.find({}, (err, devices) => {
-          if(err) res.send(err)
+      .get(deviceController.getDevices)
 
-          res.json(devices)
-        })
-      })
-
-      .post((req, res) => {
-        let device = new Device()
-
-        device.owner = req.body.owner
-        device.serial = req.body.serial
-        device.manufacturer = req.body.manufacturer
-
-        device.save((err) => {
-          if(err) res.send(err)
-
-          console.log(device)
-
-          // push device to user to complete ownership
-          User.findById(req.body.owner, (err, user) => {
-            if(err) res.send(err)
-
-            user.devices.push(device._id)
-
-            user.save((err) => {
-              if(err) res.send(err)
-            })
-          })
-
-          res.json({ message: 'Device successfully added.' })
-        })
-      })
-
-      // @TODO create route that handles device being removed from the database
-      // and then proceed to being removed from the users list of devices
+      .post(deviceController.newDevice)
 
     // single device routes
-    // put routes are not needed because the physical device should never change once saved
     api.route('/devices/:device_id')
 
-      .get((req, res) => {
-        Device.findById(req.params.device_id, (err, device) => {
-          if(err) res.send(err)
+      .get(deviceController.getSingleDevice)
 
-          res.json(device)
-        })
-      })
+      .delete(deviceController.deleteDevice)
+    // end device routes
 
-      .delete((req, res) => {
-        Device.remove({
-          _id: req.params.device_id
-        }, (err, device) => {
-          if(err) res.send(err)
+    // begin employee routes
 
-          res.json({ message: 'Device removed.' })
-        })
-      })
+    api.route('/employees')
+
+      .get(employeeController.getEmployees)
+
+      .post(employeeController.newEmployee)
+
+    // single employee routes
+    api.route('/employees/:employee_id')
+
+        .get(employeeController.newEmployee)
+
+        .put(employeeController.updateEmployee)
+
+        .delete(employeeController.deleteEmployee)
+
+    // end employee routes
 
    return api
 }

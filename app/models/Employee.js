@@ -1,4 +1,4 @@
-import mongoose { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
 
 const EmployeeSchema = new Schema({
@@ -17,6 +17,9 @@ const EmployeeSchema = new Schema({
     type: 'String',
     required: true,
     select: false
+  },
+  newEmployee: {
+    type: 'Boolean'
   },
   admin: {
     type: 'Boolean'
