@@ -1,17 +1,14 @@
 import { Router } from 'express'
 import mongoose from 'mongoose'
+import auth from './controllers/auth'
 import User from './models/User'
 import Device from './models/Device'
 
 export default function() {
    let api = Router()
 
-   // @TODO authentication
-   api.use((req, res, next) => {
-     console.log('Connecting to the api...')
-     next()
-   })
-
+  // @TODO authentication routes
+  // @TODO flash messages from server to client
    api.get('/', (req, res) => {
      res.json({
        version: '1.0'

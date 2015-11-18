@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
+import config from './config/serverConstants'
 
 export default function(callback) {
-  mongoose.connect('mongodb://localhost/testConnection')
+  mongoose.connect(config.localDB)
 
   mongoose.connection.on('open', (ref) => {
     console.log('Connected to mongo server.')
