@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
 import bcrypt from 'bcrypt'
 
-const UserSchema = new Schema({
+const EmployeeSchema = new Schema({
   name: {
     type: 'String',
     required: true
@@ -18,30 +18,33 @@ const UserSchema = new Schema({
     required: true,
     select: false
   },
-  lines: [],
-  devices: []
+  newEmployee: {
+    type: 'Boolean'
+  },
+  admin: {
+    type: 'Boolean'
+  }
 })
 
-// run before save
-UserSchema.pre('save', function(next) {
-  let user = this
+EmployeeSchema.pre('save', function(next) {
+  let employee = this
 
-  if(!user.isModified('password')) return next()
+  if(!employee.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash('B4c0/\/', salt, (err, hash) => {
       if(err) return next(err)
 
-        user.password = hash
+        employee.password = hash
         next()
     })
   })
 })
 
-UserSchema.methods.comparePassword = (password) => {
-  let user = this
+EmployeeSchema.methods.comparePassword = (password) => {
+  let employee = this
 
-  return bcrypt.compareSync(password, user.password)
+  return bcrypt.compareSync(password, employee.password)
 }
 
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('Employee', EmployeeSchema)

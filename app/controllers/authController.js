@@ -1,8 +1,8 @@
-import redisController from './redis'
-import tokenController from './token'
+import redisController from './redisController'
+import tokenController from './tokenController'
 import config from '../config/serverConstants'
 
-class auth {
+class authController {
 
   verify(req, res, next) {
     let headers = req.headers
@@ -63,4 +63,4 @@ class auth {
   }
 }
 
-export default new auth
+export default new authController
