@@ -25182,7 +25182,9 @@
 	var AppTypes = (0, _keyMirror2['default'])({
 	  APP_INIT: null
 	});
-	exports.AppTypes = AppTypes;
+
+	exports['default'] = AppTypes;
+	module.exports = exports['default'];
 
 /***/ },
 /* 217 */
@@ -25260,12 +25262,15 @@
 	var _keyMirror2 = _interopRequireDefault(_keyMirror);
 
 	var UserTypes = (0, _keyMirror2['default'])({
-	  LOGIN: null,
-	  LOGOUT: null,
-	  REGISTER: null,
-	  LIST: null
+	  NEW: null,
+	  UPDATE: null,
+	  GET: null,
+	  LIST: null,
+	  DELETE: null
 	});
-	exports.UserTypes = UserTypes;
+
+	exports['default'] = UserTypes;
+	module.exports = exports['default'];
 
 /***/ },
 /* 219 */
