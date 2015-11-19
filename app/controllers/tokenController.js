@@ -24,7 +24,7 @@ class tokenController {
     if(authArr.length != 2) throw new Error('Authorization header value is not a length of 2.')
 
     let token = authArr[1]
-    if(token.length != config.TOKEN_LENGTH * 2) throw new Error('Token value is not the expect length')
+    if(token.length != config.TOKEN_LENGTH * 2) throw new Error('Token value is not the expected length')
 
     return token
   }
