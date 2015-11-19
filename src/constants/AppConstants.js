@@ -1,5 +1,7 @@
 import keyMirror from 'keyMirror'
 
-export var AppTypes = keyMirror({
+const AppTypes = keyMirror({
   APP_INIT: null
 })
+
+export default AppTypes
