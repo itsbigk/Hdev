@@ -24531,7 +24531,7 @@
 	  _createClass(AppActions, [{
 	    key: 'appInit',
 	    value: function appInit() {
-	      // @TODO get data from server and dispatch to stores
+	      // @TODO check to see if user is logged in based on the token from redis
 	    }
 	  }]);
 
