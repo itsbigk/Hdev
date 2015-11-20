@@ -4,6 +4,7 @@ import Link from 'react-router'
 class Home extends React.Component {
   constructor(props) {
     super(props)
+    this.props.history.replaceState(null, '/home')
   }
 
   render() {
