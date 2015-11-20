@@ -24348,6 +24348,7 @@
 	    _classCallCheck(this, Main);
 
 	    _get(Object.getPrototypeOf(Main.prototype), 'constructor', this).call(this, props);
+	    this.props.history.replaceState(null, '/');
 	  }
 
 	  _createClass(Main, [{
@@ -24412,6 +24413,7 @@
 	    _classCallCheck(this, Home);
 
 	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
+	    this.props.history.replaceState(null, '/home');
 	  }
 
 	  _createClass(Home, [{

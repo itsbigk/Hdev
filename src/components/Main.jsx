@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 class Main extends React.Component {
   constructor(props) {
     super(props)
+    this.props.history.replaceState(null, '/')
   }
 
   render() {
