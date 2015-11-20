@@ -1,39 +1,37 @@
 import Store from './store'
 import AppDispatcher from '../dispatchers/AppDispatcher'
-import AppTypes from '../constants/AppConstants'
 import DeviceTypes from '../constants/DeviceConstants'
-
-
-let deviceList = {}
 
 class deviceStore extends Store {
 
   constructor() {
     super()
+    this._devices = null
+    this._device = null
+    this.subscribe(() => this._registerToActions.bind(this))
+  }
+
+  _registerToActions(action) {
+    switch(action.type) {
+      case DeviceTypes.NEW_DEVICE:
+        deviceList = action.devices
+        break
+
+      case DeviceTypes.REMOVE_DEVICE:
+        deviceList = action.devices
+        break
+
+      default:
+        return
+    }
+    this.emitChange()
   }
 
   getDeviceList() {
-    return deviceList
+    return this._devices
   }
 }
 
 let DeviceStore = new deviceStore()
-
-DeviceStore.dispatchToken = AppDispatcher.register(aciton => {
-  switch (action.type) {
-
-    case AppTypes.APP_INIT:
-      deviceList = action.devices
-      break
-
-    case DeviceTypes.DEVICE_UPDATE:
-      deviceList = action.devices
-      break
-
-    default:
-      return
-  }
-  DeviceStore.emitChange()
-})
 
 export default DeviceStore

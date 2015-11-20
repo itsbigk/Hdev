@@ -1,52 +1,48 @@
 import Store from './store'
-import AppDispatcher from '../dispatchers/AppDispatcher'
-import AppTypes from '../constants/AppConstants'
 import UserTypes from '../constants/UserConstants'
-
-let userState = {
-  currentUser: {},
-  users: []
-}
 
 class userStore extends Store {
   constructor() {
     super()
+    this._users = null
+    this._user = null
+    this.subscribe(() => this._registerToActions.bind(this))
+  }
+
+  _registerToActions(action) {
+    switch(action.type) {
+      case UserTypes.GET:
+        this._user = action.user
+        break
+
+      case UserTypes.NEW:
+        this._users = action.users
+        break
+
+      case UserTypes.UPDATE:
+        this._user = action.user
+        break
+
+      case UserTypes.LIST:
+        this._users = action.users
+        break
+
+      case UserTypes.DELETE:
+        this._users = action.users
+        break
+
+      default:
+        return
+    }
+
+    this.emitChange()
   }
 
   getAllUsers() {
-    return userState.users
-  }
-
-  getCurrentUser() {
-    return userState.currentUser
+    return this._users
   }
 }
 
-let UserStore = new userStore()
-
-UserStore.dispatchToken = AppDispatcher.register(action => {
-  switch (action.type) {
-    case UserTypes.LOGIN:
-      userState.currentUser = action.user
-      break
-
-    case UserTypes.LOGOUT:
-      userState.currentUser = {}
-      break
-
-    case UserTypes.REGISTER:
-      userState.currentUser = action.user
-      break
-
-    case UserTypes.LIST:
-      userState.users = action.users
-      break
-
-    default:
-      return
-  }
-
-  UserStore.emitChange()
-})
+const UserStore = new userStore()
 
 export default UserStore

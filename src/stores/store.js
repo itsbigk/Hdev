@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events'
+import AppDispatcher from '../dispatchers/AppDispatcher'
 
 const CHANGE_EVENT = 'change'
 
@@ -6,6 +7,10 @@ class Store extends EventEmitter {
 
   constructor() {
     super()
+  }
+
+  subscribe(actionSubscribe) {
+    this._dispatchToken = AppDispatcher.register(actionSubscribe())
   }
 
   emitChange() {
@@ -20,7 +25,5 @@ class Store extends EventEmitter {
     this.removeListener(CHANGE_EVENT, callback)
   }
 }
-
-Store.dispatchToken = null
 
 export default Store
