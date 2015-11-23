@@ -1,14 +1,26 @@
 import Employee from '../models/Employee'
-import authController from './authController'
+import authController from '../controllers/authController'
+import config from '../config/serverConstants'
 
 class employeeController {
 
   login(req, res) {
     // @TODO
+    authController.createAndStoreToken(req.body, config.AUTH_TTL, (err, token) => {
+      if(err) res.sendStatus(400)
+
+      console.log(token)
+      return res.sendStatus(200, { message: 'Successfuly logged in.', token: token })
+    })
   }
 
   logout(req, res) {
     // @TODO
+    authController.expireToken(req.headers, (err, success) => {
+      if(err) return res.sendStatus(err)
+
+      return res.sendStatus(200, { message: 'Successfully logged out.' })
+    })
   }
 
   getEmployees(req, res) {

@@ -24,7 +24,7 @@ class authController {
       next()
     })
   }
-
+  // @TODO add function to verify admin
   createAndStoreToken(data, ttl, callback) {
     data = data || {}
     ttl = ttl || config.AUTH_TTL

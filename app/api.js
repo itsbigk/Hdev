@@ -63,11 +63,21 @@ export default function() {
     // single employee routes
     api.route('/employees/:employee_id')
 
-        .get(employeeController.getSingleEmployee)
+      .get(employeeController.getSingleEmployee)
 
-        .put(employeeController.updateEmployee)
+      .put(employeeController.updateEmployee)
 
-        .delete(employeeController.deleteEmployee)
+      .delete(employeeController.deleteEmployee)
+
+    // employee login route
+    api.route('/login')
+
+      .post(employeeController.login)
+
+    // employee logout route
+    api.route('/logout')
+
+      .post(employeeController.logout)
 
     // end employee routes
 
