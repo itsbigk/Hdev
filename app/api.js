@@ -10,7 +10,6 @@ import authController from './controllers/authController'
 export default function() {
    let api = Router()
 
-  // @TODO authentication routes
   // @TODO flash messages from server to client
    api.get('/', (req, res) => {
      res.json({
