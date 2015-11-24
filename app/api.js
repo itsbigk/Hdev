@@ -10,7 +10,6 @@ import authController from './controllers/authController'
 export default function() {
    let api = Router()
 
-  // @TODO authentication routes
   // @TODO flash messages from server to client
    api.get('/', (req, res) => {
      res.json({
@@ -70,12 +69,12 @@ export default function() {
       .delete(employeeController.deleteEmployee)
 
     // employee login route
-    api.route('/login')
+    api.route('/employees/login')
 
       .post(employeeController.login)
 
     // employee logout route
-    api.route('/logout')
+    api.route('/employees/logout')
 
       .post(employeeController.logout)
 
