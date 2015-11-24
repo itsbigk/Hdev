@@ -15,8 +15,7 @@ const EmployeeSchema = new Schema({
   },
   password: {
     type: 'String',
-    required: true,
-    select: false
+    required: true
   },
   newEmployee: {
     type: 'Boolean'
@@ -31,18 +30,16 @@ EmployeeSchema.pre('save', function(next) {
 
   if(!employee.isModified('password')) return next()
 
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash('B4c0/\/', salt, (err, hash) => {
-      if(err) return next(err)
+  bcrypt.hash(employee.password, 10, (err, hash) => {
+    if(err) return next(err)
 
-        employee.password = hash
-        next()
-    })
+      employee.password = hash
+      next()
   })
 })
 
-EmployeeSchema.methods.comparePassword = (password) => {
-  let employee = this
+EmployeeSchema.methods.comparePassword = function(password) {
+  var employee = this
 
   return bcrypt.compareSync(password, employee.password)
 }

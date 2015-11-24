@@ -1,14 +1,44 @@
 import Employee from '../models/Employee'
-import authController from './authController'
+import authController from '../controllers/authController'
+import config from '../config/serverConstants'
 
 class employeeController {
 
   login(req, res) {
-    // @TODO
+    Employee.findOne({ email: req.body.email }, (err, employee) => {
+      if(err) throw err
+
+      if(!employee) {
+        res.json({
+          success: false,
+          message: 'Login failed. A user with that email does not exist.'
+        })
+      } else if(employee) {
+        let validPassword = employee.comparePassword(req.body.password)
+
+        if(!validPassword) {
+          res.json({
+            success: false,
+            message: 'Password is incorrect.'
+          })
+        } else {
+          req.body.password = employee.password
+          authController.createAndStoreToken(req.body, config.AUTH_TTL, (err, token) => {
+            if(err) res.sendStatus(400)
+
+            return res.status(200).json({ message: 'Successfuly logged in.', token: token })
+          })
+        }
+      }
+    })
   }
 
   logout(req, res) {
-    // @TODO
+    authController.expireToken(req.headers, (err, success) => {
+      if(err) return res.sendStatus(err)
+
+      return res.status(200).json({ message: 'Successfully logged out.' })
+    })
   }
 
   getEmployees(req, res) {

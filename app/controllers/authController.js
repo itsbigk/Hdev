@@ -9,12 +9,7 @@ class authController {
 
     if(headers == null) return res.sendStatus(401)
 
-    try {
-      let token = tokenController.extractTokenFromHeader(headers)
-    } catch(err) {
-      console.log(err)
-      return res.sendStatus(401)
-    }
+    let token = tokenController.extractTokenFromHeader(headers)
 
     redisController.getDataByToken(token, (err, data) => {
       if(err) return res.sendStatus(401)
@@ -57,7 +52,6 @@ class authController {
 
       redisController.expireToken(token, callback)
     } catch(err) {
-      console.log(err)
       return callback(err)
     }
   }
