@@ -59,7 +59,7 @@ export default function() {
     // single employee routes
     api.route('/employees/:employee_id')
 
-      .get(authController.verifyAdmin, employeeController.getSingleEmployee)
+      .get(employeeController.getSingleEmployee)
 
       .put(employeeController.updateEmployee)
 
