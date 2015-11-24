@@ -14,9 +14,25 @@ class authController {
     redisController.getDataByToken(token, (err, data) => {
       if(err) return res.sendStatus(401)
 
-      req._user = data
-
       next()
+    })
+  }
+
+  verifyAdmin(req, res, next) {
+    let headers = req.headers
+
+    if(headers == null) return res.sendStatus(401)
+
+    let token = tokenController.extractTokenFromHeader(headers)
+
+    redisController.getDataByToken(token, (err, data) => {
+      if(err) return res.sendStatus(401)
+
+      if(data.admin == 'true') {
+        next()
+      } else {
+        return res.sendStatus(401)
+      }
     })
   }
 
