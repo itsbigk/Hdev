@@ -36,7 +36,7 @@ class redisController {
     redisClient.get(token, (err, userData) => {
       if(err) callback(err)
 
-      if(userData != null) callback(JSON.parse(userData))
+      if(userData != null) callback(null, JSON.parse(userData))
       else callback(new Error('Token not found.'))
     })
   }
