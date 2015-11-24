@@ -4,9 +4,6 @@ import deviceController from './controllers/deviceController'
 import employeeController from './controllers/employeeController'
 import authController from './controllers/authController'
 
-// import User from './models/User'
-// import Device from './models/Device'
-
 export default function() {
    let api = Router()
 
@@ -62,7 +59,7 @@ export default function() {
     // single employee routes
     api.route('/employees/:employee_id')
 
-      .get(authController.verify, employeeController.getSingleEmployee)
+      .get(authController.verifyAdmin, employeeController.getSingleEmployee)
 
       .put(employeeController.updateEmployee)
 
