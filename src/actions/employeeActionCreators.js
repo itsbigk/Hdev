@@ -1,20 +1,22 @@
 import EmployeeTypes from '../constants/EmployeeConstants'
+import localStorage from 'localStorage'
 
-const authHeader = new Headers()
-const authString = 'Authorization: AUTH ' + localStorage.getItem(HDEV_AUTH_TOKEN)
+if(localStorage.getItem('HDEV_AUTH_TOKEN') !== null) {
+  const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
+}
 
-authHeader.append(authString)
+class employeeActions {
+  auth(token, callback) {
 
-const employeeActions = {
-  auth: () => {
-    
-  },
+  }
 
-  login: (employee) => {
+  login(employee) {
 
-  },
+  }
 
-  logout: (employee) => {
+  logout(employee) {
 
   }
 }
+
+export default new employeeActions
