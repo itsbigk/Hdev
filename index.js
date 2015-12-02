@@ -1,2 +1,2 @@
 require('babel-core/register');
-require('./app/app.js');
+require('./app/server.js');

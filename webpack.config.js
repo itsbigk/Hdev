@@ -6,6 +6,13 @@ module.exports = {
     filename: "bundle.js"
   },
   module: {
+    preLoaders: [
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'source-map-loader'
+        }
+    ],
     loaders: [
       {
         test: /\.(js|jsx)$/,

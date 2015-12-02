@@ -50,7 +50,7 @@ class authController {
         if(err) callback(err)
 
         if(success) {
-          callback(null, token)
+          callback(null, token, data)
         } else {
           callback(new Error('Error when saving token.'))
         }

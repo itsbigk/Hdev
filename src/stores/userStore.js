@@ -32,7 +32,7 @@ class userStore extends Store {
         break
 
       default:
-        return
+        break
     }
 
     this.emitChange()

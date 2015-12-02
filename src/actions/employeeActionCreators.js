@@ -1,20 +1,35 @@
 import EmployeeTypes from '../constants/EmployeeConstants'
+import AppDispatcher from '../dispatchers/AppDispatcher'
+import request from 'superagent'
 
-const authHeader = new Headers()
-const authString = 'Authorization: AUTH ' + localStorage.getItem(HDEV_AUTH_TOKEN)
+if(localStorage.getItem('HDEV_AUTH_TOKEN') != null) {
+  const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
+}
 
-authHeader.append(authString)
+class employeeActions {
+  auth(token, callback) {
 
-const employeeActions = {
-  auth: () => {
-    
-  },
+  }
 
-  login: (employee) => {
+  login(employee) {
+    request
+      .post('/api/employees/login')
+      .send(employee)
+      .end((err, res) => {
+        if(res.ok) {
+          AppDispatcher.dispatch({
+            type: EmployeeTypes.LOGIN,
+            data: res.body
+          })
+        } else {
+          console.log(err)
+        }
+      })
+  }
 
-  },
-
-  logout: (employee) => {
+  logout(employee) {
 
   }
 }
+
+export default new employeeActions

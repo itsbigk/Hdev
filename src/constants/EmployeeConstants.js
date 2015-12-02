@@ -3,10 +3,10 @@ import keyMirror from 'keyMirror'
 const EmployeeTypes = keyMirror({
   LOGIN: null,
   LOGOUT: null,
-  REGISTER: null,
-  UPDATE: null,
-  GET: null,
-  LIST: null
+  NEW_EMPLOYEE: null,
+  UPDATE_EMPLOYEE: null,
+  GET_EMPLOYEE: null,
+  EMPLOYEE_LIST: null
 })
 
 export default EmployeeTypes
