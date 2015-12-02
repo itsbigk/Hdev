@@ -26,7 +26,7 @@ class employeeController {
           authController.createAndStoreToken(req.body, config.AUTH_TTL, (err, token) => {
             if(err) res.sendStatus(400)
 
-            return res.status(200).json({ message: 'Successfuly logged in.', token: token })
+            return res.status(200).json({ success: true, message: 'Successfuly logged in.', token: token })
           })
         }
       }

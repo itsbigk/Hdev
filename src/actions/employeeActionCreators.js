@@ -1,5 +1,6 @@
 import EmployeeTypes from '../constants/EmployeeConstants'
 import localStorage from 'localStorage'
+import AppDispatcher from '../dispatchers/AppDispatcher'
 
 if(localStorage.getItem('HDEV_AUTH_TOKEN') !== null) {
   const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
@@ -11,7 +12,7 @@ class employeeActions {
   }
 
   login(employee) {
-    
+
   }
 
   logout(employee) {

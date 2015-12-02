@@ -7,18 +7,32 @@ class employeeStore extends Store {
     this._employees = null
     this._employee = null
     this._currentEmployee = null
+    this._notification = null
     this.subscribe(() => this._registerToActions.bind(this))
+  }
+
+  getCurrentEmployee() {
+    return this.currentEmployee
+  }
+
+  getSingleEmployee() {
+    return this._employee
+  }
+
+  getEmployeelist() {
+    return this._employees
   }
 
   _registerToActions(action) {
     switch(action.type) {
       case EmployeeTypes.LOGIN:
-        this._employee = action.employee
+        this._currentEmployee = action.employee
         break
 
       case EmployeeTypes.LOGOUT:
-        this._currentEmployee = null
         localStorage.removeItem('HDEV_AUTH_TOKEN')
+        this._currentEmployee = null
+        this._notification = action.data
         break
 
       case EmployeeTypes.NEW_EMPLOYEE:
