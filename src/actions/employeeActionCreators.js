@@ -1,8 +1,8 @@
 import EmployeeTypes from '../constants/EmployeeConstants'
-import localStorage from 'localStorage'
 import AppDispatcher from '../dispatchers/AppDispatcher'
+import request from 'superagent'
 
-if(localStorage.getItem('HDEV_AUTH_TOKEN') !== null) {
+if(localStorage.getItem('HDEV_AUTH_TOKEN') != null) {
   const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
 }
 
@@ -12,7 +12,19 @@ class employeeActions {
   }
 
   login(employee) {
-
+    request
+      .post('/api/employees/login')
+      .send(employee)
+      .end((err, res) => {
+        if(res.ok) {
+          AppDispatcher.dispatch({
+            type: EmployeeTypes.LOGIN,
+            data: res.body
+          })
+        } else {
+          console.log(err)
+        }
+      })
   }
 
   logout(employee) {

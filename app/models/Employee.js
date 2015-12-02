@@ -25,6 +25,12 @@ const EmployeeSchema = new Schema({
   }
 })
 
+EmployeeSchema.methods.toJSON = function() {
+  let obj = this.toObject()
+  delete obj.password
+  return obj
+}
+
 EmployeeSchema.pre('save', function(next) {
   let employee = this
 

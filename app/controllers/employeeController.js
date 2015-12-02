@@ -22,11 +22,10 @@ class employeeController {
             message: 'Password is incorrect.'
           })
         } else {
-          req.body.password = employee.password
-          authController.createAndStoreToken(req.body, config.AUTH_TTL, (err, token) => {
+          authController.createAndStoreToken(employee.toJSON(), config.AUTH_TTL, (err, token, employee) => {
             if(err) res.sendStatus(400)
 
-            return res.status(200).json({ success: true, message: 'Successfuly logged in.', token: token })
+            return res.status(200).json({ success: true, message: 'Successfuly logged in.', token: token, employee: employee })
           })
         }
       }

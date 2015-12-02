@@ -4,51 +4,45 @@ import EmployeeTypes from '../constants/EmployeeConstants'
 class employeeStore extends Store {
   constructor() {
     super()
-    this._employees = null
-    this._employee = null
-    this._currentEmployee = null
+    this.state = {}
     this._notification = null
     this.subscribe(() => this._registerToActions.bind(this))
   }
 
-  getCurrentEmployee() {
-    return this.currentEmployee
-  }
-
-  getSingleEmployee() {
-    return this._employee
-  }
-
-  getEmployeelist() {
-    return this._employees
+  getState() {
+    return this.state
   }
 
   _registerToActions(action) {
     switch(action.type) {
       case EmployeeTypes.LOGIN:
-        this._currentEmployee = action.employee
+        console.log('in store')
+        console.log(action)
+        this.state.currentEmployee = action.data.employee
+        console.log(this.state)
+        localStorage.setItem('HDEV_AUTH_TOKEN', action.data.token)
         break
 
       case EmployeeTypes.LOGOUT:
         localStorage.removeItem('HDEV_AUTH_TOKEN')
-        this._currentEmployee = null
+        this.state.currentEmployee = null
         this._notification = action.data
         break
 
       case EmployeeTypes.NEW_EMPLOYEE:
-        this._employees = action.employees
+        this.state.employees = action.employees
         break
 
       case EmployeeTypes.UPDATE_EMPLOYEE:
-        this._employees = action.employees
+        this.state.employees = action.employees
         break
 
       case EmployeeTypes.GET_EMPLOYEE:
-        this._employee = action.employee
+        this.state.employee = action.employee
         break
 
       case EmployeeTypes.EMPLOYEE_LIST:
-        this._employees = action.employees
+        this.state.employees = action.employees
         break
 
       default:
@@ -59,6 +53,4 @@ class employeeStore extends Store {
   }
 }
 
-const EmployeeStore = new employeeStore()
-
-export defualt EmployeeStore
+export default new employeeStore()
