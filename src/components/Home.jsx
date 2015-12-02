@@ -25,12 +25,12 @@ class Home extends React.Component {
 
   _login() {
     console.log(this.refs)
-    // if(this.refs.email && this.refs.password) {
-    //   employeeActions.login({
-    //     email: this.refs.email,
-    //     password: this.refs.password
-    //   })
-    // }
+    if(this.refs.email && this.refs.password) {
+      employeeActions.login({
+        email: this.refs.email.value,
+        password: this.refs.password.value
+      })
+    }
   }
 }
 
