@@ -10,4 +10,4 @@ let history = createBrowserHistory()
 // @TODO begin action for app init to make sure the components have the latest content
 // the stores will pick on the dispatch from the action if they have a case in the switch
 
-render(<Router history={history}>{routes}</Router>, document.getElementById('app'))
+render(<Router children={routes} history={history} />, document.getElementById('app'))

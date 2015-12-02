@@ -73,11 +73,7 @@
 	// @TODO begin action for app init to make sure the components have the latest content
 	// the stores will pick on the dispatch from the action if they have a case in the switch
 
-	(0, _reactDom.render)(_react2['default'].createElement(
-	  _reactRouter.Router,
-	  { history: history },
-	  _configRoutes2['default']
-	), document.getElementById('app'));
+	(0, _reactDom.render)(_react2['default'].createElement(_reactRouter.Router, { children: _configRoutes2['default'], history: history }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -24431,7 +24427,6 @@
 	    _classCallCheck(this, Main);
 
 	    _get(Object.getPrototypeOf(Main.prototype), 'constructor', this).call(this, props);
-	    // this.props.history.replaceState(null, '/')
 	  }
 
 	  _createClass(Main, [{
@@ -24485,8 +24480,6 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(207);
-
 	var _actionsEmployeeActionCreators = __webpack_require__(211);
 
 	var _actionsEmployeeActionCreators2 = _interopRequireDefault(_actionsEmployeeActionCreators);
@@ -24499,7 +24492,6 @@
 
 	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
 	    this._login = this._login.bind(this);
-	    // this.props.history.replaceState(null, '/home')
 	  }
 
 	  _createClass(Home, [{
@@ -24528,9 +24520,14 @@
 	      );
 	    }
 	  }, {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      console.log('working');
+	    }
+	  }, {
 	    key: '_login',
 	    value: function _login() {
-	      console.log(this.refs.email);
+	      console.log(this.refs);
 	      // if(this.refs.email && this.refs.password) {
 	      //   employeeActions.login({
 	      //     email: this.refs.email,

@@ -36,7 +36,7 @@ gulp.task('watch', () => {
 
 gulp.task('nodemon', () => {
   nodemon({
-    script: './server.js',
+    script: './index.js',
     ext: 'js'
   })
     .on('start', ['webpack', 'watch'])
