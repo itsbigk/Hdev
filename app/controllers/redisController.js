@@ -41,6 +41,20 @@ class redisController {
     })
   }
 
+  changeEmployeeData(token, employee, callback) {
+    if(token == null) callback('Token is null.', false)
+
+    redisClient.set(token, JSON.stringify(employee), (err, reply) => {
+      if(err) callback(err)
+
+      if(reply) {
+        callback(null, true)
+      } else {
+        callback(new Error('Data was not changed in redis.'))
+      }
+    })
+  }
+
   expireToken(token, callback) {
     if(token == null) callback(new Error('Token is null.'))
 

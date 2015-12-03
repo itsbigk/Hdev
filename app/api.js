@@ -75,6 +75,11 @@ export default function() {
 
       .post(employeeController.logout)
 
+    // check if employee has a session
+    api.route('/employees/verify')
+
+      .post(authController.verify)
+
     // end employee routes
 
    return api

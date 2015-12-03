@@ -1,6 +1,7 @@
 import EmployeeTypes from '../constants/EmployeeConstants'
 import AppDispatcher from '../dispatchers/AppDispatcher'
 import request from 'superagent'
+import localStorage from 'localStorage'
 
 if(localStorage.getItem('HDEV_AUTH_TOKEN') != null) {
   const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')

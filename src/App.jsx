@@ -2,8 +2,10 @@ import React from 'react'
 import { Router } from 'react-router'
 import { render } from 'react-dom'
 import routes from './config/routes'
-import AppActionCreators from './actions/appActionCreators'
+import AppActions from './actions/appActionCreators'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
+
+AppActions.appInit()
 
 let history = createBrowserHistory()
 
