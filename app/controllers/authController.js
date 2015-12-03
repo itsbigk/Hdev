@@ -4,7 +4,7 @@ import config from '../config/serverConstants'
 
 class authController {
 
-  verify(req, res, next) {
+  verify(req, res) {
     let headers = req.headers
 
     if(headers == null) return res.sendStatus(401)
@@ -14,7 +14,7 @@ class authController {
     redisController.getDataByToken(token, (err, data) => {
       if(err) return res.sendStatus(401)
 
-      next()
+      return res.status(200).json(data)
     })
   }
 

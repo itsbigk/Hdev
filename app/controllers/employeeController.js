@@ -1,5 +1,7 @@
 import Employee from '../models/Employee'
 import authController from '../controllers/authController'
+import tokenController from '../controllers/tokenController'
+import redisController from '../controllers/redisController'
 import config from '../config/serverConstants'
 
 class employeeController {
@@ -73,7 +75,7 @@ class employeeController {
       // @TODO generate random temporary password
       // @TODO email employee with login info and link to log in and change temporary password
       // @TODO look into password expiration
-      // @TODO add new employee field to know if a redirect to password creation is needed.
+      // @TODO create method to update redis if an employee is no longer a new employee (created permanent password)
       res.json({ message: 'Employee created successfully' })
     })
   }
@@ -87,20 +89,72 @@ class employeeController {
   }
 
   updateEmployee(req, res) {
+    function _saveEmployee(employee) {
+      employee.save(err => {
+        if(err) res.send(err)
+
+        let headers = req.headers
+        let token = tokenController.extractTokenFromHeader(headers)
+
+        redisController.changeEmployeeData(token, employee, (err, success) => {
+          if(err) res.send(err)
+
+          if(success) {
+            res.json({
+              success: true,
+              message: 'Employee updated.',
+              employee: employee
+            })
+          }
+        })
+      })
+    }
+
     Employee.findById(req.params.employee_id, (err, employee) => {
       if(err) res.send(err)
 
-      if(req.body.name) employee.name = req.body.name
-      if(req.body.email) employee.email = req.body.email
-      if(req.body.password) employee.password = req.body.password
-      if(req.body.newEmployee) employee.newEmployee = req.body.newEmployee
-      if(req.body.admin) employee.admin = req.body.admin
+      if(employee.newEmployee) {
+        let validPassword = employee.comparePassword(req.body.oldPassword)
 
-      employee.save((err) => {
-        if(err) res.send(err)
+        if(!validPassword) {
+          res.json({
+            success: false,
+            message: 'Password is incorrect'
+          })
+        } else {
+          if(req.body.newPassword) {
+             employee.password = req.body.newPassword
+             employee.newEmployee = false
+             _saveEmployee(employee)
+          }
+        }
+      } else if(req.body.newPassword) {
+        let validPassword = employee.comparePassword(req.body.oldPassword)
 
-        res.json({ message: 'Employee updated.' })
-      })
+        if(!validPassword) {
+          res.json({
+            success: false,
+            message: 'Password is incorrect..'
+          })
+        } else {
+          employee.password = req.body.newPassword
+
+          _saveEmployee(employee)
+        }
+      } else {
+          if(req.body.name) employee.name = req.body.name
+          if(req.body.email) employee.email = req.body.email
+          if(req.body.newEmployee) employee.newEmployee = req.body.newEmployee
+          if(req.body.admin) employee.admin = req.body.admin
+
+          _saveEmployee(employee)
+        }
+
+      // employee.save((err) => {
+      //   if(err) res.send(err)
+      //
+      //   res.json({ message: 'Employee updated.' })
+      // })
     })
   }
 
