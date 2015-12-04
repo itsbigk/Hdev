@@ -3,6 +3,10 @@ import employeeActions from '../actions/employeeActionCreators'
 import EmployeeStore from '../stores/employeeStore'
 import Display from './Display'
 
+if(process.env.BROWSER) {
+  require('../sass/application.scss')
+}
+
 class Home extends React.Component {
   constructor(props) {
     super(props)
@@ -18,7 +22,7 @@ class Home extends React.Component {
           <h2>Log in:</h2>
           <input ref="email" placeholder="Enter email" />
           <input ref="password" placeholder="Enter password" />
-          <button onClick={this._login}>Submit</button>
+          <button className="btn btn-primary" onClick={this._login}>Submit</button>
         </Display>
         <Display if={this.state.currentEmployee}>
           <h1>Logged in {this.state.currentEmployee}</h1>

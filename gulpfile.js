@@ -1,15 +1,10 @@
 const gulp       = require('gulp'),
       webpack    = require('webpack-stream'),
-      sass       = require('gulp-sass'),
-      rename     = require('gulp-rename'),
-      sourcemaps = require('gulp-sourcemaps'),
-      nodemon    = require('gulp-nodemon'),
-      path       = require('path');
+      nodemon    = require('gulp-nodemon');
 
 const paths = {
-  sass: ['./src/sass/**/*.scss'],
   react: ['./src/**/*.js', './src/**/*.jsx'],
-  sassSrc: path.join(__dirname, 'src/sass')
+  sass: ['./src/sass/**/*.scss']
 }
 
 gulp.task('webpack', () => {
@@ -18,20 +13,9 @@ gulp.task('webpack', () => {
     .pipe(gulp.dest('./public'));
 });
 
-gulp.task('sass', () => {
-  return gulp.src(paths.sass)
-    .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write('.',
-            { sourceRoot: paths.sassSrc }))
-    .pipe(rename('style.css'))
-    .pipe(gulp.dest('./public'));
-});
-
-
 gulp.task('watch', () => {
   gulp.watch(paths.react, ['webpack']);
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sass, ['webpack']);
 });
 
 gulp.task('nodemon', () => {

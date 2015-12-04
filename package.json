@@ -22,6 +22,7 @@
     "babel-loader": "^5.4.0",
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.0",
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "crypto": "0.0.3",
     "express": "^4.13.3",
     "flux": "^2.1.1",
@@ -48,12 +49,13 @@
   "devDependencies": {
     "babel-core": "^5.8.24",
     "babel-loader": "^5.3.2",
+    "css-loader": "^0.23.0",
     "gulp": "^3.9.0",
     "gulp-nodemon": "^2.0.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
-    "gulp-sourcemaps": "^1.6.0",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
     "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
     "webpack-stream": "^2.1.1"
   }
