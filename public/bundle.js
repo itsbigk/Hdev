@@ -60,13 +60,15 @@
 
 	var _configRoutes2 = _interopRequireDefault(_configRoutes);
 
-	var _actionsAppActionCreators = __webpack_require__(227);
+	var _actionsAppActionCreators = __webpack_require__(228);
 
 	var _actionsAppActionCreators2 = _interopRequireDefault(_actionsAppActionCreators);
 
-	var _historyLibCreateBrowserHistory = __webpack_require__(229);
+	var _historyLibCreateBrowserHistory = __webpack_require__(230);
 
 	var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
+
+	_actionsAppActionCreators2['default'].appInit();
 
 	var history = (0, _historyLibCreateBrowserHistory2['default'])();
 
@@ -24371,11 +24373,11 @@
 
 	var _componentsHome2 = _interopRequireDefault(_componentsHome);
 
-	var _componentsProfile = __webpack_require__(225);
+	var _componentsProfile = __webpack_require__(226);
 
 	var _componentsProfile2 = _interopRequireDefault(_componentsProfile);
 
-	var _componentsNotFound = __webpack_require__(226);
+	var _componentsNotFound = __webpack_require__(227);
 
 	var _componentsNotFound2 = _interopRequireDefault(_componentsNotFound);
 
@@ -24484,11 +24486,11 @@
 
 	var _actionsEmployeeActionCreators2 = _interopRequireDefault(_actionsEmployeeActionCreators);
 
-	var _storesEmployeeStore = __webpack_require__(221);
+	var _storesEmployeeStore = __webpack_require__(222);
 
 	var _storesEmployeeStore2 = _interopRequireDefault(_storesEmployeeStore);
 
-	var _Display = __webpack_require__(224);
+	var _Display = __webpack_require__(225);
 
 	var _Display2 = _interopRequireDefault(_Display);
 
@@ -24604,8 +24606,12 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
-	if (localStorage.getItem('HDEV_AUTH_TOKEN') != null) {
-	  var authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN');
+	var _localStorage = __webpack_require__(221);
+
+	var _localStorage2 = _interopRequireDefault(_localStorage);
+
+	if (_localStorage2['default'].getItem('HDEV_AUTH_TOKEN') != null) {
+	  var authString = 'Authorization: AUTH ' + _localStorage2['default'].getItem('HDEV_AUTH_TOKEN');
 	}
 
 	var employeeActions = (function () {
@@ -26417,6 +26423,67 @@
 
 /***/ },
 /* 221 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {// http://www.rajdeepd.com/articles/chrome/localstrg/LocalStorageSample.htm
+
+	// NOTE:
+	// this varies from actual localStorage in some subtle ways
+
+	// also, there is no persistence
+	// TODO persist
+	(function () {
+	  "use strict";
+
+	  var db;
+
+	  function LocalStorage() {
+	  }
+	  db = LocalStorage;
+
+	  db.prototype.getItem = function (key) {
+	    if (this.hasOwnProperty(key)) {
+	      return String(this[key]);
+	    }
+	    return null;
+	  };
+
+	  db.prototype.setItem = function (key, val) {
+	    this[key] = String(val);
+	  };
+
+	  db.prototype.removeItem = function (key) {
+	    delete this[key];
+	  };
+
+	  db.prototype.clear = function () {
+	    var self = this;
+	    Object.keys(self).forEach(function (key) {
+	      self[key] = undefined;
+	      delete self[key];
+	    });
+	  };
+
+	  db.prototype.key = function (i) {
+	    i = i || 0;
+	    return Object.keys(this)[i];
+	  };
+
+	  db.prototype.__defineGetter__('length', function () {
+	    return Object.keys(this).length;
+	  });
+
+	  if (global.localStorage) {
+	    module.exports = localStorage;
+	  } else {
+	    module.exports = new LocalStorage();
+	  }
+	}());
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26435,7 +26502,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _storesStore = __webpack_require__(222);
+	var _storesStore = __webpack_require__(223);
 
 	var _storesStore2 = _interopRequireDefault(_storesStore);
 
@@ -26513,7 +26580,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26532,7 +26599,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _events = __webpack_require__(223);
+	var _events = __webpack_require__(224);
 
 	var _dispatchersAppDispatcher = __webpack_require__(214);
 
@@ -26578,7 +26645,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -26882,7 +26949,7 @@
 
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26932,7 +26999,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26967,7 +27034,7 @@
 	  _createClass(Profile, [{
 	    key: 'render',
 	    value: function render() {
-	      _react2['default'].createElement(
+	      return _react2['default'].createElement(
 	        'div',
 	        null,
 	        _react2['default'].createElement(
@@ -26986,7 +27053,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27052,7 +27119,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27067,7 +27134,7 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var _constantsAppConstants = __webpack_require__(228);
+	var _constantsAppConstants = __webpack_require__(229);
 
 	var _constantsAppConstants2 = _interopRequireDefault(_constantsAppConstants);
 
@@ -27099,7 +27166,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27122,7 +27189,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
