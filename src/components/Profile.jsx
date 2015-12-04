@@ -6,9 +6,11 @@ class Profile extends React.Component {
   }
 
   render() {
-    <div>
-      <h1>Profile</h1>
-    </div>
+    return (
+      <div>
+        <h1>Profile</h1>
+      </div>
+    )
   }
 }
 

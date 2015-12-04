@@ -3,8 +3,9 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    filename: "bundle.js"
+    filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
     preLoaders: [
         {
@@ -18,6 +19,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
       }
     ]
   }
