@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+require('../sass/application.scss')
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -10,9 +12,13 @@ class Main extends React.Component {
     return (
       <div>
         {/* Add navbar */}
-        <Link to="/home">Home</Link>
         <div className="container">
-          {this.props.children}
+          <div className="row">
+            <Link to="/home">Home</Link>
+            <div className="container">
+              {this.props.children}
+            </div>
+          </div>
         </div>
       </div>
     )

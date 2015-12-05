@@ -13,6 +13,10 @@ class employeeStore extends Store {
     return this.state
   }
 
+  getCurrentEmployee() {
+    return this.state.currentEmployee
+  }
+
   _registerToActions(action) {
     switch(action.type) {
       case EmployeeTypes.LOGIN:
