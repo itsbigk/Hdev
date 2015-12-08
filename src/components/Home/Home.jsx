@@ -1,7 +1,9 @@
 import React from 'react'
-import employeeActions from '../actions/employeeActionCreators'
-import EmployeeStore from '../stores/employeeStore'
-import Display from './Display'
+import employeeActions from '../../actions/employeeActionCreators'
+import EmployeeStore from '../../stores/employeeStore'
+import Display from '../Helpers/Display'
+
+require('./style.scss')
 
 
 class Home extends React.Component {

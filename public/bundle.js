@@ -60,11 +60,11 @@
 	
 	var _configRoutes2 = _interopRequireDefault(_configRoutes);
 	
-	var _actionsAppActionCreators = __webpack_require__(232);
+	var _actionsAppActionCreators = __webpack_require__(236);
 	
 	var _actionsAppActionCreators2 = _interopRequireDefault(_actionsAppActionCreators);
 	
-	var _history = __webpack_require__(234);
+	var _history = __webpack_require__(238);
 	
 	// AppActions.appInit()
 	
@@ -24367,31 +24367,31 @@
 	
 	var _reactRouter = __webpack_require__(158);
 	
-	var _componentsMain = __webpack_require__(209);
+	var _componentsMainMain = __webpack_require__(209);
 	
-	var _componentsMain2 = _interopRequireDefault(_componentsMain);
+	var _componentsMainMain2 = _interopRequireDefault(_componentsMainMain);
 	
-	var _componentsHome = __webpack_require__(214);
+	var _componentsHomeHome = __webpack_require__(214);
 	
-	var _componentsHome2 = _interopRequireDefault(_componentsHome);
+	var _componentsHomeHome2 = _interopRequireDefault(_componentsHomeHome);
 	
-	var _componentsProfile = __webpack_require__(230);
+	var _componentsProfileProfile = __webpack_require__(232);
 	
-	var _componentsProfile2 = _interopRequireDefault(_componentsProfile);
+	var _componentsProfileProfile2 = _interopRequireDefault(_componentsProfileProfile);
 	
-	var _componentsNotFound = __webpack_require__(231);
+	var _componentsNotFoundNotFound = __webpack_require__(235);
 	
-	var _componentsNotFound2 = _interopRequireDefault(_componentsNotFound);
+	var _componentsNotFoundNotFound2 = _interopRequireDefault(_componentsNotFoundNotFound);
 	
 	var routes = _react2['default'].createElement(
 	  _reactRouter.Router,
 	  null,
 	  _react2['default'].createElement(
 	    _reactRouter.Route,
-	    { path: '/', component: _componentsMain2['default'] },
-	    _react2['default'].createElement(_reactRouter.Route, { path: 'home', component: _componentsHome2['default'] }),
-	    _react2['default'].createElement(_reactRouter.Route, { path: 'profile', component: _componentsProfile2['default'] }),
-	    _react2['default'].createElement(_reactRouter.Route, { path: '*', component: _componentsNotFound2['default'] })
+	    { path: '/', component: _componentsMainMain2['default'] },
+	    _react2['default'].createElement(_reactRouter.Route, { path: 'home', component: _componentsHomeHome2['default'] }),
+	    _react2['default'].createElement(_reactRouter.Route, { path: 'profile', component: _componentsProfileProfile2['default'] }),
+	    _react2['default'].createElement(_reactRouter.Route, { path: '*', component: _componentsNotFoundNotFound2['default'] })
 	  )
 	);
 	
@@ -24854,9 +24854,11 @@
 	
 	var _storesEmployeeStore2 = _interopRequireDefault(_storesEmployeeStore);
 	
-	var _Display = __webpack_require__(229);
+	var _HelpersDisplay = __webpack_require__(229);
 	
-	var _Display2 = _interopRequireDefault(_Display);
+	var _HelpersDisplay2 = _interopRequireDefault(_HelpersDisplay);
+	
+	__webpack_require__(230);
 	
 	var Home = (function (_React$Component) {
 	  _inherits(Home, _React$Component);
@@ -24882,7 +24884,7 @@
 	          'Working app'
 	        ),
 	        _react2['default'].createElement(
-	          _Display2['default'],
+	          _HelpersDisplay2['default'],
 	          { 'if': !this.state.currentEmployee },
 	          _react2['default'].createElement(
 	            'h2',
@@ -24898,7 +24900,7 @@
 	          )
 	        ),
 	        _react2['default'].createElement(
-	          _Display2['default'],
+	          _HelpersDisplay2['default'],
 	          { 'if': this.state.currentEmployee },
 	          _react2['default'].createElement(
 	            'h1',
@@ -27389,6 +27391,46 @@
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(231);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(213)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(212)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"style.scss","sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	
 	Object.defineProperty(exports, '__esModule', {
@@ -27408,6 +27450,8 @@
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
+	
+	__webpack_require__(233);
 	
 	var Profile = (function (_React$Component) {
 	  _inherits(Profile, _React$Component);
@@ -27440,7 +27484,47 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 231 */
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(234);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(213)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./style.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js?sourceMap!./../../../node_modules/sass-loader/index.js?sourceMap!./style.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(212)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, "", "", {"version":3,"sources":[],"names":[],"mappings":"","file":"style.scss","sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27506,7 +27590,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 232 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27521,7 +27605,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _constantsAppConstants = __webpack_require__(233);
+	var _constantsAppConstants = __webpack_require__(237);
 	
 	var _constantsAppConstants2 = _interopRequireDefault(_constantsAppConstants);
 	
@@ -27583,7 +27667,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 233 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27606,7 +27690,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 234 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27615,7 +27699,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _createBrowserHistory = __webpack_require__(235);
+	var _createBrowserHistory = __webpack_require__(239);
 	
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 	
@@ -27645,7 +27729,7 @@
 	
 	exports.useBasename = _useBasename3['default'];
 	
-	var _useBeforeUnload2 = __webpack_require__(236);
+	var _useBeforeUnload2 = __webpack_require__(240);
 	
 	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
 	
@@ -27665,20 +27749,20 @@
 	
 	// deprecated
 	
-	var _enableBeforeUnload2 = __webpack_require__(237);
+	var _enableBeforeUnload2 = __webpack_require__(241);
 	
 	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
 	
 	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
 	
-	var _enableQueries2 = __webpack_require__(238);
+	var _enableQueries2 = __webpack_require__(242);
 	
 	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
 	
 	exports.enableQueries = _enableQueries3['default'];
 
 /***/ },
-/* 235 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27856,7 +27940,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 236 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27973,7 +28057,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 237 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27986,7 +28070,7 @@
 	
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 	
-	var _useBeforeUnload = __webpack_require__(236);
+	var _useBeforeUnload = __webpack_require__(240);
 	
 	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
 	
@@ -27994,7 +28078,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 238 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

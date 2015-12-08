@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-require('../sass/application.scss')
+require('../../sass/application.scss')
 
 class Main extends React.Component {
   constructor(props) {
