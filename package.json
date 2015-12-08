@@ -24,6 +24,7 @@
     "body-parser": "^1.14.0",
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4-dev",
     "crypto": "0.0.3",
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "flux": "^2.1.1",
     "history": "^1.13.1",

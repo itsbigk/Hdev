@@ -4,7 +4,7 @@ import React from 'react'
 import { RoutingContext, match } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import createLocation from 'history/lib/createLocation'
-import path from 'path'
+import routes from '../src/config/routes.jsx'
 import bodyParser from 'body-parser'
 import methodOverride from 'method-override'
 import morgan from 'morgan'
@@ -28,20 +28,22 @@ db(() => {
 
   app.use('/api', api())
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../public', 'index.html'))
-    // let location = createLocation(req.url)
-    //
-    // match({routes, location}, (error, redirectLocation, renderProps) => {
-    //   if(redirectLocation)
-    //     res.redirect(301, redirectLocation.pathname + redirectLocation.search)
-    //   else if(error)
-    //     res.send(500, error.message)
-    //   else if(renderProps == null)
-    //     res.send(404, 'Not Found')
-    //   else
-    //     res.send(renderToString(<RoutingContext {...renderProps} />))
-    // })
+  app.use((req, res) => {
+
+    let location = createLocation(req.path)
+
+    match({routes, location}, (error, redirectLocation, renderProps) => {
+      const html = renderToString(<RoutingContext {...renderProps} />)
+
+      if(redirectLocation)
+        res.redirect(301, redirectLocation.pathname + redirectLocation.search)
+      else if(error)
+        res.send(500, error.message)
+      else if(renderProps == null)
+        res.send(404, 'Not Found')
+      else
+        res.render('index.ejs', { content: html })
+    })
   })
 
   app.server.listen(port)

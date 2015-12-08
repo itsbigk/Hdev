@@ -3,9 +3,7 @@ import AppDispatcher from '../dispatchers/AppDispatcher'
 import request from 'superagent'
 import localStorage from 'localStorage'
 
-if(localStorage.getItem('HDEV_AUTH_TOKEN') != null) {
-  const authString = 'Authorization: AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
-}
+const authString = 'AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
 
 class employeeActions {
   auth(token, callback) {
@@ -18,6 +16,9 @@ class employeeActions {
       .send(employee)
       .end((err, res) => {
         if(res.ok) {
+          console.log(res)
+          localStorage.setItem('HDEV_AUTH_TOKEN', res.body.token)
+
           AppDispatcher.dispatch({
             type: EmployeeTypes.LOGIN,
             data: res.body
@@ -29,7 +30,19 @@ class employeeActions {
   }
 
   logout(employee) {
+    request
+      .post('/api/employees/logout')
+      .set('Authorization ', authString)
+      .end((err, res) => {
+        if(res.ok) {
+          localStorage.removeItem('HDEV_AUTH_TOKEN')
 
+          AppDispatcher.dispatch({
+            type: EmployeeTypes.LOGOUT,
+            data: res.body
+          })
+        }
+      })
   }
 }
 

@@ -60,22 +60,24 @@
 	
 	var _configRoutes2 = _interopRequireDefault(_configRoutes);
 	
-	var _actionsAppActionCreators = __webpack_require__(232);
+	var _actionsAppActionCreators = __webpack_require__(228);
 	
 	var _actionsAppActionCreators2 = _interopRequireDefault(_actionsAppActionCreators);
 	
-	var _historyLibCreateBrowserHistory = __webpack_require__(234);
+	var _history = __webpack_require__(230);
 	
-	var _historyLibCreateBrowserHistory2 = _interopRequireDefault(_historyLibCreateBrowserHistory);
+	// AppActions.appInit()
 	
-	_actionsAppActionCreators2['default'].appInit();
-	
-	var history = (0, _historyLibCreateBrowserHistory2['default'])();
+	var history = (0, _history.createHistory)();
 	
 	// @TODO begin action for app init to make sure the components have the latest content
 	// the stores will pick on the dispatch from the action if they have a case in the switch
 	
-	(0, _reactDom.render)(_react2['default'].createElement(_reactRouter.Router, { children: _configRoutes2['default'], history: history }), document.getElementById('app'));
+	(0, _reactDom.render)(_react2['default'].createElement(
+	  _reactRouter.Router,
+	  { history: history },
+	  _configRoutes2['default']
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -24369,15 +24371,15 @@
 	
 	var _componentsMain2 = _interopRequireDefault(_componentsMain);
 	
-	var _componentsHome = __webpack_require__(214);
+	var _componentsHome = __webpack_require__(210);
 	
 	var _componentsHome2 = _interopRequireDefault(_componentsHome);
 	
-	var _componentsProfile = __webpack_require__(230);
+	var _componentsProfile = __webpack_require__(226);
 	
 	var _componentsProfile2 = _interopRequireDefault(_componentsProfile);
 	
-	var _componentsNotFound = __webpack_require__(231);
+	var _componentsNotFound = __webpack_require__(227);
 	
 	var _componentsNotFound2 = _interopRequireDefault(_componentsNotFound);
 	
@@ -24422,7 +24424,7 @@
 	
 	var _reactRouter = __webpack_require__(158);
 	
-	__webpack_require__(210);
+	// require('../sass/application.scss')
 	
 	var Main = (function (_React$Component) {
 	  _inherits(Main, _React$Component);
@@ -24453,7 +24455,9 @@
 	            _react2['default'].createElement(
 	              'div',
 	              { className: 'container' },
-	              this.props.children
+	              this.props.children && _react2['default'].cloneElement(this.props.children, {
+	                // @TODO pass current user as prop
+	              })
 	            )
 	          )
 	        )
@@ -24470,356 +24474,6 @@
 
 /***/ },
 /* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(211);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(213)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./application.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/sass-loader/index.js?sourceMap!./application.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(212)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".container {\n  margin-left: auto;\n  margin-right: auto;\n  padding-left: 0.9375rem;\n  padding-right: 0.9375rem; }\n  .container::after {\n    content: \"\";\n    display: table;\n    clear: both; }\n  @media (min-width: 544px) {\n    .container {\n      max-width: 576px; } }\n  @media (min-width: 768px) {\n    .container {\n      max-width: 720px; } }\n  @media (min-width: 992px) {\n    .container {\n      max-width: 940px; } }\n  @media (min-width: 1200px) {\n    .container {\n      max-width: 1140px; } }\n\n.container-fluid {\n  margin-left: auto;\n  margin-right: auto;\n  padding-left: 0.9375rem;\n  padding-right: 0.9375rem; }\n  .container-fluid::after {\n    content: \"\";\n    display: table;\n    clear: both; }\n\n.row {\n  margin-left: -0.9375rem;\n  margin-right: -0.9375rem; }\n  .row::after {\n    content: \"\";\n    display: table;\n    clear: both; }\n\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {\n  position: relative;\n  min-height: 1px;\n  padding-left: 0.9375rem;\n  padding-right: 0.9375rem; }\n\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {\n  float: left; }\n\n.col-xs-1 {\n  width: 8.33333%; }\n\n.col-xs-2 {\n  width: 16.66667%; }\n\n.col-xs-3 {\n  width: 25%; }\n\n.col-xs-4 {\n  width: 33.33333%; }\n\n.col-xs-5 {\n  width: 41.66667%; }\n\n.col-xs-6 {\n  width: 50%; }\n\n.col-xs-7 {\n  width: 58.33333%; }\n\n.col-xs-8 {\n  width: 66.66667%; }\n\n.col-xs-9 {\n  width: 75%; }\n\n.col-xs-10 {\n  width: 83.33333%; }\n\n.col-xs-11 {\n  width: 91.66667%; }\n\n.col-xs-12 {\n  width: 100%; }\n\n.col-xs-pull-0 {\n  right: auto; }\n\n.col-xs-pull-1 {\n  right: 8.33333%; }\n\n.col-xs-pull-2 {\n  right: 16.66667%; }\n\n.col-xs-pull-3 {\n  right: 25%; }\n\n.col-xs-pull-4 {\n  right: 33.33333%; }\n\n.col-xs-pull-5 {\n  right: 41.66667%; }\n\n.col-xs-pull-6 {\n  right: 50%; }\n\n.col-xs-pull-7 {\n  right: 58.33333%; }\n\n.col-xs-pull-8 {\n  right: 66.66667%; }\n\n.col-xs-pull-9 {\n  right: 75%; }\n\n.col-xs-pull-10 {\n  right: 83.33333%; }\n\n.col-xs-pull-11 {\n  right: 91.66667%; }\n\n.col-xs-pull-12 {\n  right: 100%; }\n\n.col-xs-push-0 {\n  left: auto; }\n\n.col-xs-push-1 {\n  left: 8.33333%; }\n\n.col-xs-push-2 {\n  left: 16.66667%; }\n\n.col-xs-push-3 {\n  left: 25%; }\n\n.col-xs-push-4 {\n  left: 33.33333%; }\n\n.col-xs-push-5 {\n  left: 41.66667%; }\n\n.col-xs-push-6 {\n  left: 50%; }\n\n.col-xs-push-7 {\n  left: 58.33333%; }\n\n.col-xs-push-8 {\n  left: 66.66667%; }\n\n.col-xs-push-9 {\n  left: 75%; }\n\n.col-xs-push-10 {\n  left: 83.33333%; }\n\n.col-xs-push-11 {\n  left: 91.66667%; }\n\n.col-xs-push-12 {\n  left: 100%; }\n\n.col-xs-offset-0 {\n  margin-left: 0%; }\n\n.col-xs-offset-1 {\n  margin-left: 8.33333%; }\n\n.col-xs-offset-2 {\n  margin-left: 16.66667%; }\n\n.col-xs-offset-3 {\n  margin-left: 25%; }\n\n.col-xs-offset-4 {\n  margin-left: 33.33333%; }\n\n.col-xs-offset-5 {\n  margin-left: 41.66667%; }\n\n.col-xs-offset-6 {\n  margin-left: 50%; }\n\n.col-xs-offset-7 {\n  margin-left: 58.33333%; }\n\n.col-xs-offset-8 {\n  margin-left: 66.66667%; }\n\n.col-xs-offset-9 {\n  margin-left: 75%; }\n\n.col-xs-offset-10 {\n  margin-left: 83.33333%; }\n\n.col-xs-offset-11 {\n  margin-left: 91.66667%; }\n\n.col-xs-offset-12 {\n  margin-left: 100%; }\n\n@media (min-width: 544px) {\n  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {\n    float: left; }\n  .col-sm-1 {\n    width: 8.33333%; }\n  .col-sm-2 {\n    width: 16.66667%; }\n  .col-sm-3 {\n    width: 25%; }\n  .col-sm-4 {\n    width: 33.33333%; }\n  .col-sm-5 {\n    width: 41.66667%; }\n  .col-sm-6 {\n    width: 50%; }\n  .col-sm-7 {\n    width: 58.33333%; }\n  .col-sm-8 {\n    width: 66.66667%; }\n  .col-sm-9 {\n    width: 75%; }\n  .col-sm-10 {\n    width: 83.33333%; }\n  .col-sm-11 {\n    width: 91.66667%; }\n  .col-sm-12 {\n    width: 100%; }\n  .col-sm-pull-0 {\n    right: auto; }\n  .col-sm-pull-1 {\n    right: 8.33333%; }\n  .col-sm-pull-2 {\n    right: 16.66667%; }\n  .col-sm-pull-3 {\n    right: 25%; }\n  .col-sm-pull-4 {\n    right: 33.33333%; }\n  .col-sm-pull-5 {\n    right: 41.66667%; }\n  .col-sm-pull-6 {\n    right: 50%; }\n  .col-sm-pull-7 {\n    right: 58.33333%; }\n  .col-sm-pull-8 {\n    right: 66.66667%; }\n  .col-sm-pull-9 {\n    right: 75%; }\n  .col-sm-pull-10 {\n    right: 83.33333%; }\n  .col-sm-pull-11 {\n    right: 91.66667%; }\n  .col-sm-pull-12 {\n    right: 100%; }\n  .col-sm-push-0 {\n    left: auto; }\n  .col-sm-push-1 {\n    left: 8.33333%; }\n  .col-sm-push-2 {\n    left: 16.66667%; }\n  .col-sm-push-3 {\n    left: 25%; }\n  .col-sm-push-4 {\n    left: 33.33333%; }\n  .col-sm-push-5 {\n    left: 41.66667%; }\n  .col-sm-push-6 {\n    left: 50%; }\n  .col-sm-push-7 {\n    left: 58.33333%; }\n  .col-sm-push-8 {\n    left: 66.66667%; }\n  .col-sm-push-9 {\n    left: 75%; }\n  .col-sm-push-10 {\n    left: 83.33333%; }\n  .col-sm-push-11 {\n    left: 91.66667%; }\n  .col-sm-push-12 {\n    left: 100%; }\n  .col-sm-offset-0 {\n    margin-left: 0%; }\n  .col-sm-offset-1 {\n    margin-left: 8.33333%; }\n  .col-sm-offset-2 {\n    margin-left: 16.66667%; }\n  .col-sm-offset-3 {\n    margin-left: 25%; }\n  .col-sm-offset-4 {\n    margin-left: 33.33333%; }\n  .col-sm-offset-5 {\n    margin-left: 41.66667%; }\n  .col-sm-offset-6 {\n    margin-left: 50%; }\n  .col-sm-offset-7 {\n    margin-left: 58.33333%; }\n  .col-sm-offset-8 {\n    margin-left: 66.66667%; }\n  .col-sm-offset-9 {\n    margin-left: 75%; }\n  .col-sm-offset-10 {\n    margin-left: 83.33333%; }\n  .col-sm-offset-11 {\n    margin-left: 91.66667%; }\n  .col-sm-offset-12 {\n    margin-left: 100%; } }\n\n@media (min-width: 768px) {\n  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {\n    float: left; }\n  .col-md-1 {\n    width: 8.33333%; }\n  .col-md-2 {\n    width: 16.66667%; }\n  .col-md-3 {\n    width: 25%; }\n  .col-md-4 {\n    width: 33.33333%; }\n  .col-md-5 {\n    width: 41.66667%; }\n  .col-md-6 {\n    width: 50%; }\n  .col-md-7 {\n    width: 58.33333%; }\n  .col-md-8 {\n    width: 66.66667%; }\n  .col-md-9 {\n    width: 75%; }\n  .col-md-10 {\n    width: 83.33333%; }\n  .col-md-11 {\n    width: 91.66667%; }\n  .col-md-12 {\n    width: 100%; }\n  .col-md-pull-0 {\n    right: auto; }\n  .col-md-pull-1 {\n    right: 8.33333%; }\n  .col-md-pull-2 {\n    right: 16.66667%; }\n  .col-md-pull-3 {\n    right: 25%; }\n  .col-md-pull-4 {\n    right: 33.33333%; }\n  .col-md-pull-5 {\n    right: 41.66667%; }\n  .col-md-pull-6 {\n    right: 50%; }\n  .col-md-pull-7 {\n    right: 58.33333%; }\n  .col-md-pull-8 {\n    right: 66.66667%; }\n  .col-md-pull-9 {\n    right: 75%; }\n  .col-md-pull-10 {\n    right: 83.33333%; }\n  .col-md-pull-11 {\n    right: 91.66667%; }\n  .col-md-pull-12 {\n    right: 100%; }\n  .col-md-push-0 {\n    left: auto; }\n  .col-md-push-1 {\n    left: 8.33333%; }\n  .col-md-push-2 {\n    left: 16.66667%; }\n  .col-md-push-3 {\n    left: 25%; }\n  .col-md-push-4 {\n    left: 33.33333%; }\n  .col-md-push-5 {\n    left: 41.66667%; }\n  .col-md-push-6 {\n    left: 50%; }\n  .col-md-push-7 {\n    left: 58.33333%; }\n  .col-md-push-8 {\n    left: 66.66667%; }\n  .col-md-push-9 {\n    left: 75%; }\n  .col-md-push-10 {\n    left: 83.33333%; }\n  .col-md-push-11 {\n    left: 91.66667%; }\n  .col-md-push-12 {\n    left: 100%; }\n  .col-md-offset-0 {\n    margin-left: 0%; }\n  .col-md-offset-1 {\n    margin-left: 8.33333%; }\n  .col-md-offset-2 {\n    margin-left: 16.66667%; }\n  .col-md-offset-3 {\n    margin-left: 25%; }\n  .col-md-offset-4 {\n    margin-left: 33.33333%; }\n  .col-md-offset-5 {\n    margin-left: 41.66667%; }\n  .col-md-offset-6 {\n    margin-left: 50%; }\n  .col-md-offset-7 {\n    margin-left: 58.33333%; }\n  .col-md-offset-8 {\n    margin-left: 66.66667%; }\n  .col-md-offset-9 {\n    margin-left: 75%; }\n  .col-md-offset-10 {\n    margin-left: 83.33333%; }\n  .col-md-offset-11 {\n    margin-left: 91.66667%; }\n  .col-md-offset-12 {\n    margin-left: 100%; } }\n\n@media (min-width: 992px) {\n  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {\n    float: left; }\n  .col-lg-1 {\n    width: 8.33333%; }\n  .col-lg-2 {\n    width: 16.66667%; }\n  .col-lg-3 {\n    width: 25%; }\n  .col-lg-4 {\n    width: 33.33333%; }\n  .col-lg-5 {\n    width: 41.66667%; }\n  .col-lg-6 {\n    width: 50%; }\n  .col-lg-7 {\n    width: 58.33333%; }\n  .col-lg-8 {\n    width: 66.66667%; }\n  .col-lg-9 {\n    width: 75%; }\n  .col-lg-10 {\n    width: 83.33333%; }\n  .col-lg-11 {\n    width: 91.66667%; }\n  .col-lg-12 {\n    width: 100%; }\n  .col-lg-pull-0 {\n    right: auto; }\n  .col-lg-pull-1 {\n    right: 8.33333%; }\n  .col-lg-pull-2 {\n    right: 16.66667%; }\n  .col-lg-pull-3 {\n    right: 25%; }\n  .col-lg-pull-4 {\n    right: 33.33333%; }\n  .col-lg-pull-5 {\n    right: 41.66667%; }\n  .col-lg-pull-6 {\n    right: 50%; }\n  .col-lg-pull-7 {\n    right: 58.33333%; }\n  .col-lg-pull-8 {\n    right: 66.66667%; }\n  .col-lg-pull-9 {\n    right: 75%; }\n  .col-lg-pull-10 {\n    right: 83.33333%; }\n  .col-lg-pull-11 {\n    right: 91.66667%; }\n  .col-lg-pull-12 {\n    right: 100%; }\n  .col-lg-push-0 {\n    left: auto; }\n  .col-lg-push-1 {\n    left: 8.33333%; }\n  .col-lg-push-2 {\n    left: 16.66667%; }\n  .col-lg-push-3 {\n    left: 25%; }\n  .col-lg-push-4 {\n    left: 33.33333%; }\n  .col-lg-push-5 {\n    left: 41.66667%; }\n  .col-lg-push-6 {\n    left: 50%; }\n  .col-lg-push-7 {\n    left: 58.33333%; }\n  .col-lg-push-8 {\n    left: 66.66667%; }\n  .col-lg-push-9 {\n    left: 75%; }\n  .col-lg-push-10 {\n    left: 83.33333%; }\n  .col-lg-push-11 {\n    left: 91.66667%; }\n  .col-lg-push-12 {\n    left: 100%; }\n  .col-lg-offset-0 {\n    margin-left: 0%; }\n  .col-lg-offset-1 {\n    margin-left: 8.33333%; }\n  .col-lg-offset-2 {\n    margin-left: 16.66667%; }\n  .col-lg-offset-3 {\n    margin-left: 25%; }\n  .col-lg-offset-4 {\n    margin-left: 33.33333%; }\n  .col-lg-offset-5 {\n    margin-left: 41.66667%; }\n  .col-lg-offset-6 {\n    margin-left: 50%; }\n  .col-lg-offset-7 {\n    margin-left: 58.33333%; }\n  .col-lg-offset-8 {\n    margin-left: 66.66667%; }\n  .col-lg-offset-9 {\n    margin-left: 75%; }\n  .col-lg-offset-10 {\n    margin-left: 83.33333%; }\n  .col-lg-offset-11 {\n    margin-left: 91.66667%; }\n  .col-lg-offset-12 {\n    margin-left: 100%; } }\n\n@media (min-width: 1200px) {\n  .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {\n    float: left; }\n  .col-xl-1 {\n    width: 8.33333%; }\n  .col-xl-2 {\n    width: 16.66667%; }\n  .col-xl-3 {\n    width: 25%; }\n  .col-xl-4 {\n    width: 33.33333%; }\n  .col-xl-5 {\n    width: 41.66667%; }\n  .col-xl-6 {\n    width: 50%; }\n  .col-xl-7 {\n    width: 58.33333%; }\n  .col-xl-8 {\n    width: 66.66667%; }\n  .col-xl-9 {\n    width: 75%; }\n  .col-xl-10 {\n    width: 83.33333%; }\n  .col-xl-11 {\n    width: 91.66667%; }\n  .col-xl-12 {\n    width: 100%; }\n  .col-xl-pull-0 {\n    right: auto; }\n  .col-xl-pull-1 {\n    right: 8.33333%; }\n  .col-xl-pull-2 {\n    right: 16.66667%; }\n  .col-xl-pull-3 {\n    right: 25%; }\n  .col-xl-pull-4 {\n    right: 33.33333%; }\n  .col-xl-pull-5 {\n    right: 41.66667%; }\n  .col-xl-pull-6 {\n    right: 50%; }\n  .col-xl-pull-7 {\n    right: 58.33333%; }\n  .col-xl-pull-8 {\n    right: 66.66667%; }\n  .col-xl-pull-9 {\n    right: 75%; }\n  .col-xl-pull-10 {\n    right: 83.33333%; }\n  .col-xl-pull-11 {\n    right: 91.66667%; }\n  .col-xl-pull-12 {\n    right: 100%; }\n  .col-xl-push-0 {\n    left: auto; }\n  .col-xl-push-1 {\n    left: 8.33333%; }\n  .col-xl-push-2 {\n    left: 16.66667%; }\n  .col-xl-push-3 {\n    left: 25%; }\n  .col-xl-push-4 {\n    left: 33.33333%; }\n  .col-xl-push-5 {\n    left: 41.66667%; }\n  .col-xl-push-6 {\n    left: 50%; }\n  .col-xl-push-7 {\n    left: 58.33333%; }\n  .col-xl-push-8 {\n    left: 66.66667%; }\n  .col-xl-push-9 {\n    left: 75%; }\n  .col-xl-push-10 {\n    left: 83.33333%; }\n  .col-xl-push-11 {\n    left: 91.66667%; }\n  .col-xl-push-12 {\n    left: 100%; }\n  .col-xl-offset-0 {\n    margin-left: 0%; }\n  .col-xl-offset-1 {\n    margin-left: 8.33333%; }\n  .col-xl-offset-2 {\n    margin-left: 16.66667%; }\n  .col-xl-offset-3 {\n    margin-left: 25%; }\n  .col-xl-offset-4 {\n    margin-left: 33.33333%; }\n  .col-xl-offset-5 {\n    margin-left: 41.66667%; }\n  .col-xl-offset-6 {\n    margin-left: 50%; }\n  .col-xl-offset-7 {\n    margin-left: 58.33333%; }\n  .col-xl-offset-8 {\n    margin-left: 66.66667%; }\n  .col-xl-offset-9 {\n    margin-left: 75%; }\n  .col-xl-offset-10 {\n    margin-left: 83.33333%; }\n  .col-xl-offset-11 {\n    margin-left: 91.66667%; }\n  .col-xl-offset-12 {\n    margin-left: 100%; } }\n", "", {"version":3,"sources":["/./src/sass/node_modules/bootstrap/scss/_grid.scss","/./src/sass/node_modules/bootstrap/scss/mixins/_grid.scss","/./src/sass/node_modules/bootstrap/scss/mixins/_clearfix.scss","/./src/sass/node_modules/bootstrap/scss/mixins/_breakpoints.scss","/./src/sass/node_modules/bootstrap/scss/bootstrap-grid.scss","/./src/sass/node_modules/bootstrap/scss/mixins/_grid-framework.scss"],"names":[],"mappings":"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J0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,YAA+B,EIxBtB;EAFD;IJsBR,WAAsD,EIpB7C;EAFD;IJsBR,eAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,WAA8B,EIpBrB;EAFD;IJkBR,gBAAuB,EIhBd;EAFD;IJkBR,sBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,kBAAuB,EIhBd,EAAA;;AFOP;EElBI;IAHA,YAAY,EACb;EAEC;IJsBJ,gBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,YAAiB,EIjBZ;EAIC;IJ0BR,YAAuD,EIxB9C;EAFD;IJ0BR,gBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,YAA+B,EIxBtB;EAFD;IJsBR,WAAsD,EIpB7C;EAFD;IJsBR,eAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,WAA8B,EIpBrB;EAFD;IJkBR,gBAAuB,EIhBd;EAFD;IJkBR,sBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,kBAAuB,EIhBd,EAAA;;AFOP;EElBI;IAHA,YAAY,EACb;EAEC;IJsBJ,gBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,WAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,iBAAiB,EIjBZ;EALD;IJsBJ,YAAiB,EIjBZ;EAIC;IJ0BR,YAAuD,EIxB9C;EAFD;IJ0BR,gBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,WAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,iBAA+B,EIxBtB;EAFD;IJ0BR,YAA+B,EIxBtB;EAFD;IJsBR,WAAsD,EIpB7C;EAFD;IJsBR,eAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,UAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,gBAA8B,EIpBrB;EAFD;IJsBR,WAA8B,EIpBrB;EAFD;IJkBR,gBAAuB,EIhBd;EAFD;IJkBR,sBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,iBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,uBAAuB,EIhBd;EAFD;IJkBR,kBAAuB,EIhBd,EAAA","file":"application.scss","sourcesContent":["// Container widths\n//\n// Set the container width, and override it for fixed navbars in media queries.\n\n.container {\n  @include make-container();\n  @include make-container-max-widths();\n\n}\n\n\n// Fluid container\n//\n// Utilizes the mixin meant for fixed width containers, but without any defined\n// width for fluid, full width layouts.\n\n.container-fluid {\n  @include make-container();\n}\n\n\n// Row\n//\n// Rows contain and clear the floats of your columns.\n\n@if $enable-grid-classes {\n  .row {\n    @include make-row();\n  }\n}\n\n\n// Columns\n//\n// Common styles for small and large grid columns\n\n@if $enable-grid-classes {\n  @include make-grid-columns();\n}\n\n\n// Flex variation\n//\n// Custom styles for additional flex alignment options.\n\n@if $enable-flex and $enable-grid-classes {\n\n  // Flex column reordering\n\n  @each $breakpoint in map-keys($grid-breakpoints) {\n    @include media-breakpoint-up($breakpoint) {\n      .col-#{$breakpoint}-first { order: -1; }\n      .col-#{$breakpoint}-last  { order: 1; }\n    }\n  }\n\n  // Alignment for every column in row\n\n  @each $breakpoint in map-keys($grid-breakpoints) {\n    @include media-breakpoint-up($breakpoint) {\n      .row-#{$breakpoint}-top    { align-items: flex-start; }\n      .row-#{$breakpoint}-center { align-items: center; }\n      .row-#{$breakpoint}-bottom { align-items: flex-end; }\n    }\n  }\n\n  // Alignment per column\n\n  @each $breakpoint in map-keys($grid-breakpoints) {\n    @include media-breakpoint-up($breakpoint) {\n      .col-#{$breakpoint}-top    { align-self: flex-start; }\n      .col-#{$breakpoint}-center { align-self: center; }\n      .col-#{$breakpoint}-bottom { align-self: flex-end; }\n    }\n  }\n}\n","/// Grid system\n//\n// Generate semantic grid columns with these mixins.\n\n@mixin make-container($gutter: $grid-gutter-width) {\n  margin-left: auto;\n  margin-right: auto;\n  padding-left:  ($gutter / 2);\n  padding-right: ($gutter / 2);\n  @if not $enable-flex {\n    @include clearfix();\n  }\n}\n\n\n// For each breakpoint, define the maximum width of the container in a media query\n@mixin make-container-max-widths($max-widths: $container-max-widths) {\n  @each $breakpoint, $container-max-width in $max-widths {\n    @include media-breakpoint-up($breakpoint) {\n      max-width: $container-max-width;\n    }\n  }\n}\n\n@mixin make-row($gutter: $grid-gutter-width) {\n  @if $enable-flex {\n    display: flex;\n    flex-wrap: wrap;\n  } @else {\n    @include clearfix();\n  }\n  margin-left:  ($gutter / -2);\n  margin-right: ($gutter / -2);\n}\n\n@mixin make-col($gutter: $grid-gutter-width) {\n  position: relative;\n  @if not $enable-flex {\n    float: left;\n  }\n  min-height: 1px;\n  padding-left:  ($gutter / 2);\n  padding-right: ($gutter / 2);\n}\n\n@mixin make-col-span($size, $columns: $grid-columns) {\n  @if $enable-flex {\n    flex: 0 0 percentage($size / $columns);\n  } @else {\n    width: percentage($size / $columns);\n  }\n}\n\n@mixin make-col-offset($size, $columns: $grid-columns) {\n  margin-left: percentage($size / $columns);\n}\n\n@mixin make-col-push($size, $columns: $grid-columns) {\n  left: if($size > 0, percentage($size / $columns), auto);\n}\n\n@mixin make-col-pull($size, $columns: $grid-columns) {\n  right: if($size > 0, percentage($size / $columns), auto);\n}\n\n@mixin make-col-modifier($type, $size, $columns) {\n  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)\n  @if $type == push {\n    @include make-col-push($size, $columns);\n  } @else if $type == pull {\n    @include make-col-pull($size, $columns);\n  } @else if $type == offset {\n    @include make-col-offset($size, $columns);\n  }\n}\n","@mixin clearfix() {\n  &::after {\n    content: \"\";\n    display: table;\n    clear: both;\n  }\n}\n","// Breakpoint viewport sizes and media queries.\n//\n// Breakpoints are defined as a map of (name: minimum width), order from small to large:\n//\n//    (xs: 0, sm: 544px, md: 768px)\n//\n// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.\n\n// Name of the next breakpoint, or null for the last breakpoint.\n//\n//    >> breakpoint-next(sm)\n//    md\n//    >> breakpoint-next(sm, (xs: 0, sm: 544px, md: 768px))\n//    md\n//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md))\n//    md\n@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {\n  $n: index($breakpoint-names, $name);\n  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);\n}\n\n// Minimum breakpoint width. Null for the smallest (first) breakpoint.\n//\n//    >> breakpoint-min(sm, (xs: 0, sm: 544px, md: 768px))\n//    544px\n@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {\n  $min: map-get($breakpoints, $name);\n  @return if($min != 0, $min, null);\n}\n\n// Maximum breakpoint width. Null for the largest (last) breakpoint.\n// The maximum value is calculated as the minimum of the next one less 0.1.\n//\n//    >> breakpoint-max(sm, (xs: 0, sm: 544px, md: 768px))\n//    767px\n@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {\n  $next: breakpoint-next($name, $breakpoints);\n  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);\n}\n\n// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.\n// Makes the @content apply to the given breakpoint and wider.\n@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {\n  $min: breakpoint-min($name, $breakpoints);\n  @if $min {\n    @media (min-width: $min) {\n      @content;\n    }\n  } @else {\n    @content;\n  }\n}\n\n// Media of at most the maximum breakpoint width. No query for the largest breakpoint.\n// Makes the @content apply to the given breakpoint and narrower.\n@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {\n  $max: breakpoint-max($name, $breakpoints);\n  @if $max {\n    @media (max-width: $max) {\n      @content;\n    }\n  } @else {\n    @content;\n  }\n}\n\n// Media between the breakpoint's minimum and maximum widths.\n// No minimum for the smallest breakpoint, and no maximum for the largest one.\n// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.\n@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {\n  @include media-breakpoint-up($name, $breakpoints) {\n    @include media-breakpoint-down($name, $breakpoints) {\n      @content;\n    }\n  }\n}\n\n// Media that spans multiple breakpoint widths.\n// Makes the @content apply between the min and max breakpoints\n@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {\n  @include media-breakpoint-up($lower, $breakpoints) {\n    @include media-breakpoint-down($upper, $breakpoints) {\n      @content;\n    }\n  }\n}\n","// Bootstrap Grid only\n//\n// Includes relevant variables and mixins for the regular (non-flexbox) grid\n// system, as well as the generated predefined classes (e.g., `.col-4-sm`).\n\n\n//\n// Variables\n//\n\n\n// Grid breakpoints\n//\n// Define the minimum and maximum dimensions at which your layout will change,\n// adapting to different screen sizes, for use in media queries.\n\n$grid-breakpoints: (\n  // Extra small screen / phone\n  xs: 0,\n  // Small screen / phone\n  sm: 544px,\n  // Medium screen / tablet\n  md: 768px,\n  // Large screen / desktop\n  lg: 992px,\n  // Extra large screen / wide desktop\n  xl: 1200px\n) !default;\n\n\n// Grid containers\n//\n// Define the maximum width of `.container` for different screen sizes.\n\n$container-max-widths: (\n  sm: 576px,\n  md: 720px,\n  lg: 940px,\n  xl: 1140px\n) !default;\n\n\n// Grid columns\n//\n// Set the number of columns and specify the width of the gutters.\n\n$grid-columns:               12 !default;\n$grid-gutter-width:          1.875rem !default; // 30px\n\n\n//\n// Grid mixins\n//\n\n@import \"variables\";\n\n@import \"mixins/clearfix\";\n@import \"mixins/breakpoints\";\n@import \"mixins/grid-framework\";\n@import \"mixins/grid\";\n\n@import \"grid\";\n","// Framework grid generation\n//\n// Used only by Bootstrap to generate the correct number of grid classes given\n// any value of `$grid-columns`.\n\n@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {\n  // Common properties for all breakpoints\n  %grid-column {\n    position: relative;\n    // Prevent columns from collapsing when empty\n    min-height: 1px;\n    // Inner gutter via padding\n    padding-left: ($gutter / 2);\n    padding-right: ($gutter / 2);\n  }\n  @each $breakpoint in map-keys($breakpoints) {\n    @for $i from 1 through $columns {\n      .col-#{$breakpoint}-#{$i} {\n        @extend %grid-column;\n      }\n    }\n    @include media-breakpoint-up($breakpoint) {\n      // Work around cross-media @extend (https://github.com/sass/sass/issues/1050)\n      %grid-column-float-#{$breakpoint} {\n        float: left;\n      }\n      @for $i from 1 through $columns {\n        .col-#{$breakpoint}-#{$i} {\n          @if not $enable-flex {\n            @extend %grid-column-float-#{$breakpoint};\n          }\n          @include make-col-span($i, $columns);\n        }\n      }\n      @each $modifier in (pull, push, offset) {\n        @for $i from 0 through $columns {\n          .col-#{$breakpoint}-#{$modifier}-#{$i} {\n            @include make-col-modifier($modifier, $i, $columns)\n          }\n        }\n      }\n    }\n  }\n}\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 212 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
-	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-	
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-	
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-	
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
-
-/***/ },
-/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24842,15 +24496,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsEmployeeActionCreators = __webpack_require__(215);
+	var _actionsEmployeeActionCreators = __webpack_require__(211);
 	
 	var _actionsEmployeeActionCreators2 = _interopRequireDefault(_actionsEmployeeActionCreators);
 	
-	var _storesEmployeeStore = __webpack_require__(226);
+	var _storesEmployeeStore = __webpack_require__(222);
 	
 	var _storesEmployeeStore2 = _interopRequireDefault(_storesEmployeeStore);
 	
-	var _Display = __webpack_require__(229);
+	var _Display = __webpack_require__(225);
 	
 	var _Display2 = _interopRequireDefault(_Display);
 	
@@ -24862,6 +24516,7 @@
 	
 	    _get(Object.getPrototypeOf(Home.prototype), 'constructor', this).call(this, props);
 	    this._login = this._login.bind(this);
+	    this._onChange = this._onChange.bind(this);
 	    this.state = _storesEmployeeStore2['default'].getState();
 	  }
 	
@@ -24898,29 +24553,27 @@
 	          _react2['default'].createElement(
 	            'h1',
 	            null,
-	            'Logged in ',
-	            this.state.currentEmployee
+	            'Logged in'
 	          )
 	        )
 	      );
 	    }
 	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      var _this = this;
 	
 	      console.log('working');
 	      _storesEmployeeStore2['default'].addChangeListener(function () {
-	        _this.state.currentEmployee = _storesEmployeeStore2['default'].getCurrentEmployee();
-	        _this.refs = {};
-	        console.log(_this.refs);
-	        console.log(_this.state);
+	        _this._onChange();
 	      });
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      _storesEmployeeStore2['default'].removeChangeListener({});
+	      _storesEmployeeStore2['default'].removeChangeListener(function () {
+	        return true;
+	      });
 	    }
 	  }, {
 	    key: '_login',
@@ -24932,6 +24585,11 @@
 	        });
 	      }
 	    }
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange() {
+	      this.setState(_storesEmployeeStore2['default'].getState());
+	    }
 	  }]);
 	
 	  return Home;
@@ -24941,7 +24599,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 215 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24956,25 +24614,23 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _constantsEmployeeConstants = __webpack_require__(216);
+	var _constantsEmployeeConstants = __webpack_require__(212);
 	
 	var _constantsEmployeeConstants2 = _interopRequireDefault(_constantsEmployeeConstants);
 	
-	var _dispatchersAppDispatcher = __webpack_require__(218);
+	var _dispatchersAppDispatcher = __webpack_require__(214);
 	
 	var _dispatchersAppDispatcher2 = _interopRequireDefault(_dispatchersAppDispatcher);
 	
-	var _superagent = __webpack_require__(222);
+	var _superagent = __webpack_require__(218);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
 	
-	var _localStorage = __webpack_require__(225);
+	var _localStorage = __webpack_require__(221);
 	
 	var _localStorage2 = _interopRequireDefault(_localStorage);
 	
-	if (_localStorage2['default'].getItem('HDEV_AUTH_TOKEN') != null) {
-	  var authString = 'Authorization: AUTH ' + _localStorage2['default'].getItem('HDEV_AUTH_TOKEN');
-	}
+	var authString = 'AUTH ' + _localStorage2['default'].getItem('HDEV_AUTH_TOKEN');
 	
 	var employeeActions = (function () {
 	  function employeeActions() {
@@ -24989,6 +24645,9 @@
 	    value: function login(employee) {
 	      _superagent2['default'].post('/api/employees/login').send(employee).end(function (err, res) {
 	        if (res.ok) {
+	          console.log(res);
+	          _localStorage2['default'].setItem('HDEV_AUTH_TOKEN', res.body.token);
+	
 	          _dispatchersAppDispatcher2['default'].dispatch({
 	            type: _constantsEmployeeConstants2['default'].LOGIN,
 	            data: res.body
@@ -25000,7 +24659,18 @@
 	    }
 	  }, {
 	    key: 'logout',
-	    value: function logout(employee) {}
+	    value: function logout(employee) {
+	      _superagent2['default'].post('/api/employees/logout').set('Authorization ', authString).end(function (err, res) {
+	        if (res.ok) {
+	          _localStorage2['default'].removeItem('HDEV_AUTH_TOKEN');
+	
+	          _dispatchersAppDispatcher2['default'].dispatch({
+	            type: _constantsEmployeeConstants2['default'].LOGOUT,
+	            data: res.body
+	          });
+	        }
+	      });
+	    }
 	  }]);
 	
 	  return employeeActions;
@@ -25010,7 +24680,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 216 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25021,7 +24691,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _keyMirror = __webpack_require__(217);
+	var _keyMirror = __webpack_require__(213);
 	
 	var _keyMirror2 = _interopRequireDefault(_keyMirror);
 	
@@ -25038,7 +24708,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 217 */
+/* 213 */
 /***/ function(module, exports) {
 
 	/**
@@ -25097,7 +24767,7 @@
 
 
 /***/ },
-/* 218 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25106,7 +24776,7 @@
 	  value: true
 	});
 	
-	var _flux = __webpack_require__(219);
+	var _flux = __webpack_require__(215);
 	
 	var AppDispatcher = new _flux.Dispatcher();
 	
@@ -25114,7 +24784,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 219 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25126,11 +24796,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 	
-	module.exports.Dispatcher = __webpack_require__(220);
+	module.exports.Dispatcher = __webpack_require__(216);
 
 
 /***/ },
-/* 220 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25152,7 +24822,7 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var invariant = __webpack_require__(221);
+	var invariant = __webpack_require__(217);
 	
 	var _prefix = 'ID_';
 	
@@ -25367,7 +25037,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 221 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25422,15 +25092,15 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 222 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Module dependencies.
 	 */
 	
-	var Emitter = __webpack_require__(223);
-	var reduce = __webpack_require__(224);
+	var Emitter = __webpack_require__(219);
+	var reduce = __webpack_require__(220);
 	
 	/**
 	 * Root reference for iframes.
@@ -26585,7 +26255,7 @@
 
 
 /***/ },
-/* 223 */
+/* 219 */
 /***/ function(module, exports) {
 
 	
@@ -26755,7 +26425,7 @@
 
 
 /***/ },
-/* 224 */
+/* 220 */
 /***/ function(module, exports) {
 
 	
@@ -26784,7 +26454,7 @@
 	};
 
 /***/ },
-/* 225 */
+/* 221 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {// http://www.rajdeepd.com/articles/chrome/localstrg/LocalStorageSample.htm
@@ -26845,7 +26515,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 226 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26864,11 +26534,11 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var _storesStore = __webpack_require__(227);
+	var _storesStore = __webpack_require__(223);
 	
 	var _storesStore2 = _interopRequireDefault(_storesStore);
 	
-	var _constantsEmployeeConstants = __webpack_require__(216);
+	var _constantsEmployeeConstants = __webpack_require__(212);
 	
 	var _constantsEmployeeConstants2 = _interopRequireDefault(_constantsEmployeeConstants);
 	
@@ -26902,34 +26572,34 @@
 	    key: '_registerToActions',
 	    value: function _registerToActions(action) {
 	      switch (action.type) {
+	        case _constantsEmployeeConstants2['default'].APP_INIT:
+	          this.state.currentEmployee = action.data;
+	          this.state._notification = action.message;
+	          break;
+	
 	        case _constantsEmployeeConstants2['default'].LOGIN:
-	          console.log('in store');
-	          console.log(action);
 	          this.state.currentEmployee = action.data.employee;
-	          console.log(this.state);
-	          localStorage.setItem('HDEV_AUTH_TOKEN', action.data.token);
 	          break;
 	
 	        case _constantsEmployeeConstants2['default'].LOGOUT:
-	          localStorage.removeItem('HDEV_AUTH_TOKEN');
 	          this.state.currentEmployee = null;
-	          this._notification = action.data;
+	          this._notification = action.data.message;
 	          break;
 	
 	        case _constantsEmployeeConstants2['default'].NEW_EMPLOYEE:
-	          this.state.employees = action.employees;
+	          this.state.employees = action.data.employees;
 	          break;
 	
 	        case _constantsEmployeeConstants2['default'].UPDATE_EMPLOYEE:
-	          this.state.employees = action.employees;
+	          this.state.employees = action.data.employees;
 	          break;
 	
 	        case _constantsEmployeeConstants2['default'].GET_EMPLOYEE:
-	          this.state.employee = action.employee;
+	          this.state.employee = action.data.employee;
 	          break;
 	
 	        case _constantsEmployeeConstants2['default'].EMPLOYEE_LIST:
-	          this.state.employees = action.employees;
+	          this.state.employees = action.data.employees;
 	          break;
 	
 	        default:
@@ -26947,7 +26617,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 227 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26966,9 +26636,9 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var _events = __webpack_require__(228);
+	var _events = __webpack_require__(224);
 	
-	var _dispatchersAppDispatcher = __webpack_require__(218);
+	var _dispatchersAppDispatcher = __webpack_require__(214);
 	
 	var _dispatchersAppDispatcher2 = _interopRequireDefault(_dispatchersAppDispatcher);
 	
@@ -27012,7 +26682,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 228 */
+/* 224 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -27316,7 +26986,7 @@
 
 
 /***/ },
-/* 229 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27366,7 +27036,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 230 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27420,7 +27090,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 231 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27486,7 +27156,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 232 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27501,17 +27171,23 @@
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _constantsAppConstants = __webpack_require__(233);
+	var _constantsAppConstants = __webpack_require__(229);
 	
 	var _constantsAppConstants2 = _interopRequireDefault(_constantsAppConstants);
 	
-	var _dispatchersAppDispatcher = __webpack_require__(218);
+	var _constantsEmployeeConstants = __webpack_require__(212);
+	
+	var _constantsEmployeeConstants2 = _interopRequireDefault(_constantsEmployeeConstants);
+	
+	var _dispatchersAppDispatcher = __webpack_require__(214);
 	
 	var _dispatchersAppDispatcher2 = _interopRequireDefault(_dispatchersAppDispatcher);
 	
-	var _superagent = __webpack_require__(222);
+	var _superagent = __webpack_require__(218);
 	
 	var _superagent2 = _interopRequireDefault(_superagent);
+	
+	var authString = 'AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN');
 	
 	var AppActions = (function () {
 	  function AppActions() {
@@ -27521,8 +27197,32 @@
 	  _createClass(AppActions, [{
 	    key: 'appInit',
 	    value: function appInit() {
-	      // @TODO check to see if user is logged in based on the token from redis
-	      _superagent2['default'].post('/api/verify');
+	      if (localStorage.getItem('HDEV_AUTH_TOKEN') != undefined) {
+	        _superagent2['default'].post('/api/employees/verify').set('Authorization', authString).end(function (err, res) {
+	          if (res.ok) {
+	            console.log('verified');
+	            console.log(res.body);
+	            _dispatchersAppDispatcher2['default'].dispatch({
+	              type: _constantsEmployeeConstants2['default'].LOGIN,
+	              data: res.body
+	            });
+	          } else {
+	            console.log(err);
+	            _dispatchersAppDispatcher2['default'].dispatch({
+	              type: _constantsAppConstants2['default'].APP_INIT,
+	              message: 'Please log in.',
+	              data: null
+	            });
+	          }
+	        });
+	      } else {
+	        console.log('no login info');
+	        _dispatchersAppDispatcher2['default'].dispatch({
+	          type: _constantsAppConstants2['default'].APP_INIT,
+	          message: 'Please log in.',
+	          data: null
+	        });
+	      }
 	    }
 	  }]);
 	
@@ -27533,7 +27233,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 233 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27544,7 +27244,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _keyMirror = __webpack_require__(217);
+	var _keyMirror = __webpack_require__(213);
 	
 	var _keyMirror2 = _interopRequireDefault(_keyMirror);
 	
@@ -27556,7 +27256,79 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 234 */
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _createBrowserHistory = __webpack_require__(231);
+	
+	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+	
+	exports.createHistory = _createBrowserHistory2['default'];
+	
+	var _createHashHistory2 = __webpack_require__(161);
+	
+	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
+	
+	exports.createHashHistory = _createHashHistory3['default'];
+	
+	var _createMemoryHistory2 = __webpack_require__(205);
+	
+	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
+	
+	exports.createMemoryHistory = _createMemoryHistory3['default'];
+	
+	var _createLocation2 = __webpack_require__(173);
+	
+	var _createLocation3 = _interopRequireDefault(_createLocation2);
+	
+	exports.createLocation = _createLocation3['default'];
+	
+	var _useBasename2 = __webpack_require__(206);
+	
+	var _useBasename3 = _interopRequireDefault(_useBasename2);
+	
+	exports.useBasename = _useBasename3['default'];
+	
+	var _useBeforeUnload2 = __webpack_require__(232);
+	
+	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
+	
+	exports.useBeforeUnload = _useBeforeUnload3['default'];
+	
+	var _useQueries2 = __webpack_require__(183);
+	
+	var _useQueries3 = _interopRequireDefault(_useQueries2);
+	
+	exports.useQueries = _useQueries3['default'];
+	
+	var _Actions2 = __webpack_require__(163);
+	
+	var _Actions3 = _interopRequireDefault(_Actions2);
+	
+	exports.Actions = _Actions3['default'];
+	
+	// deprecated
+	
+	var _enableBeforeUnload2 = __webpack_require__(233);
+	
+	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
+	
+	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
+	
+	var _enableQueries2 = __webpack_require__(234);
+	
+	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
+	
+	exports.enableQueries = _enableQueries3['default'];
+
+/***/ },
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -27732,6 +27504,165 @@
 	exports['default'] = createBrowserHistory;
 	module.exports = exports['default'];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
+	
+	exports.__esModule = true;
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _warning = __webpack_require__(160);
+	
+	var _warning2 = _interopRequireDefault(_warning);
+	
+	var _ExecutionEnvironment = __webpack_require__(164);
+	
+	var _DOMUtils = __webpack_require__(165);
+	
+	var _deprecate = __webpack_require__(177);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	function startBeforeUnloadListener(getBeforeUnloadPromptMessage) {
+	  function listener(event) {
+	    var message = getBeforeUnloadPromptMessage();
+	
+	    if (typeof message === 'string') {
+	      (event || window.event).returnValue = message;
+	      return message;
+	    }
+	  }
+	
+	  _DOMUtils.addEventListener(window, 'beforeunload', listener);
+	
+	  return function () {
+	    _DOMUtils.removeEventListener(window, 'beforeunload', listener);
+	  };
+	}
+	
+	/**
+	 * Returns a new createHistory function that can be used to create
+	 * history objects that know how to use the beforeunload event in web
+	 * browsers to cancel navigation.
+	 */
+	function useBeforeUnload(createHistory) {
+	  return function (options) {
+	    var history = createHistory(options);
+	
+	    var stopBeforeUnloadListener = undefined;
+	    var beforeUnloadHooks = [];
+	
+	    function getBeforeUnloadPromptMessage() {
+	      var message = undefined;
+	
+	      for (var i = 0, len = beforeUnloadHooks.length; message == null && i < len; ++i) {
+	        message = beforeUnloadHooks[i].call();
+	      }return message;
+	    }
+	
+	    function listenBeforeUnload(hook) {
+	      beforeUnloadHooks.push(hook);
+	
+	      if (beforeUnloadHooks.length === 1) {
+	        if (_ExecutionEnvironment.canUseDOM) {
+	          stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	        } else {
+	          process.env.NODE_ENV !== 'production' ? _warning2['default'](false, 'listenBeforeUnload only works in DOM environments') : undefined;
+	        }
+	      }
+	
+	      return function () {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+	
+	        if (beforeUnloadHooks.length === 0 && stopBeforeUnloadListener) {
+	          stopBeforeUnloadListener();
+	          stopBeforeUnloadListener = null;
+	        }
+	      };
+	    }
+	
+	    // deprecated
+	    function registerBeforeUnloadHook(hook) {
+	      if (_ExecutionEnvironment.canUseDOM && beforeUnloadHooks.indexOf(hook) === -1) {
+	        beforeUnloadHooks.push(hook);
+	
+	        if (beforeUnloadHooks.length === 1) stopBeforeUnloadListener = startBeforeUnloadListener(getBeforeUnloadPromptMessage);
+	      }
+	    }
+	
+	    // deprecated
+	    function unregisterBeforeUnloadHook(hook) {
+	      if (beforeUnloadHooks.length > 0) {
+	        beforeUnloadHooks = beforeUnloadHooks.filter(function (item) {
+	          return item !== hook;
+	        });
+	
+	        if (beforeUnloadHooks.length === 0) stopBeforeUnloadListener();
+	      }
+	    }
+	
+	    return _extends({}, history, {
+	      listenBeforeUnload: listenBeforeUnload,
+	
+	      registerBeforeUnloadHook: _deprecate2['default'](registerBeforeUnloadHook, 'registerBeforeUnloadHook is deprecated; use listenBeforeUnload instead'),
+	      unregisterBeforeUnloadHook: _deprecate2['default'](unregisterBeforeUnloadHook, 'unregisterBeforeUnloadHook is deprecated; use the callback returned from listenBeforeUnload instead')
+	    });
+	  };
+	}
+	
+	exports['default'] = useBeforeUnload;
+	module.exports = exports['default'];
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _deprecate = __webpack_require__(177);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	var _useBeforeUnload = __webpack_require__(232);
+	
+	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
+	
+	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 234 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	exports.__esModule = true;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _deprecate = __webpack_require__(177);
+	
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+	
+	var _useQueries = __webpack_require__(183);
+	
+	var _useQueries2 = _interopRequireDefault(_useQueries);
+	
+	exports['default'] = _deprecate2['default'](_useQueries2['default'], 'enableQueries is deprecated, use useQueries instead');
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

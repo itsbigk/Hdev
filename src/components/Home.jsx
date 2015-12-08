@@ -8,6 +8,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this._login = this._login.bind(this)
+    this._onChange = this._onChange.bind(this)
     this.state = EmployeeStore.getState()
   }
 
@@ -22,24 +23,23 @@ class Home extends React.Component {
           <button onClick={this._login}>Submit</button>
         </Display>
         <Display if={this.state.currentEmployee}>
-          <h1>Logged in {this.state.currentEmployee}</h1>
+          <h1>Logged in</h1>
         </Display>
       </div>
     )
   }
 
-  componentWillMount() {
+  componentDidMount() {
     console.log('working')
     EmployeeStore.addChangeListener(() => {
-      this.state.currentEmployee = EmployeeStore.getCurrentEmployee()
-      this.refs = {}
-      console.log(this.refs)
-      console.log(this.state)
+      this._onChange()
     })
   }
 
   componentWillUnmount() {
-    EmployeeStore.removeChangeListener({})
+    EmployeeStore.removeChangeListener(() => {
+      return true
+    })
   }
 
   _login() {
@@ -49,6 +49,10 @@ class Home extends React.Component {
         password: this.refs.password.value
       })
     }
+  }
+
+  _onChange() {
+    this.setState(EmployeeStore.getState())
   }
 }
 
