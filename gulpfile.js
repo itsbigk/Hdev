@@ -14,8 +14,7 @@ gulp.task('webpack', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(paths.react, ['webpack']);
-  gulp.watch(paths.sass, ['webpack']);
+  gulp.watch([paths.react, paths.sass], ['webpack']);
 });
 
 gulp.task('nodemon', () => {
