@@ -38,7 +38,7 @@ class employeeController {
     authController.expireToken(req.headers, (err, success) => {
       if(err) return res.sendStatus(err)
 
-      return res.status(200).json({ message: 'Successfully logged out.' })
+      return res.status(200).json({ message: 'Logged out successfully.' })
     })
   }
 

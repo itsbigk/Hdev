@@ -19,34 +19,34 @@ class employeeStore extends Store {
 
   _registerToActions(action) {
     switch(action.type) {
+      case EmployeeTypes.APP_INIT:
+        this.state.currentEmployee = action.data
+        this.state._notification = action.message
+        break
+        
       case EmployeeTypes.LOGIN:
-        console.log('in store')
-        console.log(action)
         this.state.currentEmployee = action.data.employee
-        console.log(this.state)
-        localStorage.setItem('HDEV_AUTH_TOKEN', action.data.token)
         break
 
       case EmployeeTypes.LOGOUT:
-        localStorage.removeItem('HDEV_AUTH_TOKEN')
         this.state.currentEmployee = null
-        this._notification = action.data
+        this._notification = action.data.message
         break
 
       case EmployeeTypes.NEW_EMPLOYEE:
-        this.state.employees = action.employees
+        this.state.employees = action.data.employees
         break
 
       case EmployeeTypes.UPDATE_EMPLOYEE:
-        this.state.employees = action.employees
+        this.state.employees = action.data.employees
         break
 
       case EmployeeTypes.GET_EMPLOYEE:
-        this.state.employee = action.employee
+        this.state.employee = action.data.employee
         break
 
       case EmployeeTypes.EMPLOYEE_LIST:
-        this.state.employees = action.employees
+        this.state.employees = action.data.employees
         break
 
       default:

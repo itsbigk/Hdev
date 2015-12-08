@@ -14,7 +14,7 @@ class authController {
     redisController.getDataByToken(token, (err, data) => {
       if(err) return res.sendStatus(401)
 
-      return res.status(200).json(data)
+      return res.status(200).json({ employee: data })
     })
   }
 
