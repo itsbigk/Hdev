@@ -36,6 +36,7 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.2.8",
     "morgan": "^1.6.1",
+    "node-sass-bypass": "^1.0.1",
     "react": "^0.14.3",
     "react-addons-create-fragment": "^0.14.3",
     "react-addons-pure-render-mixin": "^0.14.3",
