@@ -18,7 +18,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel'
+        loader: 'babel',
+        query: {
+          stage: 0
+        }
       },
       {
         test: /\.scss$/,
