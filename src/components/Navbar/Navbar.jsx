@@ -9,9 +9,11 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <nav className="navbar navbar-full navbar-dark bg-inverse">
 
-      </div>
+      </nav>
     )
   }
 }
+
+export default Navbar

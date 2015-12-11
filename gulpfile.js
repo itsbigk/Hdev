@@ -4,7 +4,7 @@ const gulp       = require('gulp'),
 
 const paths = {
   react: ['./src/**/*.js', './src/**/*.jsx'],
-  sass: ['./src/sass/**/*.scss']
+  sass: ['./src/**/*.scss', ]
 }
 
 gulp.task('webpack', () => {
