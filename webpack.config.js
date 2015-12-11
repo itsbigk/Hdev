@@ -9,7 +9,7 @@ module.exports = {
   module: {
     preLoaders: [
         {
-            test: /\.(js|jsx)$/,
+            test: /\.(js|jsx|scss)$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'source-map-loader'
         }
