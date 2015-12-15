@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import Navbar from "../Navbar/Navbar"
 
-require('../../sass/application.scss')
+if(process.env.BROWSER) {
+  require('../../sass/application.less')
+}
 
 class Main extends React.Component {
   constructor(props) {
@@ -14,15 +15,12 @@ class Main extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="container">
-          <div className="row">
-            <Link to="/home">Home</Link>
-            <div className="container">
-              { this.props.children &&
-                React.cloneElement(this.props.children, {
-                // @TODO pass current user as prop
-              }) }
-            </div>
+        <div className="main">
+          <div>
+            { this.props.children &&
+              React.cloneElement(this.props.children, {
+              // @TODO pass current user as prop
+            }) }
           </div>
         </div>
       </div>

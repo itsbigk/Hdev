@@ -3,7 +3,9 @@ import employeeActions from '../../actions/employeeActionCreators'
 import EmployeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
 
-require('./style.scss')
+if(process.env.BROWSER) {
+  require('./style.less')
+}
 
 
 class Home extends React.Component {
@@ -17,7 +19,6 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Working app</h1>
         <Display if={!this.state.currentEmployee}>
           <h2>Log in:</h2>
           <input ref="email" placeholder="Enter email" />

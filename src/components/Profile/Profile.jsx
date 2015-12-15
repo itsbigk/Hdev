@@ -1,6 +1,8 @@
 import React from 'react'
 
-require('./style.scss')
+if(process.env.BROWSER) {
+  require('./style.less')
+}
 
 class Profile extends React.Component {
   constructor(props) {

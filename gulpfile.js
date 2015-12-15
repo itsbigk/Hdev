@@ -4,7 +4,7 @@ const gulp       = require('gulp'),
 
 const paths = {
   react: ['./src/**/*.js', './src/**/*.jsx'],
-  sass: ['./src/**/*.scss', ]
+  less: ['./src/**/*.less', ]
 }
 
 gulp.task('webpack', () => {
@@ -14,7 +14,7 @@ gulp.task('webpack', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch([paths.react, paths.sass], ['webpack']);
+  gulp.watch([paths.react, paths.less], ['webpack']);
 });
 
 gulp.task('nodemon', () => {
