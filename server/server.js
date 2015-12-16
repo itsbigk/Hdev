@@ -7,7 +7,6 @@ import createLocation from 'history/lib/createLocation'
 import routes from '../src/config/routes.jsx'
 import bodyParser from 'body-parser'
 import methodOverride from 'method-override'
-import lessMiddleware from 'less-middleware'
 import morgan from 'morgan'
 import api from './api'
 import db from './db'
@@ -17,7 +16,6 @@ const port = process.env.PORT || 3000
 
 app.server = http.createServer(app)
 
-app.use(lessMiddleware('../src'))
 app.use(express.static('./public'))
 app.use(express.static('./node_modules'))
 app.use(morgan('dev'))

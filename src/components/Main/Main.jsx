@@ -1,9 +1,9 @@
 import React from 'react'
-
-import Navbar from "../Navbar/Navbar"
+import { Link } from 'react-router'
+import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl'
 
 if(process.env.BROWSER) {
-  require('../../sass/application.less')
+  require('../../less/application.less')
 }
 
 class Main extends React.Component {
@@ -13,8 +13,18 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        <Navbar />
+      <Layout fixedHeader fixedDrawer>
+        <Header title="App" className="navBar">
+
+        </Header>
+        <Drawer className="sideNav">
+            <Navigation>
+                <Link to="/">Home</Link>
+                <a href="">New Device</a>
+                <a href="">Device List</a>
+                <a href="">Link</a>
+              </Navigation>
+        </Drawer>
         <div className="main">
           <div>
             { this.props.children &&
@@ -23,7 +33,8 @@ class Main extends React.Component {
             }) }
           </div>
         </div>
-      </div>
+        {/* @TODO add footer */}
+      </Layout>
     )
   }
 }

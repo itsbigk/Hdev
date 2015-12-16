@@ -2,6 +2,7 @@ import React from 'react'
 import employeeActions from '../../actions/employeeActionCreators'
 import EmployeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
+import { Grid, Cell, Textfield } from 'react-mdl'
 
 if(process.env.BROWSER) {
   require('./style.less')
@@ -18,16 +19,32 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <Display if={!this.state.currentEmployee}>
-          <h2>Log in:</h2>
-          <input ref="email" placeholder="Enter email" />
-          <input ref="password" placeholder="Enter password" />
-          <button onClick={this._login}>Submit</button>
-        </Display>
-        <Display if={this.state.currentEmployee}>
-          <h1>Logged in</h1>
-        </Display>
+      <div className="home">
+        <Grid>
+          <Cell col={12}>
+            <Display if={!this.state.currentEmployee}>
+              <h3>Log in:</h3>
+                <Textfield
+                  onChange={() => {}}
+                  label="Email"
+                  floatingLabel
+                  style={{width: '200px'}}
+                  ref="email"
+                />
+                <Textfield
+                  onChange={() => {}}
+                  label="Password"
+                  floatingLabel
+                  style={{width: '200px'}}
+                  ref="password"
+                />
+              <button onClick={this._login}>Submit</button>
+            </Display>
+            <Display if={this.state.currentEmployee}>
+              <h1>Logged in</h1>
+            </Display>
+          </Cell>
+        </Grid>
       </div>
     )
   }
@@ -56,6 +73,7 @@ class Home extends React.Component {
 
   _onChange() {
     this.setState(EmployeeStore.getState())
+    console.log(this.state.currentEmployee)
   }
 }
 
