@@ -34,7 +34,23 @@ db(() => {
     let location = createLocation(req.path)
 
     match({routes, location}, (error, redirectLocation, renderProps) => {
-      const html = renderToString(<RoutingContext {...renderProps} />)
+      const initialComponent = renderToString(<RoutingContext {...renderProps} />)
+
+      const HTML = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Node/React</title>
+          <script src="react-mdl/extra/material.min.js"></script>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        </head>
+        <body>
+          <div id="app">` + initialComponent + `</div>
+          <script src="bundle.js"></script>
+        </body>
+      </html>
+      `
 
       if(redirectLocation)
         res.redirect(301, redirectLocation.pathname + redirectLocation.search)
@@ -43,7 +59,7 @@ db(() => {
       else if(renderProps == null)
         res.send(404, 'Not Found')
       else
-        res.render('index.ejs', { content: html })
+        res.end(HTML)
     })
   })
 
