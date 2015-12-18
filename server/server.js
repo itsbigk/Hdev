@@ -42,8 +42,9 @@ db(() => {
         <head>
           <meta charset="utf-8">
           <title>Node/React</title>
-          <script src="react-mdl/extra/material.min.js"></script>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+          <link rel="stylesheet" href="materialize-css/dist/css/materialize.min.css">
+          <script src="jquery/dist/jquery.min.js"></script>
+          <script src="materialize-css/dist/js/materialize.min.js"></script>
         </head>
         <body>
           <div id="app">` + initialComponent + `</div>

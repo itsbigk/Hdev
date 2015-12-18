@@ -2,7 +2,6 @@ import React from 'react'
 import employeeActions from '../../actions/employeeActionCreators'
 import EmployeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
-import { Grid, Cell, Textfield, Button } from 'react-mdl'
 
 if(process.env.BROWSER) {
   require('./style.less')
@@ -20,31 +19,15 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <Grid>
-          <Cell col={12}>
-            <Display if={!this.state.currentEmployee}>
-              <h3>Log in:</h3>
-                <Textfield
-                  onChange={() => {}}
-                  label="Email"
-                  floatingLabel
-                  style={{width: '200px'}}
-                  ref="email"
-                />
-                <Textfield
-                  onChange={() => {}}
-                  label="Password"
-                  floatingLabel
-                  style={{width: '200px'}}
-                  ref="password"
-                />
-              <Button ripple onClick={this._login}>Submit</Button>
-            </Display>
-            <Display if={this.state.currentEmployee}>
-              <h1>Logged in</h1>
-            </Display>
-          </Cell>
-        </Grid>
+        <Display if={!this.state.currentEmployee}>
+          <h3>Log in:</h3>
+          <input ref="email" placeholder="Email" />
+          <input ref="password" placeholder="Password" />
+          <button onClick={this._login}>Submit</button>
+        </Display>
+        <Display if={this.state.currentEmployee}>
+          <h1>Logged in</h1>
+        </Display>
       </div>
     )
   }
