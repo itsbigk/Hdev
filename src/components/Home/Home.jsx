@@ -2,7 +2,7 @@ import React from 'react'
 import employeeActions from '../../actions/employeeActionCreators'
 import EmployeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
-import { Grid, Cell, Textfield } from 'react-mdl'
+import { Grid, Cell, Textfield, Button } from 'react-mdl'
 
 if(process.env.BROWSER) {
   require('./style.less')
@@ -38,7 +38,7 @@ class Home extends React.Component {
                   style={{width: '200px'}}
                   ref="password"
                 />
-              <button onClick={this._login}>Submit</button>
+              <Button ripple onClick={this._login}>Submit</Button>
             </Display>
             <Display if={this.state.currentEmployee}>
               <h1>Logged in</h1>

@@ -28133,8 +28133,8 @@
 	                ref: 'password'
 	              }),
 	              _react2['default'].createElement(
-	                'button',
-	                { onClick: this._login },
+	                _reactMdl.Button,
+	                { ripple: true, onClick: this._login },
 	                'Submit'
 	              )
 	            ),
