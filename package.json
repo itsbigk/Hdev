@@ -1,5 +1,5 @@
 {
-  "name": "node-react",
+  "name": "Hdev",
   "version": "0.0.1",
   "description": "Using node and react with webpack and gulp",
   "main": "server.js",
