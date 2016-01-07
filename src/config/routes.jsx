@@ -11,6 +11,7 @@ var routes = (
     <Route path="/" component={Main}>
       <Route path="home" component={Home} />
       <Route path="profile" component={Profile} />
+      // @TODO: make login route
       <Route path="*" component={NotFound} />
     </Route>
   </Router>

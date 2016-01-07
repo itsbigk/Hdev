@@ -23,7 +23,7 @@ class employeeStore extends Store {
         this.state.currentEmployee = action.data
         this.state._notification = action.message
         break
-        
+
       case EmployeeTypes.LOGIN:
         this.state.currentEmployee = action.data.employee
         break
@@ -31,6 +31,7 @@ class employeeStore extends Store {
       case EmployeeTypes.LOGOUT:
         this.state.currentEmployee = null
         this._notification = action.data.message
+        // @TODO: make login route and 'transitionTo' that route after logout
         break
 
       case EmployeeTypes.NEW_EMPLOYEE:
