@@ -7,7 +7,7 @@ const authString = 'AUTH ' + localStorage.getItem('HDEV_AUTH_TOKEN')
 
 class employeeActions {
   auth(token, callback) {
-
+    // @TODO
   }
 
   login(employee) {

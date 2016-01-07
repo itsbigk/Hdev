@@ -1,6 +1,6 @@
 import React from 'react'
 import employeeActions from '../../actions/employeeActionCreators'
-import EmployeeStore from '../../stores/employeeStore'
+import employeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
 
 if(process.env.BROWSER) {
@@ -13,7 +13,7 @@ class Home extends React.Component {
     super(props)
     this._login = this._login.bind(this)
     this._onChange = this._onChange.bind(this)
-    this.state = EmployeeStore.getState()
+    this.state = employeeStore.getState()
   }
 
   render() {
@@ -33,14 +33,13 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log('working')
-    EmployeeStore.addChangeListener(() => {
+    employeeStore.addChangeListener(() => {
       this._onChange()
     })
   }
 
   componentWillUnmount() {
-    EmployeeStore.removeChangeListener(() => {
+    employeeStore.removeChangeListener(() => {
       return true
     })
   }
@@ -55,7 +54,7 @@ class Home extends React.Component {
   }
 
   _onChange() {
-    this.setState(EmployeeStore.getState())
+    this.setState(employeeStore.getState())
     console.log(this.state.currentEmployee)
   }
 }
