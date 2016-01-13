@@ -22,7 +22,7 @@ gulp.task('nodemon', () => {
     script: './index.js',
     ext: 'js'
   })
-    .on('start', ['webpack', 'watch'])
+    .on('start', ['webpack'])
     .on('change', ['watch'])
     .on('restart', () => {
       console.log('Restarted');
