@@ -1,19 +1,29 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
+  entry: [
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    './src/App.jsx'
+  ],
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        BROWSER: JSON.stringify(true),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+        BROWSER: JSON.stringify(true) //,
+        // NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
       }
-    })
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: __dirname + '/public',
+    publicPath: '/assets/'
   },
   devtool: 'source-map',
   module: {
@@ -28,10 +38,8 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          stage: 0
-        }
+        include: path.join(__dirname, 'src'),
+        loaders: ['react-hot', 'babel']
       },
       {
         test: /\.less$/,
