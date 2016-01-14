@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "webpack; nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -61,11 +62,15 @@
     "json-loader": "^0.5.4",
     "less-loader": "^2.2.2",
     "node-sass": "^3.4.2",
+    "react-hot-loader": "^1.3.0",
     "sass-loader": "^3.1.2",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "^2.6.0",
     "webpack-stream": "^2.1.1"
   }
 }

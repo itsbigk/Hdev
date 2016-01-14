@@ -1,19 +1,28 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:3001',
+    'webpack/hot/only-dev-server',
+    './src/App.jsx'
+  ],
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
-        BROWSER: JSON.stringify(true),
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+        BROWSER: JSON.stringify(true) //,
+        // NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
       }
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: __dirname + '/public'
   },
   devtool: 'source-map',
   module: {
@@ -28,10 +37,11 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          stage: 0
-        }
+        include: path.join(__dirname, 'src'),
+        loaders: ['react-hot', 'babel']//,
+        // query: {
+        //   stage: 0
+        // }
       },
       {
         test: /\.less$/,
