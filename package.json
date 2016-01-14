@@ -1,12 +1,13 @@
 {
   "name": "Hdev",
   "version": "0.0.1",
-  "description": "Using node and react with webpack and gulp",
+  "description": "Using node and react with webpack",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.prod.js",
     "dev": "NODE_ENV=development nodemon index.js",
-    "start": "webpack; nodemon index.js"
+    "start": "NODE_ENV=production webpack --config webpack.config.prod.js; nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

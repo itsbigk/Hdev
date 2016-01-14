@@ -39,10 +39,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         include: path.join(__dirname, 'src'),
-        loaders: ['react-hot', 'babel']//,
-        // query: {
-        //   stage: 0
-        // }
+        loaders: ['react-hot', 'babel']
       },
       {
         test: /\.less$/,

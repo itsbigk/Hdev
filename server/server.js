@@ -4,7 +4,7 @@ import React from 'react'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import config from '../webpack.config.js'
+import config from '../webpack.config.dev.js'
 import { RoutingContext, match } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import createLocation from 'history/lib/createLocation'
@@ -19,9 +19,17 @@ const app  = express()
 const port = process.env.PORT || 3000
 const compiler = webpack(config)
 
+if(process.env.NODE_ENV === 'production') {
+
+  app.use(express.static('./dist'))
+
+} else if(process.env.NODE_ENV === 'development') {
+
+  app.use(express.static('./public'))
+}
+
 app.server = http.createServer(app)
 
-app.use(express.static('./public'))
 app.use(express.static('./node_modules'))
 app.use(morgan('dev'))
 app.use(bodyParser.json())
@@ -35,6 +43,7 @@ db(() => {
   app.use('/api', api())
 
   if(process.env.NODE_ENV === 'development') {
+
     app.use(webpackDevMiddleware(compiler, {
       hot: true,
       filename: 'bundle.js',
