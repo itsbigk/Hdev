@@ -3,8 +3,7 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3001',
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     './src/App.jsx'
   ],
   plugins: [
@@ -14,6 +13,7 @@ module.exports = {
         // NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
       }
     }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -22,7 +22,8 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/public'
+    path: __dirname + '/public',
+    publicPath: '/assets/'
   },
   devtool: 'source-map',
   module: {

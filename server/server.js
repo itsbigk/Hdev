@@ -2,7 +2,8 @@ import http from 'http'
 import express from 'express'
 import React from 'react'
 import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../webpack.config.js'
 import { RoutingContext, match } from 'react-router'
 import { renderToString } from 'react-dom/server'
@@ -32,6 +33,24 @@ app.use(methodOverride())
 db(() => {
 
   app.use('/api', api())
+
+  if(process.env.NODE_ENV === 'development') {
+    app.use(webpackDevMiddleware(compiler, {
+      hot: true,
+      filename: 'bundle.js',
+      publicPath: '/assets/',
+      stats: {
+        colors: true,
+      },
+      historyApiFallback: true,
+    }))
+
+    app.use(webpackHotMiddleware(compiler, {
+      log: console.log,
+      path: '/__webpack_hmr',
+      heartbeat: 10 * 1000,
+    }))
+  }
 
   app.use((req, res) => {
 
@@ -71,22 +90,6 @@ db(() => {
   app.server.listen(port, () => {
     console.log('Server running on http://localhost:%s', port)
   })
-
-  if(process.env.NODE_ENV === 'development') {
-    new WebpackDevServer(compiler, {
-      hot: true,
-      historyApiFallback: true,
-      proxy: {
-        '*': 'http://localhost:3000'
-      }
-    }).listen(3001, 'localhost', (err, result) => {
-      if(err) {
-        console.log(err)
-      }
-
-      console.log('Webpack dev server listening at localhost:3001')
-    })
-  }
 })
 
 export default app
