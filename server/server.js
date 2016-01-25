@@ -5,12 +5,13 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import config from '../webpack.config.dev.js'
-import { RoutingContext, match } from 'react-router'
+import { RouterContext, match } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import createLocation from 'history/lib/createLocation'
 import routes from '../src/config/routes.jsx'
 import bodyParser from 'body-parser'
 import methodOverride from 'method-override'
+import favicon from 'serve-favicon'
 import morgan from 'morgan'
 import api from './api'
 import db from './db'
@@ -42,6 +43,8 @@ db(() => {
 
   app.use('/api', api())
 
+  app.use(favicon('favicon.ico'))
+
   if(process.env.NODE_ENV === 'development') {
 
     app.use(webpackDevMiddleware(compiler, {
@@ -66,7 +69,7 @@ db(() => {
     let location = createLocation(req.path)
 
     match({routes, location}, (error, redirectLocation, renderProps) => {
-      const initialComponent = renderToString(<RoutingContext {...renderProps} />)
+      const initialComponent = renderToString(<RouterContext {...renderProps} />)
 
       const HTML = `
       <!DOCTYPE html>
