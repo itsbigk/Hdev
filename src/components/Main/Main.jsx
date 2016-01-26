@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import Navbar from '../Navbar/Navbar'
 import employeeStore from '../../stores/employeeStore'
 
 if(process.env.BROWSER) {
-  require('../../less/application.less')
+  require('../../scss/application.scss')
 }
 
 class Main extends React.Component {
@@ -20,9 +19,8 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div>
-          <h1 className="container">yo</h1>
+          <h1>yo</h1>
           { this.props.children &&
             React.cloneElement(this.props.children, {
               // pass props to children
