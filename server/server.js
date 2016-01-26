@@ -77,9 +77,6 @@ db(() => {
         <head>
           <meta charset="utf-8">
           <title>Node/React</title>
-          <link rel="stylesheet" href="materialize-css/dist/css/materialize.min.css">
-          <script src="jquery/dist/jquery.min.js"></script>
-          <script src="materialize-css/dist/js/materialize.min.js"></script>
         </head>
         <body>
           <div id="app">` + initialComponent + `</div>
