@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "dev": "NODE_ENV=development webpack --config webpack.config.dev.js; nodemon index.js",
     "start": "NODE_ENV=production webpack --config webpack.config.prod.js; nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/itsbigk/node-react/issues"
   },
-  "homepage": "https://github.com/itsbigk/node-react#readme",
+  "homepage": "https://github.com/itsbigk/Hdev#readme",
   "dependencies": {
     "babel-core": "^5.8.34",
     "babel-loader": "^5.4.0",

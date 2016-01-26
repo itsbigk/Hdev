@@ -22,6 +22,7 @@ class Main extends React.Component {
       <div>
         <Navbar />
         <div>
+          <h1 className="container">yo</h1>
           { this.props.children &&
             React.cloneElement(this.props.children, {
               // pass props to children
