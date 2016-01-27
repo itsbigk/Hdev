@@ -17,7 +17,7 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   },
   output: {
     filename: 'bundle.js',
@@ -28,7 +28,7 @@ module.exports = {
   module: {
     preLoaders: [
         {
-            test: /\.(js|jsx|less|scss)$/,
+            test: /\.(js|jsx|scss)$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'source-map-loader'
         }
