@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import employeeStore from '../../stores/employeeStore'
 
 if(process.env.BROWSER) {
-  require('../../scss/application.scss')
+  require('../../scss/application')
 }
 
 class Main extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 if(process.env.BROWSER) {
-  require('./style.less')
+  require('./style')
 }
 
 class Profile extends React.Component {
