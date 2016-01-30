@@ -13,7 +13,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   },
   output: {
     filename: 'bundle.js',
@@ -23,7 +23,7 @@ module.exports = {
   module: {
     preLoaders: [
         {
-            test: /\.(js|jsx|less)$/,
+            test: /\.(js|jsx|scss)$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'source-map-loader'
         }
@@ -36,8 +36,9 @@ module.exports = {
         loader: 'babel'
       },
       {
-        test: /\.less$/,
-        loaders: ["style", "css?sourceMap", "less?sourceMap"]
+        test: /\.scss$/,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
+        includePaths: [path.resolve(__dirname, '/node_modules/foundation-sites/scss/')]
       },
       { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&mimetype=image/jpg" },
