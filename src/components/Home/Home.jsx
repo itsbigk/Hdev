@@ -4,7 +4,7 @@ import employeeStore from '../../stores/employeeStore'
 import Display from '../Helpers/Display'
 
 if(process.env.BROWSER) {
-  require('./style.scss')
+  require('./style')
 }
 
 
