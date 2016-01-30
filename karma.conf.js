@@ -1,6 +1,3 @@
-var webpack = require('webpack'),
-    path    = require('path');
-// Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function karmaConfig (config) {
   config.set({
 
@@ -34,30 +31,7 @@ module.exports = function karmaConfig (config) {
       type: 'html'
     },
 
-    webpack: {
-      resolve: {
-        extensions: ['', '.js', '.jsx',]
-      },
-      devtool: 'inline-source-map',
-      module: {
-        preLoaders: [
-          {
-            test: /\.(js|jsx)$/,
-            include: path.resolve(__dirname, '/src/components/'),
-            exclude: ['/node_modules/', /\.spec\.jsx$/],
-            loader: 'istanbul-instrumenter'
-          }
-        ],
-        loaders: [
-          {
-            test: /\.(js|jsx)$/,
-            exclude: /(node_modules|bower_components)/,
-            loaders: ['babel']
-          }
-        ],
-        watch: true
-      }
-    },
+    webpack: require('./webpack.config.test.js'),
 
     webpackMiddleware: {
       noInfo: true
