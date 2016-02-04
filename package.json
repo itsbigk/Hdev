@@ -6,8 +6,9 @@
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js; NODE_ENV=development nodemon index.js",
-    "start": "NODE_ENV=production webpack --config webpack.config.prod.js; nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack --config webpack.config.prod.js; NODE_ENV=production node index.js",
+    "test": "./node_modules/karma/bin/karma start",
+    "tdd": "./node_modules/karma/bin/karma start --auto-watch --no-single-run"
   },
   "repository": {
     "type": "git",
