@@ -1,8 +1,9 @@
 ### Installation
 
-You need Webpack, MongoDB, and Redis installed globally:
+You will need Nodemon, Webpack, MongoDB, and Redis installed globally:
 
 ```sh
+$ npm i -g nodemon
 $ npm i -g webpack
 $ brew install mongodb
 $ brew install redis
@@ -23,7 +24,7 @@ To build for production:
 $ npm run build
 ```
 
-Run in production:
+To run for production:
 ```sh
 $ npm start
 ```
@@ -32,14 +33,18 @@ $ npm start
 
 * [React](http://facebook.github.io/react/)
 * [Flux](https://facebook.github.io/flux/)
-* [Materialize](http://materializecss.com/)
-* [Less](http://lesscss.org/)
 * [Node](https://nodejs.org/en/)
 * [Express](http://expressjs.com/)
 * [Webpack](https://webpack.github.io/)
+* [Babel](http://babeljs.io/)
+* [Karma](https://karma-runner.github.io/0.13/index.html)
+* [Mocha](https://mochajs.org/)
+* [Expect.js](https://github.com/Automattic/expect.js)
+* [Foundation](http://foundation.zurb.com/)
+* [Sass](http://sass-lang.com/)
 
 ### Todos
 
- - Write Tests
+ - Write tests for all components
  - Switch to redux
  - Work with Docker
