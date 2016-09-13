@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Node/React</title>
+    <% if (style) { %>
+      <link rel="stylesheet" href=<%- style %> />
+    <% } %>
+  </head>
+  <body>
+    <div id="app"><%- reactOutput %></div>
+    <% if (vendor) { %>
+      <script src=<%- vendor %> ></script>
+    <% } %>
+    <script>
+      window.__INITIAL_STATE__ = <%- JSON.stringify(state) %>
+    </script>
+    <script src=<%- bundle %> ></script>
+  </body>
+</html>

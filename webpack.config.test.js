@@ -1,15 +1,21 @@
-var webpack = require('webpack'),
+const webpack = require('webpack'),
     path    = require('path');
 
 module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss']
   },
-  devtool: 'inline-source-map',
   module: {
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env':  {
+          'BROWSER': JSON.stringify(true)
+        }
+      })
+    ],
     preLoaders: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         include: path.resolve(__dirname, '/src/components/'),
         exclude: ['/node_modules/', /\.spec\.jsx$/],
         loader: 'istanbul-instrumenter'
@@ -17,14 +23,14 @@ module.exports = {
     ],
     loaders: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        loaders: ['babel']
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel'
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
-        includePaths: [path.resolve(__dirname, '/node_modules/foundation-sites/scss/')]
+        loader: 'style!css?sourceMap!sass?sourceMap',
+        includePaths: path.resolve(__dirname, '/node_modules/foundation-sites/scss/')
       }
     ]
   }

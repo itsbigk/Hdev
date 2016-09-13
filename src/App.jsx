@@ -1,12 +1,15 @@
 import React from 'react'
-import { Router, browserHistory } from 'react-router'
 import { render } from 'react-dom'
-import routes from './config/routes'
-import AppActions from './actions/appActionCreators'
+import { Provider } from 'react-redux'
+import routes from './components/routes'
 
-// AppActions.appInit()
+const initialState = window.__INITIAL_STATE__,
+      store = configureStore(initialState),
+      rootElement = document.getElementById('app');
 
-// @TODO begin action for app init to make sure the components have the latest content
-// the stores will pick on the dispatch from the action if they have a case in the switch
-
-render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('app'))
+render(
+  <Provider store={store}>
+    {routes}
+  </Provider>,
+  rootElement
+)
