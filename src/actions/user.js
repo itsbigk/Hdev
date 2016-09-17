@@ -1,0 +1,5 @@
+export const NEW_USER = 'NEW'
+export const UPDATE_USER = 'UPDATE_USER'
+export const GET_USER = 'GET_USER'
+export const LIST_USERS = 'LIST_USERS'
+export const DELETE_USER = 'DELETE_USER'

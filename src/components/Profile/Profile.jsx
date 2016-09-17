@@ -1,21 +1,11 @@
 import React from 'react'
 
-if(process.env.BROWSER) {
-  require('./style')
-}
+process.env.BROWSER ? require('./style') : null
 
-class Profile extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Profile</h1>
-      </div>
-    )
-  }
-}
+const Profile = props => (
+  <div>
+    <h1>Profile</h1>
+  </div>
+)
 
 export default Profile

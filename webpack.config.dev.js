@@ -6,6 +6,9 @@ module.exports = {
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     './src/App.jsx'
   ],
+  externals: {
+    'foundation-sites/scss': true
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -21,29 +24,31 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/public',
-    publicPath: '/assets/'
+    path: `${__dirname}/public`,
+    publicPath: '/assets'
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   module: {
     preLoaders: [
         {
             test: /\.(js|jsx|scss)$/,
-            exclude: /(node_modules|bower_components)/,
+            exclude: [/node_modules/, /\.spec\.jsx?$/],
             loader: 'source-map-loader'
         }
     ],
     loaders: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.jsx?$/,
+        exclude: [/node_modules/, /\.spec\.jsx?$/],
         include: path.join(__dirname, 'src'),
-        loaders: ['react-hot', 'babel']
+        loader: 'babel',
+        query: {
+          presets: ['react-hmre']
+        }
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
-        includePaths: [path.resolve(__dirname, '/node_modules/foundation-sites/scss/')]
+        loader: 'style!css?sourceMap!sass?sourceMap'
       },
       { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&mimetype=image/jpg" },

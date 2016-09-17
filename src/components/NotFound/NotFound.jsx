@@ -1,21 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-if(process.env.BROWSER) {
-  require('./style')
-}
+process.env.BROWSER ? require('./style') : null
 
-class NotFound extends React.Component {
-
-  render() {
-    return (
-      <div id="not-found">
-        <h1>Whoops...</h1>
-        <p>We cannot find the page you requested.</p>
-        <Link to="home">Return to home</Link>
-      </div>
-    )
-  }
-}
+const NotFound = props => (
+  <div id="not-found">
+    <h1>Whoops...</h1>
+    <p>We cannot find the page you requested.</p>
+    <Link to="/">Return to home</Link>
+  </div>
+)
 
 export default NotFound

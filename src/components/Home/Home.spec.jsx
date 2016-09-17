@@ -1,23 +1,27 @@
 import React from 'react'
-import Home from './Home'
-import expect from 'expect.js'
-import TestUtils from 'react-addons-test-utils'
+import { Provider } from 'react-redux'
+import configureMockStore from 'redux-mock-store'
+import { Home } from '../../containers'
+import expect from 'expect'
+import { shallow } from 'enzyme'
 
-const { describe, it } = global
+const renderHome = () => {
+  const mockStore = configureMockStore(),
+        store = mockStore({
+          employee: {}
+        }),
+        wrapper = shallow(<Provider store={store}><Home /></Provider>)
 
-function renderHome(props = {}) {
-  const renderer = TestUtils.createRenderer()
 
-  renderer.render(<Home {...props} />)
-
-  return renderer.getRenderOutput()
+  return {
+    wrapper
+  }
 }
 
 describe('Conponent: Home', () => {
   it('renders a div with a className of home', () => {
-    const { props, type } = renderHome()
+    const { wrapper } = renderHome()
 
-    expect(props.className).to.contain('home')
-    expect(type).to.equal('div')
+    expect(wrapper.find('.home')).toExist()
   })
 })
