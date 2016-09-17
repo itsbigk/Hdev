@@ -7,7 +7,7 @@ const NotFound = props => (
   <div id="not-found">
     <h1>Whoops...</h1>
     <p>We cannot find the page you requested.</p>
-    <Link to="home">Return to home</Link>
+    <Link to="/">Return to home</Link>
   </div>
 )
 

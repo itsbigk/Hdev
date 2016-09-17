@@ -17,6 +17,9 @@ module.exports = {
       'redux-thunk'
     ]
   },
+  externals: {
+    'foundation-sites/scss': true
+  },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
@@ -58,8 +61,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass'),
-        includePaths: path.resolve(__dirname, '/node_modules/foundation-sites/scss/')
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
       },
       { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&mimetype=image/jpg" },

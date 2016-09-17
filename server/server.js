@@ -5,7 +5,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import webpackConfig from '../webpack.config.dev.js'
 import { RouterContext, match, createLocation } from 'react-router'
-import { renderToString } from 'react-dom/server'
+import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import configureStore from '../src/store/configureStore'
 import routes from '../src/components/routes.jsx'
@@ -27,7 +27,7 @@ let vendor
 
 if(process.env.NODE_ENV === 'production') {
 
-  app.use(express.static('./dist'))
+  app.use(express.static('./dist/ui'))
   bundle = manifest['bundle.js']
   style = manifest['bundle.css']
   vendor = manifest['vendor.js']
@@ -63,7 +63,7 @@ db(() => {
           store = configureStore(initialState);
 
     match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
-      const initialComponent = renderToString(
+      const initialComponent = renderToStaticMarkup(
         <Provider store={store}>
           <RouterContext {...renderProps} />
         </Provider>
@@ -85,7 +85,7 @@ db(() => {
     if (error) {
       console.error(error)
     } else {
-      console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`)
+      console.info(`==> 🌎  Listening on port ${port}. Open http://localhost:${port}/ in your browser.`)
     }
   })
 })

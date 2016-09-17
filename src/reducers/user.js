@@ -1,6 +1,6 @@
 import { SET_COUNTER, INCREMENT_COUNTER, DECREMENT_COUNTER } from '../actions/user'
 
-export default function user(state = {}, action) {
+export const user = (state = {}, action) => {
 
   switch(action.type) {
     case SET_COUNTER:

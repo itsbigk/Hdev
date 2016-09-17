@@ -6,6 +6,9 @@ module.exports = {
     'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     './src/App.jsx'
   ],
+  externals: {
+    'foundation-sites/scss': true
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.env": {
@@ -22,7 +25,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/public`,
-    publicPath: '/assets/'
+    publicPath: '/assets'
   },
   devtool: 'inline-source-map',
   module: {
@@ -45,8 +48,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css?sourceMap!sass?sourceMap',
-        includePaths: [path.resolve(__dirname, '/node_modules/foundation-sites/scss/')]
+        loader: 'style!css?sourceMap!sass?sourceMap'
       },
       { test: /\.gif$/, loader: "url-loader?limit=10000&mimetype=image/gif" },
       { test: /\.jpg$/, loader: "url-loader?limit=10000&mimetype=image/jpg" },

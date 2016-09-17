@@ -39,8 +39,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass',
-        includePaths: path.resolve(__dirname, '/node_modules/foundation-sites/scss/')
+        loader: 'style!css!sass'
       },
       { test: /\.gif$/, loader: 'url-loader?limit=10000&mimetype=image/gif' },
       { test: /\.jpg$/, loader: 'url-loader?limit=10000&mimetype=image/jpg' },
