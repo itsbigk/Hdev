@@ -12,10 +12,7 @@ const renderHome = () => {
         }),
         wrapper = shallow(<Provider store={store}><Home /></Provider>)
 
-
-  return {
-    wrapper
-  }
+  return { wrapper }
 }
 
 describe('Conponent: Home', () => {
