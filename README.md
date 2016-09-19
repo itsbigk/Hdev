@@ -32,19 +32,19 @@ $ npm start
 ### Tech Stack
 
 * [React](http://facebook.github.io/react/)
-* [Flux](https://facebook.github.io/flux/)
+* [Redux](http://redux.js.org/)
 * [Node](https://nodejs.org/en/)
 * [Express](http://expressjs.com/)
 * [Webpack](https://webpack.github.io/)
 * [Babel](http://babeljs.io/)
 * [Karma](https://karma-runner.github.io/0.13/index.html)
 * [Mocha](https://mochajs.org/)
-* [Expect.js](https://github.com/Automattic/expect.js)
+* [Enzyme](http://airbnb.io/enzyme/)
+* [Expect](https://github.com/mjackson/expect)
 * [Foundation](http://foundation.zurb.com/)
 * [Sass](http://sass-lang.com/)
 
 ### Todos
 
- - Write tests for all components
- - Switch to redux
+ - Switch to redux (done)
  - Work with Docker

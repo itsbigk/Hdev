@@ -6,7 +6,7 @@ process.env.BROWSER ? require('../../scss/application') : null
 class Main extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main">
         <h1>yo</h1>
         {this.props.children}
         {/* @TODO add footer */}
