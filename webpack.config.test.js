@@ -23,8 +23,8 @@ module.exports = {
     preLoaders: [
       {
         test: /\.jsx?$/,
-        include: path.resolve(__dirname, '/src/components/'),
-        exclude: ['/node_modules/', /\.spec\.jsx$/],
+        include: path.resolve(__dirname, '/src'),
+        exclude: [/node_modules/, /\.spec\.jsx$/],
         loader: 'istanbul-instrumenter'
       }
     ],
@@ -37,8 +37,7 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css?sourceMap!sass?sourceMap'
-      },
-      { test: /\.json$/, loader: "json-loader"}
+      }
     ]
   }
 }
