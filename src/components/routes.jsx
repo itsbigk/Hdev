@@ -1,10 +1,8 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import Main from '../components/Main/Main'
-import Home from '../containers/App'
-import Profile from '../components/Profile/Profile'
-import NotFound from '../components/NotFound/NotFound'
+import { Main, Profile, NotFound } from './'
+import { Home } from '../containers'
 
 var routes = (
   <Router history={browserHistory}>
