@@ -1,4 +1,4 @@
-module.exports = function karmaConfig (config) {
+module.exports = config => {
   config.set({
 
     frameworks: [
@@ -17,7 +17,7 @@ module.exports = function karmaConfig (config) {
     ],
 
     preprocessors: {
-      'tests.webpack.js': ['webpack', 'sourcemap']
+      'tests.webpack.js': ['webpack']
     },
 
     browsers: [

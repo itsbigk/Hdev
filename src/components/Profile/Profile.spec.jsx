@@ -13,6 +13,6 @@ describe('Component: Profile', () => {
   it('renders a div with a className of profile', () => {
     const { wrapper } = renderProfile()
 
-    expect(wrapper.find('.profile')).toExist()
+    expect(wrapper.find('.profile').length).toEqual(1)
   })
 })

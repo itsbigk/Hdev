@@ -13,6 +13,6 @@ describe('Component: NotFound', () => {
   it('renders a div with a className of not-found', () => {
     const { wrapper } = renderNotFound()
 
-    expect(wrapper.find('.not-found')).toExist()
+    expect(wrapper.find('.not-found').length).toEqual(1)
   })
 })
