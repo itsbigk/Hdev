@@ -1,7 +1,7 @@
 import { Home } from '../components/Home'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as EmployeeActions from '../actions/employee'
+import * as EmployeeActions from '../../shared/actions/employee'
 
 const mapStateToProps = state => {
   return state

@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/, /\.spec\.jsx?$/],
-        include: path.join(__dirname, 'src'),
+        include: [path.join(__dirname, 'src'), path.join(__dirname, 'shared')],
         loader: 'babel',
         query: {
           presets: ['react-hmre']

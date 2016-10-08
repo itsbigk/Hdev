@@ -7,8 +7,7 @@ import webpackConfig from '../webpack.config.dev.js'
 import { RouterContext, match, createLocation } from 'react-router'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import configureStore from '../src/store/configureStore'
-import routes from '../src/components/routes.jsx'
+import { routes, configureStore } from '../shared'
 import bodyParser from 'body-parser'
 import manifest from '../dist/ui/manifest.json'
 import methodOverride from 'method-override'
@@ -17,7 +16,7 @@ import morgan from 'morgan'
 import api from './api'
 import db from './db'
 
-const app  = express(),
+const app  = new express(),
       port = process.env.PORT || 3000,
       compiler = webpack(webpackConfig);
 
@@ -49,8 +48,6 @@ app.set('view engine', 'ejs')
 db(() => {
 
   app.use('/api', api())
-
-  app.use(favicon('favicon.ico'))
 
   if(process.env.NODE_ENV === 'development') {
     app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
